@@ -5,278 +5,224 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Kalana Sahan Dillimuni</title>
 
-    <!-- Tailwind CSS CDN (Using latest v3) -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CONFIG -->
+    <script src="assets/js/tailwind-config.js"></script>
 
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- AOS CSS -->
+    <!-- AOS Animation Library -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <!-- Google Fonts (Poppins) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Alpine.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- Custom Styles (Optional) and Tailwind Config -->
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #1a1a1a; /* Darker background */
-            color: #e0e0e0; /* Lighter text for contrast */
-        }
-         /* Custom gradient text (if needed elsewhere, keeping for consistency) */
-        .text-gradient {
-           background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
-           -webkit-background-clip: text;
-           -webkit-text-fill-color: transparent;
-           background-clip: text;
-           text-fill-color: transparent;
-       }
-        .section-divider {
-           height: 2px;
-           background: linear-gradient(90deg, #ff416c, #ff4b2b);
-           width: 80px;
-           margin: 1rem auto 2rem auto; /* Centered divider */
-       }
-        /* Added style to ensure icon container has height and centering */
-        .icon-container {
-            min-height: 3rem; /* Adjust based on icon size */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#d63031', // Your red
-              secondary: '#ff4b2b', // A complementary orange/red
-              darkbg: '#1a1a1a',
-              lighttext: '#e0e0e0',
-              cardbg: '#2a2a2a',
-            }
-          }
-        }
-      }
-    </script>
 </head>
 <body class="bg-darkbg text-lighttext" x-data="{ mobileMenuOpen: false }">
+    <!-- Ambient Background Elements -->
+    <div class="ambient-glow"></div>
+    <div id="cursor-glow" class="hidden md:block"></div>
+    
+    <!-- Animated Particle Canvas -->
+    <canvas id="particles-canvas"></canvas>
 
-    <!-- Header (Links are set for files in the same folder, Projects button styled) -->
-    <header class="fixed w-full top-0 z-50 transition-all duration-300"
-            :class="{ 'bg-black/80 backdrop-blur-md shadow-lg': window.scrollY > 50, 'bg-transparent': window.scrollY <= 50 }"
-            @scroll.window="window.scrollY > 50 ? true : false">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
-            <!-- Logo Link -->
-            <a href="index.html" class="text-2xl font-bold text-primary hover:text-secondary transition duration-300">K.S.D</a>
-
-            <!-- Desktop Navigation -->
-            <ul class="hidden md:flex space-x-8 items-center">
-                <li><a href="index.html" class="hover:text-primary transition duration-300 font-medium">Home</a></li>
-                <!-- Projects link styled as a button -->
-                <li><a href="projects.html" class="text-white bg-gradient-to-r from-primary to-secondary py-2 px-5 rounded-full hover:opacity-90 transition duration-300 font-semibold">Projects</a></li>
-                 <li><a href="index.html#about" @click="mobileMenuOpen = false" class="hover:text-primary transition duration-300 font-medium">About</a></li>
-                 <li><a href="index.html#skills" @click="mobileMenuOpen = false" class="hover:text-primary transition duration-300 font-medium">Skills</a></li>
-                 <li><a href="index.html#contact" @click="mobileMenuOpen = false" class="hover:text-primary transition duration-300 font-medium">Contact</a></li>
-            </ul>
-
-            <!-- Mobile Menu Button -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden focus:outline-none text-lighttext hover:text-primary text-2xl z-50">
-                <i :class="mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
-            </button>
-        </nav>
+    <!-- Header Component -->
+    <header id="main-header" class="fixed w-full top-0 z-50 transition-all duration-300"
+            :class="{ 'glass-header shadow-lg': window.scrollY > 20, 'bg-transparent': window.scrollY <= 20 }"
+            @scroll.window="window.scrollY > 20 ? true : false">
+            <!-- Content injected by components.js -->
     </header>
 
-    <!-- Mobile Menu -->
-    <div x-show="mobileMenuOpen"
-         x-transition:enter="transition ease-out duration-300"
-         x-transition:enter-start="opacity-0 transform -translate-y-full"
-         x-transition:enter-end="opacity-100 transform translate-y-0"
-         x-transition:leave="transition ease-in duration-200"
-         x-transition:leave-start="opacity-100 transform translate-y-0"
-         x-transition:leave-end="opacity-0 transform -translate-y-full"
-         class="fixed inset-0 bg-black/95 z-40 flex flex-col items-center justify-center space-y-6 md:hidden"
-         @click.away="mobileMenuOpen = false">
-            <!-- Corrected Mobile Menu Links -->
-            <a href="index.html" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">Home</a>
-            <!-- Projects link styled as a button in mobile menu -->
-            <a href="projects.html" @click="mobileMenuOpen = false" class="text-2xl text-white bg-gradient-to-r from-primary to-secondary py-2 px-5 rounded-full hover:opacity-90 transition duration-300 font-semibold">Projects</a>
-             <a href="index.html#about" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">About</a>
-             <a href="index.html#skills" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">Skills</a>
-            <a href="index.html#contact" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">Contact</a>
-    </div>
-
-
-    <main>
-        <section id="projects" class="py-20 pt-32 md:pt-40">
+    <main class="relative z-10">
+        <section id="projects" class="py-20 pt-32 md:pt-40 min-h-screen">
             <div class="container mx-auto px-6 max-w-6xl">
-                <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-2" data-aos="fade-up">My Projects</h2>
+                <h2 class="text-3xl md:text-5xl font-bold text-white text-center mb-2" data-aos="fade-up">My Projects</h2>
                 <div class="section-divider" data-aos="fade-up" data-aos-delay="100"></div>
                  <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="150">Explore a selection of my recent creative and technical work.</p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                    <!-- 2025 Calendar -->
-                    <div class="bg-cardbg rounded-lg shadow-xl overflow-hidden transform transition duration-300 hover:scale-105 border-t-4 border-primary" data-aos="fade-up" data-aos-delay="200">
-                        <div class="p-6">
-                            <div class="icon-container mb-4"> <i class="fas fa-calendar-alt text-4xl text-secondary"></i>
+                    <!-- 2026 Calendar -->
+                    <div class="glass-card rounded-xl shadow-xl overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="p-6 flex flex-col items-center">
+                            <div class="icon-container mb-4 w-16 h-16 bg-white/5 rounded-full group-hover:scale-110 transition-transform"> 
+                                <i class="fas fa-calendar-alt text-4xl text-secondary group-hover:text-primary transition-colors"></i>
                             </div>
-                            <h3 class="text-xl font-semibold text-primary mb-2">2025 Calendar</h3>
-                            <p class="text-gray-300 text-sm mb-4">An interactive and user-friendly digital calendar application for the year 2025.</p>
-                            <a href="projects_sub/calender.html" class="text-lighttext hover:text-primary hover:underline font-semibold inline-block transition duration-300">View Project <i class="fas fa-arrow-right text-sm ml-1"></i></a>
+                            <h3 class="text-xl font-bold text-white mb-2 text-center">2026 Calendar</h3>
+                            <p class="text-gray-400 text-sm mb-4 text-center">An interactive and user-friendly digital calendar application for the year 2026.</p>
+                            <div class="text-center">
+                                <a href="projects_sub/calender.html" class="inline-block px-6 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm">View Project <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- My Creations (Moved and Delay Adjusted) -->
-                    <div class="bg-cardbg rounded-lg shadow-xl overflow-hidden transform transition duration-300 hover:scale-105 border-t-4 border-primary" data-aos="fade-up" data-aos-delay="250">
-                        <div class="p-6">
-                            <div class="icon-container mb-4"> <i class="fas fa-laptop-code text-4xl text-secondary"></i> </div>
-                            <h3 class="text-xl font-semibold text-primary mb-2">My Apps & Software</h3>
-                            <p class="text-gray-300 text-sm mb-4">A showcase of mobile applications, desktop software, and local web applications I've developed.</p>
-                            <a href="projects_sub/apps_software/mycreations.html" class="text-lighttext hover:text-primary hover:underline font-semibold inline-block transition duration-300">View Creations <i class="fas fa-arrow-right text-sm ml-1"></i></a>
+                    <!-- My Creations -->
+                    <div class="glass-card rounded-xl shadow-xl overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="250">
+                        <div class="p-6 flex flex-col items-center">
+                            <div class="icon-container mb-4 w-16 h-16 bg-white/5 rounded-full group-hover:scale-110 transition-transform"> 
+                                <i class="fas fa-laptop-code text-4xl text-secondary group-hover:text-primary transition-colors"></i> 
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 text-center">My Apps & Software</h3>
+                            <p class="text-gray-400 text-sm mb-4 text-center">A showcase of mobile applications, desktop software, and local web applications I've developed.</p>
+                            <div class="text-center">
+                                <a href="projects_sub/apps_software/mycreations.html" class="inline-block px-6 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm">View Creations <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Scientific Calculator -->
-                    <div class="bg-cardbg rounded-lg shadow-xl overflow-hidden transform transition duration-300 hover:scale-105 border-t-4 border-primary" data-aos="fade-up" data-aos-delay="300">
-                        <div class="p-6">
-                            <div class="icon-container mb-4"> <i class="fas fa-calculator text-4xl text-secondary"></i>
+                    <div class="glass-card rounded-xl shadow-xl overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="300">
+                        <div class="p-6 flex flex-col items-center">
+                            <div class="icon-container mb-4 w-16 h-16 bg-white/5 rounded-full group-hover:scale-110 transition-transform"> 
+                                <i class="fas fa-calculator text-4xl text-secondary group-hover:text-primary transition-colors"></i>
                             </div>
-                            <h3 class="text-xl font-semibold text-primary mb-2">Scientific Calculator</h3>
-                            <p class="text-gray-300 text-sm mb-4">A comprehensive web-based scientific calculator with advanced mathematical functions.</p>
-                            <a href="projects_sub/calculator.html" class="text-lighttext hover:text-primary hover:underline font-semibold inline-block transition duration-300">View Project <i class="fas fa-arrow-right text-sm ml-1"></i></a>
+                            <h3 class="text-xl font-bold text-white mb-2 text-center">Scientific Calculator</h3>
+                            <p class="text-gray-400 text-sm mb-4 text-center">A comprehensive web-based scientific calculator with advanced mathematical functions.</p>
+                            <div class="text-center">
+                                <a href="projects_sub/calculator.html" class="inline-block px-6 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm">View Project <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Clocks -->
-                    <div class="bg-cardbg rounded-lg shadow-xl overflow-hidden transform transition duration-300 hover:scale-105 border-t-4 border-primary" data-aos="fade-up" data-aos-delay="350">
+                    <div class="glass-card rounded-xl shadow-xl overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="350">
                          <div class="p-6">
-                             <div class="icon-container mb-4"> <i class="fas fa-clock text-4xl text-secondary"></i>
+                             <div class="icon-container mb-4 w-16 h-16 bg-white/5 rounded-full mx-auto group-hover:scale-110 transition-transform"> 
+                                <i class="fas fa-clock text-4xl text-secondary group-hover:text-primary transition-colors"></i>
                              </div>
-                             <h3 class="text-xl font-semibold text-primary mb-2">Clocks</h3>
-                             <p class="text-gray-300 text-sm mb-4">A collection of interactive clock designs from different time zones and styles.</p>
-                             <a href="projects_sub/clock.html" class="text-lighttext hover:text-primary hover:underline font-semibold inline-block transition duration-300">View Project <i class="fas fa-arrow-right text-sm ml-1"></i></a>
+                             <h3 class="text-xl font-bold text-white mb-2 text-center">Clocks</h3>
+                             <p class="text-gray-400 text-sm mb-4 text-center">A collection of interactive clock designs from different time zones and styles.</p>
+                             <div class="text-center">
+                                <a href="projects_sub/clock.html" class="inline-block px-6 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm">View Project <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                            </div>
                          </div>
                     </div>
 
                     <!-- Financial Calculator -->
-                    <div class="bg-cardbg rounded-lg shadow-xl overflow-hidden transform transition duration-300 hover:scale-105 border-t-4 border-primary" data-aos="fade-up" data-aos-delay="400">
+                    <div class="glass-card rounded-xl shadow-xl overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="400">
                          <div class="p-6">
-                              <div class="icon-container mb-4"> <i class="fas fa-hand-holding-usd text-4xl text-secondary"></i> </div>
-                              <h3 class="text-xl font-semibold text-primary mb-2">Financial Calculator </h3>
-                              <p class="text-gray-300 text-sm mb-4">A versatile financial calculator for estimating loan payments (simple & amortizing) and calculating deposit interest (simple & compound).</p>
-                              <a href="projects_sub/Financial Calculator.html" class="text-lighttext hover:text-primary hover:underline font-semibold inline-block transition duration-300">View Project <i class="fas fa-arrow-right text-sm ml-1"></i></a>
+                              <div class="icon-container mb-4 w-16 h-16 bg-white/5 rounded-full mx-auto group-hover:scale-110 transition-transform"> 
+                                <i class="fas fa-hand-holding-usd text-4xl text-secondary group-hover:text-primary transition-colors"></i> 
+                              </div>
+                              <h3 class="text-xl font-bold text-white mb-2 text-center">Financial Calculator </h3>
+                              <p class="text-gray-400 text-sm mb-4 text-center">A versatile financial calculator for estimating loan payments and calculating deposit interest.</p>
+                              <div class="text-center">
+                                <a href="projects_sub/Financial Calculator.html" class="inline-block px-6 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm">View Project <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                            </div>
                          </div>
                     </div>
 
                     <!-- Math Solver -->
-                    <div class="bg-cardbg rounded-lg shadow-xl overflow-hidden transform transition duration-300 hover:scale-105 border-t-4 border-primary" data-aos="fade-up" data-aos-delay="450">
+                    <div class="glass-card rounded-xl shadow-xl overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="450">
                          <div class="p-6">
-                              <div class="icon-container mb-4"> <i class="fas fa-square-root-alt text-4xl text-secondary"></i> </div>
-                              <h3 class="text-xl font-semibold text-primary mb-2">Math Solver</h3>
-                              <p class="text-gray-300 text-sm mb-4">An advanced mathematical problem-solving application with multiple solving modes.</p>
-                              <a href="projects_sub/mathsolver.html" class="text-lighttext hover:text-primary hover:underline font-semibold inline-block transition duration-300">View Project <i class="fas fa-arrow-right text-sm ml-1"></i></a>
+                              <div class="icon-container mb-4 w-16 h-16 bg-white/5 rounded-full mx-auto group-hover:scale-110 transition-transform"> 
+                                <i class="fas fa-square-root-alt text-4xl text-secondary group-hover:text-primary transition-colors"></i> 
+                              </div>
+                              <h3 class="text-xl font-bold text-white mb-2 text-center">Math Solver</h3>
+                              <p class="text-gray-400 text-sm mb-4 text-center">An advanced mathematical problem-solving application with multiple solving modes.</p>
+                              <div class="text-center">
+                                <a href="projects_sub/mathsolver.html" class="inline-block px-6 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm">View Project <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                            </div>
                          </div>
                     </div>
 
                     <!-- Typing Speed Tester -->
-                    <div class="bg-cardbg rounded-lg shadow-xl overflow-hidden transform transition duration-300 hover:scale-105 border-t-4 border-primary" data-aos="fade-up" data-aos-delay="500">
+                    <div class="glass-card rounded-xl shadow-xl overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="500">
                          <div class="p-6">
-                              <div class="icon-container mb-4"> <i class="fas fa-keyboard text-4xl text-secondary"></i>
+                              <div class="icon-container mb-4 w-16 h-16 bg-white/5 rounded-full mx-auto group-hover:scale-110 transition-transform"> 
+                                <i class="fas fa-keyboard text-4xl text-secondary group-hover:text-primary transition-colors"></i>
                               </div>
-                              <h3 class="text-xl font-semibold text-primary mb-2">Typing Speed Tester</h3>
-                              <p class="text-gray-300 text-sm mb-4">An interactive typing speed and accuracy assessment tool.</p>
-                              <a href="projects_sub/TypingSpeedTest.html" class="text-lighttext hover:text-primary hover:underline font-semibold inline-block transition duration-300">View Project <i class="fas fa-arrow-right text-sm ml-1"></i></a>
+                              <h3 class="text-xl font-bold text-white mb-2 text-center">Typing Speed Tester</h3>
+                              <p class="text-gray-400 text-sm mb-4 text-center">An interactive typing speed and accuracy assessment tool.</p>
+                              <div class="text-center">
+                                <a href="projects_sub/TypingSpeedTest.html" class="inline-block px-6 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm">View Project <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                            </div>
                          </div>
                     </div>
 
                     <!-- Unit Converter -->
-                    <div class="bg-cardbg rounded-lg shadow-xl overflow-hidden transform transition duration-300 hover:scale-105 border-t-4 border-primary" data-aos="fade-up" data-aos-delay="550">
+                    <div class="glass-card rounded-xl shadow-xl overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="550">
                          <div class="p-6">
-                              <div class="icon-container mb-4"> <i class="fas fa-exchange-alt text-4xl text-secondary"></i> </div>
-                              <h3 class="text-xl font-semibold text-primary mb-2">Unit Converter</h3>
-                              <p class="text-gray-300 text-sm mb-4">A versatile unit conversion tool supporting multiple measurement categories.</p>
-                              <a href="projects_sub/UnitConverter.html" class="text-lighttext hover:text-primary hover:underline font-semibold inline-block transition duration-300">View Project <i class="fas fa-arrow-right text-sm ml-1"></i></a>
+                              <div class="icon-container mb-4 w-16 h-16 bg-white/5 rounded-full mx-auto group-hover:scale-110 transition-transform"> 
+                                <i class="fas fa-exchange-alt text-4xl text-secondary group-hover:text-primary transition-colors"></i> 
+                              </div>
+                              <h3 class="text-xl font-bold text-white mb-2 text-center">Unit Converter</h3>
+                              <p class="text-gray-400 text-sm mb-4 text-center">A versatile unit conversion tool supporting multiple measurement categories.</p>
+                              <div class="text-center">
+                                <a href="projects_sub/UnitConverter.html" class="inline-block px-6 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm">View Project <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                            </div>
                          </div>
                     </div>
 
                     <!-- To-Do List -->
-                    <div class="bg-cardbg rounded-lg shadow-xl overflow-hidden transform transition duration-300 hover:scale-105 border-t-4 border-primary" data-aos="fade-up" data-aos-delay="600">
+                    <div class="glass-card rounded-xl shadow-xl overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="600">
                          <div class="p-6">
-                               <div class="icon-container mb-4"> <i class="fas fa-list-check text-4xl text-secondary"></i> </div>
-                              <h3 class="text-xl font-semibold text-primary mb-2">To-Do List</h3>
-                              <p class="text-gray-300 text-sm mb-4">A feature-rich task management application with persistence and editing.</p>
-                              <a href="projects_sub/ToDoList.html" class="text-lighttext hover:text-primary hover:underline font-semibold inline-block transition duration-300">View Project <i class="fas fa-arrow-right text-sm ml-1"></i></a>
+                               <div class="icon-container mb-4 w-16 h-16 bg-white/5 rounded-full mx-auto group-hover:scale-110 transition-transform"> 
+                                <i class="fas fa-list-check text-4xl text-secondary group-hover:text-primary transition-colors"></i> 
+                               </div>
+                              <h3 class="text-xl font-bold text-white mb-2 text-center">To-Do List</h3>
+                              <p class="text-gray-400 text-sm mb-4 text-center">A feature-rich task management application with persistence and editing.</p>
+                              <div class="text-center">
+                                <a href="projects_sub/ToDoList.html" class="inline-block px-6 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm">View Project <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                            </div>
                          </div>
                     </div>
 
                      <!-- QR Code Generator -->
-                     <div class="bg-cardbg rounded-lg shadow-xl overflow-hidden transform transition duration-300 hover:scale-105 border-t-4 border-primary" data-aos="fade-up" data-aos-delay="650">
+                     <div class="glass-card rounded-xl shadow-xl overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="650">
                          <div class="p-6">
-                             <div class="icon-container mb-4"> <i class="fas fa-qrcode text-4xl text-secondary"></i> </div>
-                             <h3 class="text-xl font-semibold text-primary mb-2">QR Code Generator</h3>
-                             <p class="text-gray-300 text-sm mb-4">A simple tool to generate downloadable and shareable QR codes for text or URLs.</p>
-                             <a href="projects_sub/QRCodeGenerator.html" class="text-lighttext hover:text-primary hover:underline font-semibold inline-block transition duration-300">View Project <i class="fas fa-arrow-right text-sm ml-1"></i></a>
+                             <div class="icon-container mb-4 w-16 h-16 bg-white/5 rounded-full mx-auto group-hover:scale-110 transition-transform"> 
+                                <i class="fas fa-qrcode text-4xl text-secondary group-hover:text-primary transition-colors"></i> 
+                             </div>
+                             <h3 class="text-xl font-bold text-white mb-2 text-center">QR Code Generator</h3>
+                             <p class="text-gray-400 text-sm mb-4 text-center">A simple tool to generate downloadable and shareable QR codes for text or URLs.</p>
+                             <div class="text-center">
+                                <a href="projects_sub/QRCodeGenerator.html" class="inline-block px-6 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm">View Project <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                            </div>
                          </div>
                      </div>
 
                      <!-- Image Gallery -->
-                    <div class="bg-cardbg rounded-lg shadow-xl overflow-hidden transform transition duration-300 hover:scale-105 border-t-4 border-primary" data-aos="fade-up" data-aos-delay="700">
+                    <div class="glass-card rounded-xl shadow-xl overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="700">
                          <div class="p-6">
-                              <div class="icon-container mb-4"> <i class="fas fa-images text-4xl text-secondary"></i> </div>
-                              <h3 class="text-xl font-semibold text-primary mb-2">Image Gallery</h3>
-                              <p class="text-gray-300 text-sm mb-4">A responsive image gallery with a lightbox view for showcasing photos.</p>
-                              <a href="projects_sub/ImageGallery.html" class="text-lighttext hover:text-primary hover:underline font-semibold inline-block transition duration-300">View Project <i class="fas fa-arrow-right text-sm ml-1"></i></a>
+                              <div class="icon-container mb-4 w-16 h-16 bg-white/5 rounded-full mx-auto group-hover:scale-110 transition-transform"> 
+                                <i class="fas fa-images text-4xl text-secondary group-hover:text-primary transition-colors"></i> 
+                              </div>
+                              <h3 class="text-xl font-bold text-white mb-2 text-center">Image Gallery</h3>
+                              <p class="text-gray-400 text-sm mb-4 text-center">A responsive image gallery with a lightbox view for showcasing photos.</p>
+                              <div class="text-center">
+                                <a href="projects_sub/ImageGallery.html" class="inline-block px-6 py-2 rounded-full border border-primary/50 text-primary hover:bg-primary hover:text-white transition-all duration-300 font-semibold text-sm">View Project <i class="fas fa-arrow-right text-xs ml-1"></i></a>
+                            </div>
                          </div>
                     </div>
-
-
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-black text-gray-500 py-8 mt-12">
-        <div class="container mx-auto px-6 text-center">
-            <div class="mb-6">
-                <p class="text-gray-400 mb-4 text-lg">Follow Me</p>
-                <div class="flex justify-center items-center space-x-5 md:space-x-6">
-                <!-- Social Media Links in Footer (Reverted to 3 links for consistency) -->
-                     <a href="https://web.facebook.com/kalana.sahan.79" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-facebook"></i></a>
-                     <a href="https://www.instagram.com/kalana._.sahan/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-instagram"></i></a>
-                     <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.youtube.com/@Part_of_kaali_life" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.tiktok.com/@part_of_kaali_life" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-tiktok"></i></a>    
-                    <a href="https://github.com/kaali-k" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-            <!-- Corrected copyright name -->
-            <p>&copy; <span id="currentYear"></span> K.S.D All Rights Reserved.</p>
-             <p class="text-sm mt-2">Designed with <i class="fas fa-heart text-primary"></i> using Tailwind CSS & Alpine.js</p>
-        </div>
+    <!-- Footer Component -->
+    <footer id="main-footer" class="bg-black text-gray-500 py-8 mt-12">
+        <!-- Content injected by components.js -->
     </footer>
 
-    <!-- AOS JS -->
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: false,
-            offset: 50,
-        });
-
-        // Dynamic Copyright Year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // Load Components
+        loadHeader(''); // Relative path is empty for root
+        loadFooter('');
     </script>
-
 </body>
 </html>

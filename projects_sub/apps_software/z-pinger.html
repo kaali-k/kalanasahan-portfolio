@@ -5,128 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Z Pinger - Details</title>
 
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CONFIG -->
+    <script src="../../assets/js/tailwind-config.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- AOS Animation -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-        }
-        .text-gradient {
-            background: linear-gradient(90deg, #ff416c, #ff4b2b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-        }
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, #ff416c, #ff4b2b);
-            width: 80px;
-            margin: 1rem auto 2rem auto;
-        }
-        .app-screenshot {
-            width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: contain;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-        .image-gallery-scroll {
-            overflow-x: auto;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-            scrollbar-color: #ff4b2b #2a2a2a;
-        }
-        .image-gallery-scroll::-webkit-scrollbar {
-            height: 8px;
-        }
-        .image-gallery-scroll::-webkit-scrollbar-track {
-            background: #2a2a2a;
-            border-radius: 10px;
-        }
-        .image-gallery-scroll::-webkit-scrollbar-thumb {
-            background-color: #ff4b2b;
-            border-radius: 10px;
-            border: 2px solid #2a2a2a;
-        }
-        .modal-overlay {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-    </style>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#d63031',
-              secondary: '#ff4b2b',
-              darkbg: '#1a1a1a',
-              lighttext: '#e0e0e0',
-              cardbg: '#2a2a2a',
-            }
-          }
-        }
-      }
-    </script>
 </head>
 <body class="bg-darkbg text-lighttext" x-data="{ mobileMenuOpen: false, isModalOpen: false, currentImageSrc: '', currentImageAlt: '' }">
 
-    <header class="fixed w-full top-0 z-50 transition-all duration-300 bg-transparent">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
-            <a href="../../index.html" class="text-2xl font-bold text-primary hover:text-secondary transition duration-300">K.S.D</a>
-            <ul class="hidden md:flex space-x-8 items-center">
-                <li><a href="../../index.html" class="hover:text-primary transition duration-300 font-medium">Home</a></li>
-                <li><a href="../../index.html#about" class="hover:text-primary transition duration-300 font-medium">About</a></li>
-                <li><a href="../../index.html#skills" class="hover:text-primary transition duration-300 font-medium">Skills</a></li>
-                <li><a href="../../projects.html" class="text-white bg-gradient-to-r from-primary to-secondary py-2 px-5 rounded-full hover:opacity-90 transition duration-300 font-semibold">Projects</a></li>
-                <li><a href="../../index.html#contact" class="hover:text-primary transition duration-300 font-medium">Contact</a></li>
-            </ul>
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden focus:outline-none text-lighttext hover:text-primary text-2xl z-50">
-                <i :class="mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
-            </button>
-        </nav>
+    <!-- Header Component -->
+    <header id="main-header" class="fixed w-full top-0 z-50 transition-all duration-300"
+            :class="{ 'glass-header shadow-lg': window.scrollY > 20, 'bg-transparent': window.scrollY <= 20 }"
+            @scroll.window="window.scrollY > 20 ? true : false">
+            <!-- Content injected by components.js -->
     </header>
-
-    <div x-show="mobileMenuOpen"
-         x-transition:enter="transition ease-out duration-300"
-         x-transition:enter-start="opacity-0 transform -translate-y-full"
-         x-transition:enter-end="opacity-100 transform translate-y-0"
-         x-transition:leave="transition ease-in duration-200"
-         x-transition:leave-start="opacity-100 transform translate-y-0"
-         x-transition:leave-end="opacity-0 transform -translate-y-full"
-         class="fixed inset-0 bg-black/95 z-40 flex flex-col items-center justify-center space-y-6 md:hidden"
-         @click.away="mobileMenuOpen = false">
-            <a href="../../index.html" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">Home</a>
-            <a href="../../index.html#about" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">About</a>
-            <a href="../../index.html#skills" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">Skills</a>
-            <a href="../../projects.html" @click="mobileMenuOpen = false" class="text-2xl text-white bg-gradient-to-r from-primary to-secondary py-2 px-5 rounded-full hover:opacity-90 transition duration-300 font-semibold">Projects</a>
-            <a href="../../index.html#contact" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">Contact</a>
-    </div>
 
     <main class="py-20 pt-32 md:pt-40">
         <section id="app-details" class="container mx-auto px-6 max-w-4xl">
@@ -210,33 +119,19 @@
         </div>
     </div>
 
-    <footer class="bg-black text-gray-500 py-8 mt-12">
-        <div class="container mx-auto px-6 text-center">
-            <div class="mb-6">
-                <p class="text-gray-400 mb-4 text-lg">Follow Me</p>
-                <div class="flex justify-center items-center space-x-5 md:space-x-6">
-                     <a href="https://web.facebook.com/kalana.sahan.79" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-facebook"></i></a>
-                     <a href="https://www.instagram.com/kalana._.sahan/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-instagram"></i></a>
-                     <a href="https://www.linkedin.com/in/kalana-sahan" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-linkedin"></i></a>
-                     <a href="https://www.youtube.com/@Part_of_kaali_life" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-youtube"></i></a>
-                     <a href="https://www.tiktok.com/@part_of_kaali_life" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-tiktok"></i></a>    
-                     <a href="https://github.com/kaali-k" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-            <p>&copy; <span id="currentYear"></span> K.S.D All Rights Reserved.</p>
-             <p class="text-sm mt-2">Designed with <i class="fas fa-heart text-primary"></i> using Tailwind CSS & Alpine.js</p>
-        </div>
+    <!-- Footer Component -->
+    <footer id="main-footer" class="bg-black text-gray-500 py-8 mt-12">
+         <!-- Content injected by components.js -->
     </footer>
 
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/components.js"></script>
+    <script src="../../assets/js/main.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            once: false,
-            offset: 50,
-        });
-
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // Load Components with correct relative path (2 levels up)
+        loadHeader('../../');
+        loadFooter('../../');
     </script>
 
 </body>

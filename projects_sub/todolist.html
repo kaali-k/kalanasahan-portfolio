@@ -6,91 +6,86 @@
     <title>To-Do List - Kalana Sahan Dillimuni</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            /* Background and text color are handled by Tailwind classes on body */
-            line-height: 1.6;
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+            overflow-x: hidden;
         }
-
-         /* Custom gradient text (if needed elsewhere, keeping for consistency) */
- .text-gradient {
-background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
- -webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-  background-clip: text;
- text-fill-color: transparent;
-}
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
         .section-divider {
- height: 2px;
- background: linear-gradient(90deg, #ff416c, #ff4b2b);
- width: 80px;
- margin: 1rem auto 2rem auto; /* Centered divider */
- }
-
-        /* Style for completed tasks */
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff4b2b, transparent);
+            width: 120px;
+            margin: 1.5rem auto 3rem auto;
+            border-radius: 10px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
         .completed-task {
             text-decoration: line-through;
-            color: #888; /* Muted color */
+            color: #666;
         }
-
-        /* Style for the task text label to allow flex-grow and double click */
-         .task-label {
-             flex-grow: 1; /* Allow text to take available space */
-             margin-right: 10px; /* Space between text and delete button/timestamp */
-             word-break: break-word; /* Prevent overflow */
-             display: block; /* Make label a block inside flex for better layout */
-         }
-
-         /* Container for text and timestamp */
-         .task-content {
-              flex-grow: 1; /* Allow content to take space */
-              margin-right: 10px; /* Space between content and delete button */
-         }
-
-         /* Style for the timestamp */
-         .timestamp {
-              font-size: 0.75rem; /* Smaller text */
-              color: #a0a0a0; /* Lighter color */
-              margin-top: 4px; /* Space below task text */
-              display: block; /* Ensure it's on a new line */
-         }
-
-
-         /* Style for edit input */
-         .edit-input {
-             flex-grow: 1;
-             margin-right: 10px;
-             padding: 5px;
-             border: 1px solid #e63946;
-             border-radius: 4px;
-             background-color: #3a3a3a; /* Darker background for input */
-             color: #e0e0e0;
-         }
-
-
+        .task-label {
+            flex-grow: 1;
+            margin-right: 10px;
+            word-break: break-word;
+            display: block;
+        }
+        .task-content {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        .timestamp {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 4px;
+            display: block;
+        }
+        .edit-input {
+            width: 100%;
+            padding: 8px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            color: #fff;
+            outline: none;
+        }
+        .edit-input:focus {
+            border-color: #d63031;
+        }
     </style>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              primary: '#d63031', // Your red
-              secondary: '#ff4b2b', // A complementary orange/red
-              darkbg: '#1a1a1a',
+              primary: '#d63031',
+              secondary: '#ff4b2b',
+              darkbg: '#0f0f0f',
               lighttext: '#e0e0e0',
-              cardbg: '#2a2a2a',
             }
           }
         }
@@ -107,10 +102,10 @@ background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
 
             <ul class="hidden md:flex space-x-8 items-center">
                 <li><a href="../index.html" class="hover:text-primary transition duration-300 font-medium">Home</a></li>
-                <li><a href="../projects.html" class="text-white bg-gradient-to-r from-primary to-secondary py-2 px-5 rounded-full hover:opacity-90 transition duration-300 font-semibold">Projects</a></li>
-                 <li><a href="../index.html#about" @click="mobileMenuOpen = false" class="hover:text-primary transition duration-300 font-medium">About</a></li>
-                 <li><a href="../index.html#skills" @click="mobileMenuOpen = false" class="hover:text-primary transition duration-300 font-medium">Skills</a></li>
-                 <li><a href="../index.html#contact" @click="mobileMenuOpen = false" class="hover:text-primary transition duration-300 font-medium">Contact</a></li>
+                <li><a href="../projects.html" class="text-white bg-gradient-to-r from-primary to-secondary py-2 px-5 rounded-full hover:opacity-90 transition duration-300 font-semibold shadow-lg shadow-primary/30">Projects</a></li>
+                <li><a href="../index.html#about" class="hover:text-primary transition duration-300 font-medium">About</a></li>
+                <li><a href="../index.html#skills" class="hover:text-primary transition duration-300 font-medium">Skills</a></li>
+                <li><a href="../index.html#contact" class="hover:text-primary transition duration-300 font-medium">Contact</a></li>
             </ul>
 
             <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden focus:outline-none text-lighttext hover:text-primary text-2xl z-50">
@@ -120,49 +115,48 @@ background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
     </header>
 
     <div x-show="mobileMenuOpen"
-         x-transition:enter="transition ease-out duration-300"
-         x-transition:enter-start="opacity-0 transform -translate-y-full"
-         x-transition:enter-end="opacity-100 transform translate-y-0"
-         x-transition:leave="transition ease-in duration-200"
-         x-transition:leave-start="opacity-100 transform translate-y-0"
-         x-transition:leave-end="opacity-0 transform -translate-y-full"
          class="fixed inset-0 bg-black/95 z-40 flex flex-col items-center justify-center space-y-6 md:hidden"
-         @click.away="mobileMenuOpen = false">
-            <a href="../index.html" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">Home</a>
-            <a href="../projects.html" @click="mobileMenuOpen = false" class="text-2xl text-white bg-gradient-to-r from-primary to-secondary py-2 px-5 rounded-full hover:opacity-90 transition duration-300 font-semibold">Projects</a>
-             <a href="../index.html#about" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">About</a>
-             <a href="../index.html#skills" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">Skills</a>
-            <a href="../index.html#contact" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">Contact</a>
+         @click.away="mobileMenuOpen = false" style="display: none;">
+            <a href="../index.html" class="text-2xl hover:text-primary transition duration-300">Home</a>
+            <a href="../projects.html" class="text-2xl text-white bg-gradient-to-r from-primary to-secondary py-2 px-5 rounded-full hover:opacity-90 transition duration-300 font-semibold">Projects</a>
+            <a href="../index.html#about" class="text-2xl hover:text-primary transition duration-300">About</a>
+            <a href="../index.html#skills" class="text-2xl hover:text-primary transition duration-300">Skills</a>
+            <a href="../index.html#contact" class="text-2xl hover:text-primary transition duration-300">Contact</a>
     </div>
 
-    <main class="py-20 pt-32 md:pt-40 flex justify-center items-center min-h-screen"> <section id="todo-list-project" class="container mx-auto px-6 max-w-6xl flex justify-center items-center">
-            <div class="w-full max-w-md" data-aos="zoom-in" data-aos-delay="200"> <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-2" data-aos="fade-up">My To-Do List</h2> <div class="section-divider" data-aos="fade-up" data-aos-delay="100"></div>
-                <p class="text-center text-gray-400 mb-8 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="150">Keep track of your tasks.</p>
+    <main class="py-20 pt-32 md:pt-40 flex justify-center items-center min-h-screen"> 
+        <section id="todo-list-project" class="container mx-auto px-6 max-w-4xl">
+            <div class="w-full" data-aos="zoom-in" data-aos-delay="200"> 
+                <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-2" data-aos="fade-up">My To-Do List</h2> 
+                <div class="section-divider" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-center text-gray-400 mb-8 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="150">Stay organized and productive.</p>
 
-                <div class="todo-container bg-cardbg rounded-lg shadow-xl border border-primary/20 p-6">
+                <div class="glass-card rounded-2xl shadow-2xl p-6 md:p-8 relative overflow-hidden">
+                    <!-- Decorative subtle gradient -->
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none"></div>
 
-                    <div class="input-group flex gap-4 mb-4">
-                         <input type="text" class="todo-input w-full p-3 border-2 border-primary/50 rounded-md bg-gray-700 text-lighttext focus:outline-none focus:ring-2 focus:ring-primary placeholder-gray-500" id="taskInput" placeholder="Enter a new task...">
-                         <button id="addTaskBtn" class="add-btn bg-primary hover:bg-secondary text-white font-semibold py-3 px-6 rounded-md cursor-pointer transition duration-300 flex items-center justify-center">
-                              <i class="fas fa-plus mr-2"></i> Add
+                    <div class="input-group flex flex-col md:flex-row gap-4 mb-8">
+                         <input type="text" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-lighttext focus:outline-none focus:ring-2 focus:ring-primary/50 placeholder-gray-500 transition-all" id="taskInput" placeholder="What needs to be done?">
+                         <button id="addTaskBtn" class="bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/30 text-white font-bold py-3 px-8 rounded-xl cursor-pointer transition duration-300 flex items-center justify-center md:w-auto w-full whitespace-nowrap">
+                              <i class="fas fa-plus mr-2"></i> Add Task
                          </button>
                     </div>
 
-                     <ul class="todo-list list-none p-0 m-0" id="todoList">
-                         </ul>
+                     <ul class="todo-list list-none p-0 m-0 space-y-3" id="todoList">
+                     </ul>
 
-                     <div class="action-buttons mt-6 flex flex-wrap justify-center gap-3">
-                         <button id="clearCompletedBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md cursor-pointer transition duration-300 flex items-center text-sm">
-                             <i class="fas fa-check-circle mr-2"></i> Clear Completed
+                     <div class="border-t border-white/10 mt-8 pt-6 flex flex-wrap justify-center gap-3">
+                         <button id="clearCompletedBtn" class="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white transition-all flex items-center">
+                             <i class="fas fa-check-circle mr-2 text-green-500"></i> Clear Completed
                          </button>
-                         <button id="clearAllBtn" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md cursor-pointer transition duration-300 flex items-center text-sm">
-                             <i class="fas fa-trash-alt mr-2"></i> Clear All
+                         <button id="clearAllBtn" class="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white transition-all flex items-center">
+                             <i class="fas fa-trash-alt mr-2 text-red-500"></i> Clear All
                          </button>
-                         <button id="downloadBtn" class="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md cursor-pointer transition duration-300 flex items-center text-sm">
-                             <i class="fas fa-download mr-2"></i> Download
+                         <button id="downloadBtn" class="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white transition-all flex items-center">
+                             <i class="fas fa-download mr-2 text-blue-500"></i> Download
                          </button>
-                         <button id="shareBtn" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md cursor-pointer transition duration-300 flex items-center text-sm">
-                             <i class="fas fa-share-alt mr-2"></i> Share
+                         <button id="shareBtn" class="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white transition-all flex items-center">
+                             <i class="fas fa-share-alt mr-2 text-purple-500"></i> Share
                          </button>
                     </div>
 
@@ -174,39 +168,26 @@ background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
     <footer class="bg-black text-gray-500 py-8 mt-12">
         <div class="container mx-auto px-6 text-center">
             <div class="mb-6">
-<p class="text-gray-400 mb-4 text-lg">Follow Me</p>
-<div class="flex justify-center items-center space-x-5 md:space-x-6">
-    <!-- Social Media Links in Footer (Reverted to 3 links for consistency) -->
+                <p class="text-gray-400 mb-4 text-lg">Follow Me</p>
+                <div class="flex justify-center items-center space-x-5 md:space-x-6">
                      <a href="https://web.facebook.com/kalana.sahan.79" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-facebook"></i></a>
                      <a href="https://www.instagram.com/kalana._.sahan/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-instagram"></i></a>
-                     <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.youtube.com/@Part_of_kaali_life" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.tiktok.com/@part_of_kaali_life" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-tiktok"></i></a>    
-                    <a href="https://github.com/kaali-k" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-github"></i></a>
+                     <a href="https://www.linkedin.com/in/kalanasahan" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-linkedin"></i></a>
+                     <a href="https://www.youtube.com/@Part_of_kaali_life" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-youtube"></i></a>
+                     <a href="https://www.tiktok.com/@part_of_kaali_life" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-tiktok"></i></a>
+                     <a href="https://github.com/kaali-k" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-github"></i></a>
                 </div>
             </div>
-            <!-- Corrected copyright name -->
             <p>&copy; <span id="currentYear"></span> K.S.D All Rights Reserved.</p>
              <p class="text-sm mt-2">Designed with <i class="fas fa-heart text-primary"></i> using Tailwind CSS & Alpine.js</p>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
     <script>
-        // Initialize AOS
-        AOS.init({
-             duration: 800, // Shorter duration for faster feel
- once: false, // Allow animation on scroll up/down
- offset: 50, // Trigger animations slightly sooner
-        });
-
-        // Dynamic Copyright Year
+        AOS.init({ duration: 800, once: false, offset: 50 });
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Note: Typing effect script from index.html is not needed here.
     </script>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const taskInput = document.getElementById('taskInput');
@@ -217,12 +198,9 @@ background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
             const downloadBtn = document.getElementById('downloadBtn');
             const shareBtn = document.getElementById('shareBtn');
 
-            // Event Listeners
             addTaskBtn.addEventListener('click', addTask);
             taskInput.addEventListener('keypress', function(event) {
-                if (event.key === 'Enter') {
-                    addTask();
-                }
+                if (event.key === 'Enter') addTask();
             });
 
             clearCompletedBtn.addEventListener('click', clearCompletedTasks);
@@ -230,378 +208,194 @@ background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
             downloadBtn.addEventListener('click', downloadTasks);
             shareBtn.addEventListener('click', shareTasks);
 
-
-            // --- Functions ---
-
-            // Load tasks from Local Storage when the page loads
             loadTasks();
 
-             // Function to format ISO date string to readable format
-             function formatTimestamp(isoString) {
+            function formatTimestamp(isoString) {
                  if (!isoString) return '';
-                 const date = new Date(isoString);
-                 // Use toLocaleString for date and time based on user's locale
-                 return date.toLocaleString(); // e.g., "4/26/2025, 10:30:00 AM"
-             }
+                 return new Date(isoString).toLocaleString();
+            }
 
-
-            // Add a new task
             function addTask() {
                 const taskText = taskInput.value.trim();
                 if (taskText === '') {
                     alert('Please enter a task!');
                     return;
                 }
-
                 const task = {
                     text: taskText,
                     completed: false,
-                    addedAt: new Date().toISOString(), // Add timestamp when created
-                    completedAt: null // Initialize completed timestamp as null
+                    addedAt: new Date().toISOString(),
+                    completedAt: null
                 };
-
-                renderTask(task); // Add task to the DOM
-                saveTasks(); // Save all tasks including the new one
-                taskInput.value = ''; // Clear input field
+                saveTaskToStorage(task);
+                renderTask(task);
+                taskInput.value = '';
             }
 
-            // Render a single task item to the DOM
             function renderTask(task) {
                 const listItem = document.createElement('li');
-                listItem.className = 'todo-item bg-gray-800 rounded-md p-4 my-2 flex items-center justify-between shadow-sm border border-gray-700';
-
+                listItem.className = 'glass-card p-4 flex items-center justify-between group hover:bg-white/5 transition-all duration-300 border border-white/5';
+                
                 // Checkbox
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
-                checkbox.checked = task.completed; // Set checked state from task object
-                 checkbox.classList.add('form-checkbox', 'h-5', 'w-5', 'text-primary', 'rounded', 'focus:ring-primary', 'mr-3', 'cursor-pointer');
+                checkbox.checked = task.completed;
+                checkbox.className = 'w-5 h-5 text-primary bg-gray-700 border-gray-600 rounded focus:ring-primary focus:ring-2 cursor-pointer mr-4 accent-primary';
 
-                // Add event listener to checkbox to toggle completed status and update timestamp
                 checkbox.addEventListener('change', function() {
-                    task.completed = checkbox.checked; // Update task object
-                    // Update completed timestamp
-                    if (task.completed) {
-                         task.completedAt = new Date().toISOString();
-                         // Add text to the timestamp display if needed (e.g., "Completed on: Date Time")
-                         listItem.querySelector('.completed-timestamp').textContent = `Completed: ${formatTimestamp(task.completedAt)}`;
-                         listItem.querySelector('.completed-timestamp').classList.remove('hidden'); // Show completed timestamp
-
+                    task.completed = checkbox.checked;
+                    task.completedAt = task.completed ? new Date().toISOString() : null;
+                    updateTaskInStorage(task); 
+                    
+                    const timeSpan = listItem.querySelector('.completed-timestamp');
+                    if(task.completed) {
+                         timeSpan.textContent = `Completed: ${formatTimestamp(task.completedAt)}`;
+                         timeSpan.classList.remove('hidden');
                     } else {
-                         task.completedAt = null; // Remove completed timestamp if unchecked
-                         listItem.querySelector('.completed-timestamp').classList.add('hidden'); // Hide completed timestamp
-
+                         timeSpan.classList.add('hidden');
                     }
-                    // Toggle completed-task class on the task label/text
                     listItem.querySelector('.task-label').classList.toggle('completed-task', task.completed);
-
-                    saveTasks(); // Save updated task list
                 });
 
-
-                // Task Content Container (for text and timestamps)
                 const taskContentDiv = document.createElement('div');
-                 taskContentDiv.classList.add('task-content'); // Add class for flex-grow
+                taskContentDiv.classList.add('task-content');
 
-                // Task Text Label (for editing)
                 const taskLabel = document.createElement('label');
                 taskLabel.textContent = task.text;
-                 taskLabel.classList.add('task-label', 'text-lighttext', 'cursor-pointer');
-                 // Apply completed-task class if already completed on load
-                if (task.completed) {
-                    taskLabel.classList.add('completed-task');
+                taskLabel.className = `task-label text-gray-200 cursor-pointer text-lg font-medium ${task.completed ? 'completed-task' : ''}`;
+
+                const addedTimestampSpan = document.createElement('span');
+                addedTimestampSpan.className = 'timestamp text-xs text-gray-500 mt-1';
+                addedTimestampSpan.textContent = `Added: ${formatTimestamp(task.addedAt)}`;
+
+                const completedTimestampSpan = document.createElement('span');
+                completedTimestampSpan.className = `timestamp completed-timestamp text-xs text-green-500/80 mt-1 ${task.completed && task.completedAt ? '' : 'hidden'}`;
+                if (task.completed && task.completedAt) {
+                     completedTimestampSpan.textContent = `Completed: ${formatTimestamp(task.completedAt)}`;
                 }
 
-                 // Timestamp Display (Added At)
-                 const addedTimestampSpan = document.createElement('span');
-                 addedTimestampSpan.classList.add('timestamp');
-                 addedTimestampSpan.textContent = `Added: ${formatTimestamp(task.addedAt)}`;
-
-
-                 // Timestamp Display (Completed At)
-                 const completedTimestampSpan = document.createElement('span');
-                 completedTimestampSpan.classList.add('timestamp', 'completed-timestamp', 'hidden'); // Initially hidden
-                 if (task.completed && task.completedAt) {
-                      completedTimestampSpan.textContent = `Completed: ${formatTimestamp(task.completedAt)}`;
-                      completedTimestampSpan.classList.remove('hidden'); // Show if completed on load
-                 }
-
-
-                 // Double-click to edit functionality on the label
-                 taskLabel.addEventListener('dblclick', function() {
-                     // Don't allow editing if the task is completed
+                // Edit functionality
+                taskLabel.addEventListener('dblclick', function() {
                      if (task.completed) return;
-
                      const currentText = taskLabel.textContent;
                      const editInput = document.createElement('input');
                      editInput.type = 'text';
                      editInput.value = currentText;
-                     editInput.classList.add('edit-input'); // Use custom or Tailwind classes for styling
-
-                     // Replace the label with the input field inside the taskContentDiv
+                     editInput.className = 'edit-input'; 
+                     
                      taskContentDiv.replaceChild(editInput, taskLabel);
-                     editInput.focus(); // Focus the input field
+                     editInput.focus();
 
-                     // Save changes when pressing Enter or blurring the input
-                     editInput.addEventListener('keypress', function(event) {
-                         if (event.key === 'Enter') {
-                              saveEdit(editInput, task, listItem, taskContentDiv, addedTimestampSpan, completedTimestampSpan);
-                         }
-                     });
-                     editInput.addEventListener('blur', function() {
-                          saveEdit(editInput, task, listItem, taskContentDiv, addedTimestampSpan, completedTimestampSpan);
-                     });
-                 });
+                     const save = () => {
+                          const newText = editInput.value.trim();
+                          if (newText === '') {
+                              deleteTask(task.addedAt, listItem); 
+                          } else {
+                              task.text = newText;
+                              updateTaskInStorage(task);
+                              taskLabel.textContent = newText;
+                              taskContentDiv.replaceChild(taskLabel, editInput);
+                          }
+                     };
 
-
-                // Delete Button
-                const deleteBtn = document.createElement('button');
-                deleteBtn.className = 'delete-btn bg-red-600 hover:bg-red-700 text-white p-2 rounded-md cursor-pointer transition duration-300 flex items-center justify-center text-sm';
-                deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
-
-                // Add event listener to delete button
-                deleteBtn.addEventListener('click', function() {
-                    todoList.removeChild(listItem); // Remove from DOM
-                    saveTasks(); // Save updated task list
+                     editInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') save(); });
+                     editInput.addEventListener('blur', save);
                 });
 
-                // Append elements to the taskContentDiv
-                taskContentDiv.appendChild(taskLabel); // Append the label/edit input container
-                taskContentDiv.appendChild(addedTimestampSpan); // Append added timestamp
-                taskContentDiv.appendChild(completedTimestampSpan); // Append completed timestamp
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'text-gray-500 hover:text-red-500 transition-colors duration-300 p-2 text-lg opacity-0 group-hover:opacity-100 focus:opacity-100';
+                deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                deleteBtn.addEventListener('click', () => deleteTask(task.addedAt, listItem));
 
+                taskContentDiv.appendChild(taskLabel);
+                taskContentDiv.appendChild(addedTimestampSpan);
+                taskContentDiv.appendChild(completedTimestampSpan);
 
-                // Append elements to the list item
                 listItem.appendChild(checkbox);
-                listItem.appendChild(taskContentDiv); // Append the content container
+                listItem.appendChild(taskContentDiv);
                 listItem.appendChild(deleteBtn);
 
-
-                // Append the list item to the to-do list
                 todoList.appendChild(listItem);
             }
 
-             // Function to save edited task text and revert to label
-             function saveEdit(editInput, task, listItem, taskContentDiv, addedTimestampSpan, completedTimestampSpan) {
-                  const newText = editInput.value.trim();
-                  // Create a new label element every time
-                  const taskLabel = document.createElement('label');
+            function getTasksFromStorage() {
+                return JSON.parse(localStorage.getItem('todoTasks') || '[]');
+            }
 
-                  if (newText === '') {
-                      // If edited text is empty, delete the task
-                      alert('Task text cannot be empty. Deleting task.');
-                      todoList.removeChild(listItem); // Remove from DOM
-                  } else {
-                      task.text = newText; // Update task object
-                      taskLabel.textContent = task.text; // Set text on the new label
-                      taskLabel.classList.add('task-label', 'text-lighttext', 'cursor-pointer'); // Add classes to the new label
-
-                      // Apply completed-task class to the new label if needed
-                      if (task.completed) {
-                           taskLabel.classList.add('completed-task');
-                      }
-
-                       // Add double-click listener to the new label
-                      taskLabel.addEventListener('dblclick', function() {
-                          if (task.completed) return;
-                          const currentText = taskLabel.textContent;
-                          const editInput = document.createElement('input');
-                          editInput.type = 'text';
-                          editInput.value = currentText;
-                          editInput.classList.add('edit-input');
-                           // Replace the label with the input field INSIDE the taskContentDiv
-                          taskContentDiv.replaceChild(editInput, taskLabel);
-                          editInput.focus();
-                          editInput.addEventListener('keypress', function(event) { if (event.key === 'Enter') saveEdit(editInput, task, listItem, taskContentDiv, addedTimestampSpan, completedTimestampSpan); });
-                          editInput.addEventListener('blur', function() { saveEdit(editInput, task, listItem, taskContentDiv, addedTimestampSpan, completedTimestampSpan); });
-                      });
-
-                      // Replace the input field with the new label INSIDE the taskContentDiv
-                      taskContentDiv.replaceChild(taskLabel, editInput);
-                  }
-                  saveTasks(); // Save updated task list (after deleting or updating text)
-             }
-
-
-            // Save current tasks to Local Storage
-            function saveTasks() {
-                const tasks = [];
-                todoList.querySelectorAll('.todo-item').forEach(item => {
-                    const checkbox = item.querySelector('input[type="checkbox"]');
-                     // Get the actual task object data if possible, instead of reading from DOM elements,
-                     // this is safer, but requires storing task objects alongside DOM elements.
-                     // For simplicity with the current DOM-centric approach, we'll read from DOM.
-                     // Need to handle editing state where .task-label is replaced by .edit-input
-
-                    const taskTextElement = item.querySelector('.task-label');
-                    const taskTextInputElement = item.querySelector('.edit-input'); // Check if editing
-
-                    const taskText = taskTextInputElement ? taskTextInputElement.value.trim() : (taskTextElement ? taskTextElement.textContent.trim() : '');
-
-                     // Get timestamps from the DOM elements if they exist
-                     const addedAtTimestamp = item.querySelector('.timestamp:not(.completed-timestamp)');
-                     const completedAtTimestamp = item.querySelector('.completed-timestamp:not(.hidden)');
-
-
-                    tasks.push({
-                        text: taskText,
-                        completed: checkbox.checked,
-                        // Store original ISO strings
-                         addedAt: addedAtTimestamp ? new Date(addedTimestampSpan.textContent.replace('Added: ', '')).toISOString() : null, // Re-parse from display (risky) or better, store ISO string in a data attribute or JS object
-                         // *Correction*: Store the original ISO string directly in the task object in JS,
-                         // then update that object when rendering or changing state.
-                         // Let's rethink save/load slightly to link DOM items to JS objects.
-                         // A simpler approach for this structure is to save the task object directly.
-                         // This requires tasks array in JS to be the source of truth.
-
-                         // Let's attach the task object to the list item element itself
-                         // item.taskData = { text: taskText, completed: checkbox.checked, addedAt: ..., completedAt: ... };
-                         // Then load/save by iterating over todoList.children and reading item.taskData
-
-                         // *Alternative Simpler Fix*: On load, populate task object properties from loaded JSON.
-                         // When saving, iterate DOM items and create new task objects based on current state (checkbox, text)
-                         // AND the original timestamps stored in the DOM elements (or better, in the task object).
-
-                         // Let's add data attributes to the list item to store ISO timestamps
-                         addedAt: item.dataset.addedAt || null, // Read from data attribute
-                         completedAt: checkbox.checked && item.dataset.completedAt ? item.dataset.completedAt : null // Read if checked and exists
-
-                    });
-                });
+            function saveTaskToStorage(task) {
+                const tasks = getTasksFromStorage();
+                tasks.push(task);
                 localStorage.setItem('todoTasks', JSON.stringify(tasks));
             }
 
-            // Load tasks from Local Storage
+            function updateTaskInStorage(updatedTask) {
+                const tasks = getTasksFromStorage();
+                const index = tasks.findIndex(t => t.addedAt === updatedTask.addedAt);
+                if (index !== -1) {
+                    tasks[index] = updatedTask;
+                    localStorage.setItem('todoTasks', JSON.stringify(tasks));
+                }
+            }
+
+            function deleteTask(addedAt, listItem) {
+                const tasks = getTasksFromStorage().filter(t => t.addedAt !== addedAt);
+                localStorage.setItem('todoTasks', JSON.stringify(tasks));
+                if(listItem) todoList.removeChild(listItem);
+            }
+
             function loadTasks() {
-                const tasksJson = localStorage.getItem('todoTasks');
-                if (tasksJson) {
-                    try {
-                        const tasks = JSON.parse(tasksJson);
-                        todoList.innerHTML = ''; // Clear existing list before loading
-                        tasks.forEach(task => {
-                             // Ensure timestamps exist for older data or null cases
-                             const taskWithTimestamps = {
-                                 text: task.text,
-                                 completed: task.completed || false, // Default completed to false
-                                 addedAt: task.addedAt || new Date().toISOString(), // Add addedAt if missing
-                                 completedAt: task.completedAt || null // Ensure completedAt is null if missing or task is not completed
-                             };
-                            renderTask(taskWithTimestamps); // Render each loaded task
-                        });
-                    } catch (e) {
-                        console.error("Error loading tasks from localStorage:", e);
-                         // Optionally show a message to the user that data is corrupted
-                         // todoList.innerHTML = '<li class="text-primary text-center">Error loading tasks. Your saved data might be corrupted.</li>';
-                    }
-                }
+                todoList.innerHTML = '';
+                const tasks = getTasksFromStorage();
+                tasks.forEach(task => renderTask(task));
             }
 
-            // Clear all completed tasks
             function clearCompletedTasks() {
-                 const itemsToRemove = [];
-                todoList.querySelectorAll('.todo-item').forEach(item => {
-                    const checkbox = item.querySelector('input[type="checkbox"]');
-                    if (checkbox.checked) {
-                         itemsToRemove.push(item);
-                    }
-                });
-                 if (itemsToRemove.length === 0) {
-                     alert("No completed tasks to clear!");
-                     return;
-                 }
-
-                 if (confirm(`Are you sure you want to clear ${itemsToRemove.length} completed task(s)?`)) {
-                      itemsToRemove.forEach(item => {
-                          todoList.removeChild(item); // Remove from DOM
-                      });
-                     saveTasks(); // Save the list after removal
+                 let tasks = getTasksFromStorage();
+                 const completed = tasks.filter(t => t.completed);
+                 if (completed.length === 0) { alert("No completed tasks!"); return; }
+                 
+                 if (confirm(`Clear ${completed.length} completed tasks?`)) {
+                      tasks = tasks.filter(t => !t.completed);
+                      localStorage.setItem('todoTasks', JSON.stringify(tasks));
+                      loadTasks();
                  }
             }
 
-             // Clear all tasks
             function clearAllTasks() {
-                 if (todoList.children.length === 0) {
-                     alert("No tasks to clear!");
-                     return;
-                 }
-                 if (confirm('Are you sure you want to clear all tasks? This cannot be undone.')) {
-                     todoList.innerHTML = ''; // Remove all from DOM
-                     saveTasks(); // Save empty list
+                 if (getTasksFromStorage().length === 0) { alert("No tasks to clear!"); return; }
+                 if (confirm('Clear all tasks?')) {
+                      localStorage.removeItem('todoTasks');
+                      loadTasks();
                  }
             }
 
-
-            // Download tasks as a text file
             function downloadTasks() {
-                const tasks = [];
-                 todoList.querySelectorAll('.todo-item').forEach(item => {
-                    const checkbox = item.querySelector('input[type="checkbox"]');
-                    const taskTextElement = item.querySelector('.task-label');
-                    const taskTextInputElement = item.querySelector('.edit-input'); // Check if editing
-
-                    const taskText = taskTextInputElement ? taskTextInputElement.value.trim() : (taskTextElement ? taskTextElement.textContent.trim() : 'Untitled Task');
-                    const addedTimestamp = item.dataset.addedAt ? ` (Added: ${formatTimestamp(item.dataset.addedAt)})` : '';
-                    const completedTimestamp = checkbox.checked && item.dataset.completedAt ? ` (Completed: ${formatTimestamp(item.dataset.completedAt)})` : '';
-
-
-                    tasks.push(`${checkbox.checked ? '[X]' : '[ ]'} ${taskText}${addedTimestamp}${completedTimestamp}`);
-                 });
-
-                if (tasks.length === 0) {
-                    alert("No tasks to download!");
-                    return;
-                }
-
-                const blob = new Blob([tasks.join('\n')], { type: 'text/plain' });
+                const tasks = getTasksFromStorage();
+                if (tasks.length === 0) { alert("No tasks!"); return; }
+                
+                const lines = tasks.map(t => {
+                     const status = t.completed ? '[X]' : '[ ]';
+                     const time = `(Added: ${formatTimestamp(t.addedAt)})`;
+                     return `${status} ${t.text} ${time}`;
+                });
+                
+                const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
                 link.download = 'My_ToDo_List.txt';
                 link.click();
-                // Clean up the object URL after download
-                URL.revokeObjectURL(link.href);
             }
 
-            // Share tasks using Web Share API
             function shareTasks() {
-                 const tasks = [];
-                 todoList.querySelectorAll('.todo-item').forEach(item => {
-                    const checkbox = item.querySelector('input[type="checkbox"]');
-                    const taskTextElement = item.querySelector('.task-label');
-                    const taskTextInputElement = item.querySelector('.edit-input'); // Check if editing
-
-                     const taskText = taskTextInputElement ? taskTextInputElement.value.trim() : (taskTextElement ? taskTextElement.textContent.trim() : 'Untitled Task');
-                    const addedTimestamp = item.dataset.addedAt ? ` (Added: ${formatTimestamp(item.dataset.addedAt)})` : '';
-                    const completedTimestamp = checkbox.checked && item.dataset.completedAt ? ` (Completed: ${formatTimestamp(item.dataset.completedAt)})` : '';
-
-                    tasks.push(`${checkbox.checked ? '[X]' : '[ ]'} ${taskText}${addedTimestamp}${completedTimestamp}`);
-                 });
-
-                if (tasks.length === 0) {
-                     alert("No tasks to share!");
-                     return;
-                }
-
-                const shareText = 'My To-Do List:\n' + tasks.join('\n');
-
-                if (navigator.share) {
-                    navigator.share({
-                        title: 'My To-Do List',
-                        text: shareText,
-                        // url: document.location.href // Optional: Share the page URL
-                    }).then(() => {
-                        console.log('Task list shared successfully!');
-                    }).catch(err => {
-                        console.error('Error sharing:', err);
-                        alert('Sharing failed or cancelled.'); // Provide feedback to user
-                    });
-                } else {
-                    // Fallback: Copy to clipboard
-                    navigator.clipboard.writeText(shareText).then(() => {
-                         alert('To-Do List copied to clipboard!');
-                    }).catch(err => {
-                         console.error('Copy to clipboard failed:', err);
-                         alert('Could not share or copy to clipboard.');
-                    });
-                }
+                 const tasks = getTasksFromStorage();
+                 if (tasks.length === 0) { alert("No tasks!"); return; }
+                 
+                 const text = 'My To-Do List:\n' + tasks.map(t => `${t.completed ? '[X]' : '[ ]'} ${t.text}`).join('\n');
+                 if (navigator.share) {
+                     navigator.share({ title: 'My To-Do List', text: text });
+                 } else {
+                     navigator.clipboard.writeText(text).then(() => alert('Copied to clipboard!'));
+                 }
             }
         });
     </script>

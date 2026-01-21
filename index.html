@@ -3,200 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalana Sahan Dillimuni - Creative Portfolio</title>
+    <title>Kalana Sahan | Portfolio 2026</title>
+    <meta name="description" content="Portfolio of Kalana Sahan - Graphic Designer, Video Editor, Web & App Developer">
 
-    <!-- Tailwind CSS CDN (Using latest v3) -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CONFIG -->
+    <script src="assets/js/tailwind-config.js"></script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-     <!-- AOS CSS -->
+    <!-- AOS Animation Library -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <!-- Google Fonts (Poppins) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Alpine.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Custom Styles (Optional) and Tailwind Config -->
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #1a1a1a; /* Darker background */
-            color: #e0e0e0; /* Lighter text for contrast */
-        }
-        /* Custom gradient text */
-        .text-gradient {
-            background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-        }
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, #ff416c, #ff4b2b);
-            width: 80px;
-            margin: 1rem auto 2rem auto;
-        }
-        /* Custom animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        .floating-img {
-            animation: float 4s ease-in-out infinite;
-        }
-         /* Animation delay classes (Ensure these are defined if used with animate-pulse) */
-         .animation-delay-500 { animation-delay: .5s; }
-         .animation-delay-1000 { animation-delay: 1s; }
-         .animation-delay-2000 { animation-delay: 2s; }
-        /* Added style to ensure icon container has height and centering */
-        .icon-container {
-            min-height: 3rem; /* Adjust based on icon size */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
 
-    </style>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#d63031', // Your red
-              secondary: '#ff4b2b', // A complementary orange/red
-              darkbg: '#1a1a1a',
-              lighttext: '#e0e0e0',
-              cardbg: '#2a2a2a',
-            }
-          }
-        }
-      }
-    </script>
 </head>
 <body class="bg-darkbg text-lighttext" x-data="{ mobileMenuOpen: false }">
+    <!-- Ambient Background Elements -->
+    <div class="ambient-glow"></div>
+    <div id="cursor-glow" class="hidden md:block"></div>
 
-    <!-- Header (Links are set to sections on this page or projects.html) -->
-    <header class="fixed w-full top-0 z-50 transition-all duration-300 bg-transparent">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
-            <!-- Logo Link -->
-            <a href="index.html" class="text-2xl font-bold text-primary hover:text-secondary transition duration-300">K.S.D</a>
-
-            <!-- Desktop Navigation -->
-            <ul class="hidden md:flex space-x-8 items-center">
-                <li><a href="index.html" class="hover:text-primary transition duration-300 font-medium">Home</a></li>
-                <li><a href="#about" class="hover:text-primary transition duration-300 font-medium">About</a></li>
-                <li><a href="#skills" class="hover:text-primary transition duration-300 font-medium">Skills</a></li>
-                <!-- Link to the separate projects page (now directly in root) -->
-                <li><a href="projects.html" class="text-white bg-gradient-to-r from-primary to-secondary py-2 px-5 rounded-full hover:opacity-90 transition duration-300 font-semibold">View Projects</a></li>
-                <li><a href="#contact" class="hover:text-primary transition duration-300 font-medium">Contact</a></li>
-            </ul>
-
-            <!-- Mobile Menu Button -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden focus:outline-none text-lighttext hover:text-primary text-2xl z-50">
-                <i :class="mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
-            </button>
-        </nav>
+    <!-- Header Component -->
+    <header id="main-header" class="fixed w-full top-0 z-50 transition-all duration-300" 
+            :class="{ 'glass-header shadow-lg': window.scrollY > 20, 'bg-transparent': window.scrollY <= 20 }" 
+            @scroll.window="window.scrollY > 20 ? true : false">
+        <!-- Content injected by components.js -->
     </header>
-
-    <!-- Mobile Menu (Links are set to sections on this page or projects.html) -->
-    <div x-show="mobileMenuOpen"
-         x-transition:enter="transition ease-out duration-300"
-         x-transition:enter-start="opacity-0 transform -translate-y-full"
-         x-transition:enter-end="opacity-100 transform translate-y-0"
-         x-transition:leave="transition ease-in duration-200"
-         x-transition:leave-start="opacity-100 transform translate-y-0"
-         x-transition:leave-end="opacity-0 transform -translate-y-full"
-         class="fixed inset-0 bg-black/95 z-40 flex flex-col items-center justify-center space-y-6 md:hidden"
-         @click.away="mobileMenuOpen = false">
-            <!-- Corrected Mobile Menu Links -->
-            <a href="index.html" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">Home</a>
-            <a href="#about" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">About</a>
-            <a href="#skills" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">Skills</a>
-            <!-- Link to the separate projects page (now directly in root) -->
-            <a href="projects.html" @click="mobileMenuOpen = false" class="text-2xl text-white bg-gradient-to-r from-primary to-secondary py-2 px-5 rounded-full hover:opacity-90 transition duration-300 font-semibold">View Projects</a>
-            <a href="#contact" @click="mobileMenuOpen = false" class="text-2xl hover:text-primary transition duration-300">Contact</a>
-    </div>
 
     <main>
         <!-- Hero Section -->
         <section id="home" class="min-h-screen flex items-center relative overflow-hidden pt-24 md:pt-0">
-            <!-- Background Gradients -->
-            <div class="absolute top-1/4 left-10 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-            <div class="absolute bottom-1/4 right-10 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-2000"></div>
+            <!-- Animated Particle Canvas -->
+            <canvas id="particles-canvas"></canvas>
 
             <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between max-w-7xl relative z-10">
                 <!-- Text Content -->
                 <div class="md:w-3/5 text-center md:text-left mb-12 md:mb-0" data-aos="fade-right">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
+                    <div class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-secondary uppercase bg-secondary/10 rounded-full border border-secondary/20">
+                        Portfolio 2026
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
                         I'm <span class="text-gradient">Kalana Sahan</span>
                     </h1>
-                    <p class="text-xl md:text-2xl text-lighttext mb-2 font-light" id="typing-effect"></p>
-                    <p class="text-md text-gray-400 mb-8 max-w-xl mx-auto md:mx-0">
-                        NVQ L3 Certified | Pursuing NVQ L5 | Bringing creative ideas to life through design, video, and technology.
+                    <p class="text-xl md:text-3xl text-gray-300 mb-4 font-light h-10" id="typing-effect"></p>
+                    <p class="text-md text-gray-400 mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                        NVQ L3 Certified | Pursuing NVQ L5 | Bringing creative ideas to life through advanced design, video production, and software engineering.
                     </p>
                     <!-- Action Buttons -->
                     <div class="flex justify-center md:justify-start space-x-4">
-                        <a href="projects.html" class="inline-block bg-gradient-to-r from-primary to-secondary text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:scale-105 transform transition duration-300">
-                            My Work
+                        <a href="projects.html" class="group relative px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-bold shadow-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-primary/50">
+                            <span class="relative z-10">My Work</span>
+                            <div class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                         </a>
-                        <a href="#contact" class="inline-block bg-gray-700 text-lighttext font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-gray-600 hover:scale-105 transform transition duration-300">
+                        <a href="#contact" class="px-8 py-3 rounded-full glass-card text-lighttext font-bold hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105">
                             Contact Me
                         </a>
                     </div>
                 </div>
                 <!-- Profile Image with Floating Icons -->
-                <div class="md:w-2/5 flex justify-center" data-aos="fade-left" data-aos-delay="200">
-                    <div class="relative">
-                        <img src="Profile.jpg" alt="Kalana Sahan Dillimuni" class="w-64 h-64 md:w-80 md:h-80 lg:w-[350px] lg:h-[500px] rounded-full object-cover object-top border-4 border-primary/50 shadow-2xl floating-img">
+                <div class="md:w-2/5 flex justify-center perspective-1000" data-aos="fade-left" data-aos-delay="200">
+                    <div class="relative group">
+                        <!-- Glow effect behind image -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
+                        
+                        <img src="Profile.jpg" alt="Kalana Sahan Dillimuni" class="w-64 h-64 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-full object-cover object-top border-4 border-white/10 shadow-2xl floating-img relative z-10 grayscale-[10%] hover:grayscale-0 transition duration-500">
+                        
                         <!-- Floating Icons -->
-                        <div class="absolute -bottom-4 -right-4 w-20 h-20 bg-secondary rounded-full flex items-center justify-center text-white text-3xl shadow-lg floating-img animation-delay-1000">
+                        <div class="absolute -bottom-4 -right-4 w-16 h-16 md:w-20 md:h-20 bg-secondary/90 backdrop-blur-md rounded-full flex items-center justify-center text-white text-3xl shadow-lg floating-img animation-delay-1000 z-20 border border-white/20">
                              <i class="fas fa-code"></i>
                         </div>
-                        <div class="absolute -top-4 -left-4 w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl shadow-lg floating-img animation-delay-500">
+                        <div class="absolute top-0 -left-4 w-14 h-14 md:w-16 md:h-16 bg-primary/90 backdrop-blur-md rounded-full flex items-center justify-center text-white text-2xl shadow-lg floating-img animation-delay-500 z-20 border border-white/20">
                              <i class="fas fa-paint-brush"></i>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <!-- Scroll Down Indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-500">
+                <a href="#about"><i class="fas fa-chevron-down text-2xl"></i></a>
+            </div>
         </section>
 
         <!-- About Me Section -->
-        <section id="about" class="py-20 bg-cardbg/30">
+        <section id="about" class="py-20">
             <div class="container mx-auto px-6 max-w-6xl" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-2">About Me</h2>
                 <div class="section-divider"></div>
                 <div class="flex flex-col md:flex-row items-center gap-12">
                     <!-- About Text -->
                     <div class="md:w-1/2 text-gray-300 leading-relaxed space-y-4 text-center md:text-left">
-                        <p>
+                        <p class="text-lg">
                             I'm a multi-passionate creative and an enthusiastic developer based in Sri Lanka, driven by a fascination for how visuals and technology intertwine.
                         </p>
                         <p>
                             My journey in the tech world began with a strong foundation, holding an NVQ Level 3 in ICT, and I'm currently advancing my expertise by pursuing NVQ Level 5. I'm actively expanding my skills across web development, software development, and app development, always eager to learn and grow in these dynamic fields.
                         </p>
                         <p>
-                            Whether it's crafting eye-catching graphics, editing compelling video narratives, troubleshooting complex PC issues, or diving into new coding challenges, I thrive on continuous learning and turning ideas into impactful solutions. I'm excited to apply my evolving skills to new projects and deliver high-quality results.
+                            Whether it's crafting eye-catching graphics, editing compelling video narratives, troubleshooting complex PC issues, or diving into new coding challenges, I thrive on continuous learning and turning ideas into impactful solutions.
                         </p>
-                        <p class="font-semibold text-primary">Let's create something amazing together!</p>
+                        <p class="font-semibold text-secondary text-lg mt-4">Let's create something amazing together!</p>
                     </div>
                     <!-- Focus Areas Card -->
                     <div class="md:w-1/2" data-aos="zoom-in">
-                        <div class="bg-cardbg p-8 rounded-lg shadow-xl border border-primary/30">
-                             <h4 class="text-xl font-semibold text-white mb-4">Core Focus Areas:</h4>
-                             <ul class="space-y-3">
-                                 <li class="flex items-center"><i class="fas fa-palette text-secondary w-6 mr-3"></i> Graphic Design</li>
-                                 <li class="flex items-center"><i class="fas fa-film text-secondary w-6 mr-3"></i> Video Editing & Production</li>
-                                 <li class="flex items-center"><i class="fas fa-laptop-code text-secondary w-6 mr-3"></i> Web Development & Design</li>
-                                 <li class="flex items-center"><i class="fas fa-mobile-alt text-secondary w-6 mr-3"></i> Mobile App Development</li>
-                                 <li class="flex items-center"><i class="fas fa-cogs text-secondary w-6 mr-3"></i> Software Development</li>
-                                 <li class="flex items-center"><i class="fas fa-desktop text-secondary w-6 mr-3"></i> PC Hardware & Software Solutions</li>
-                                 <li class="flex items-center"><i class="fas fa-lightbulb text-secondary w-6 mr-3"></i> Creative Problem Solving</li>
+                        <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                             <!-- Subtle gradient decoration -->
+                             <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl -mr-16 -mt-16 transition-all duration-500 group-hover:bg-primary/20"></div>
+
+                             <h4 class="text-xl font-bold text-white mb-6 relative z-10 border-l-4 border-primary pl-3">Core Focus Areas</h4>
+                             <ul class="space-y-4 relative z-10">
+                                 <li class="flex items-center text-gray-300 hover:text-white transition-colors duration-200"><i class="fas fa-palette text-secondary w-8 text-lg"></i> Graphic Design</li>
+                                 <li class="flex items-center text-gray-300 hover:text-white transition-colors duration-200"><i class="fas fa-film text-secondary w-8 text-lg"></i> Video Editing & Production</li>
+                                 <li class="flex items-center text-gray-300 hover:text-white transition-colors duration-200"><i class="fas fa-laptop-code text-secondary w-8 text-lg"></i> Web Development & Design</li>
+                                 <li class="flex items-center text-gray-300 hover:text-white transition-colors duration-200"><i class="fas fa-mobile-alt text-secondary w-8 text-lg"></i> Mobile App Development</li>
+                                 <li class="flex items-center text-gray-300 hover:text-white transition-colors duration-200"><i class="fas fa-cogs text-secondary w-8 text-lg"></i> Software Development</li>
+                                 <li class="flex items-center text-gray-300 hover:text-white transition-colors duration-200"><i class="fas fa-desktop text-secondary w-8 text-lg"></i> PC Hardware & Software Solutions</li>
                              </ul>
                          </div>
                     </div>
@@ -205,75 +137,83 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="py-20">
-             <div class="container mx-auto px-6 max-w-6xl" data-aos="fade-up">
+        <section id="skills" class="py-20 relative">
+             <div class="container mx-auto px-6 max-w-6xl relative z-10" data-aos="fade-up">
                  <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-2">Technical Skills</h2>
                  <div class="section-divider"></div>
-                 <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Here's a snapshot of the technologies and tools I work with:</p>
+                 <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Here's a snapshot of the technologies and tools I master:</p>
                  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
 
-                     <!-- Skill Card: Graphic Design (Photoshop, Illustrator, CorelDraw) -->
-                     <div class="bg-cardbg p-6 rounded-lg shadow-lg text-center transform transition duration-300 hover:scale-105 hover:bg-primary/20 border border-transparent hover:border-primary" data-aos="fade-up" data-aos-delay="100">
-                         <i class="fas fa-palette text-4xl text-secondary mb-3"></i>
-                         <h4 class="text-lg font-semibold text-white mb-1">Graphic Design</h4>
-                         <p class="text-gray-400 text-sm mb-2">(Adobe Photoshop, Illustrator, CorelDraw)</p>
-                         <p class="text-sm text-gray-400">Proficient</p>
+                     <!-- Skill Card: Full Stack Development -->
+                     <div class="glass-card p-6 rounded-xl text-center transform transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="100">
+                           <div class="w-16 h-16 mx-auto bg-secondary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-code text-3xl text-secondary group-hover:text-white transition-colors"></i>
+                           </div>
+                          <h4 class="text-lg font-bold text-white mb-2">AI-Assisted Full Stack Dev</h4>
+                          <span class="inline-block px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full border border-green-500/30 mt-2">Expert</span>
                      </div>
 
-                     <!-- Skill Card: Video Editing (Premiere Pro, CapCut) -->
-                     <div class="bg-cardbg p-6 rounded-lg shadow-lg text-center transform transition duration-300 hover:scale-105 hover:bg-primary/20 border border-transparent hover:border-primary" data-aos="fade-up" data-aos-delay="150">
-                         <i class="fas fa-video text-4xl text-secondary mb-3"></i>
-                         <h4 class="text-lg font-semibold text-white mb-1">Video Editing</h4>
-                          <p class="text-gray-400 text-sm mb-2">(Adobe Premiere Pro, CapCut)</p>
-                         <p class="text-sm text-gray-400">Proficient</p>
+                     <!-- Skill Card: Graphic Design -->
+                     <div class="glass-card p-6 rounded-xl text-center transform transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="150">
+                         <div class="w-16 h-16 mx-auto bg-secondary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-palette text-3xl text-secondary group-hover:text-white transition-colors"></i>
+                         </div>
+                         <h4 class="text-lg font-bold text-white mb-2">Graphic Design</h4>
+                         <span class="inline-block px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full border border-green-500/30 mt-2">Proficient</span>
                      </div>
 
-                     <!-- Skill Card: Web Development -->
-                     <div class="bg-cardbg p-6 rounded-lg shadow-lg text-center transform transition duration-300 hover:scale-105 hover:bg-primary/20 border border-transparent hover:border-primary" data-aos="fade-up" data-aos-delay="200">
-                           <i class="fas fa-code text-4xl text-secondary mb-3"></i>
-                          <h4 class="text-lg font-semibold text-white mb-1">Web Development</h4>
-                          <p class="text-gray-400 text-sm mb-2">(HTML, CSS, JavaScript, React, Tailwind CSS)</p>
-                          <p class="text-sm text-gray-400">Proficient</p>
+                     <!-- Skill Card: Video Editing -->
+                     <div class="glass-card p-6 rounded-xl text-center transform transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="200">
+                         <div class="w-16 h-16 mx-auto bg-secondary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-video text-3xl text-secondary group-hover:text-white transition-colors"></i>
+                         </div>
+                         <h4 class="text-lg font-bold text-white mb-2">Video Production</h4>
+                         <span class="inline-block px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full border border-green-500/30 mt-2">Proficient</span>
                      </div>
 
                      <!-- Skill Card: Mobile App Development -->
-                     <div class="bg-cardbg p-6 rounded-lg shadow-lg text-center transform transition duration-300 hover:scale-105 hover:bg-primary/20 border border-transparent hover:border-primary" data-aos="fade-up" data-aos-delay="250">
-                          <i class="fas fa-mobile-alt text-4xl text-secondary mb-3"></i>
-                          <h4 class="text-lg font-semibold text-white mb-1">Mobile App Development</h4>
-                          <p class="text-gray-400 text-sm mb-2">(React Native)</p>
-                          <p class="text-sm text-gray-400">Intermediate</p>
+                     <div class="glass-card p-6 rounded-xl text-center transform transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="250">
+                          <div class="w-16 h-16 mx-auto bg-secondary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-mobile-alt text-3xl text-secondary group-hover:text-white transition-colors"></i>
+                          </div>
+                          <h4 class="text-lg font-bold text-white mb-2">Mobile App Dev</h4>
+                          <span class="inline-block px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full border border-blue-500/30 mt-2">Intermediate</span>
                      </div>
 
                       <!-- Skill Card: Software Development -->
-                     <div class="bg-cardbg p-6 rounded-lg shadow-lg text-center transform transition duration-300 hover:scale-105 hover:bg-primary/20 border border-transparent hover:border-primary" data-aos="fade-up" data-aos-delay="300">
-                          <i class="fas fa-cogs text-4xl text-secondary mb-3"></i>
-                          <h4 class="text-lg font-semibold text-white mb-1">Software Development</h4>
-                          <p class="text-gray-400 text-sm mb-2">(Python, C#, Electron.js)</p>
-                          <p class="text-sm text-gray-400">Intermediate</p>
+                     <div class="glass-card p-6 rounded-xl text-center transform transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="300">
+                          <div class="w-16 h-16 mx-auto bg-secondary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-cogs text-3xl text-secondary group-hover:text-white transition-colors"></i>
+                          </div>
+                          <h4 class="text-lg font-bold text-white mb-2">Software Dev</h4>
+                          <span class="inline-block px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full border border-blue-500/30 mt-2">Intermediate</span>
                      </div>
 
                      <!-- Skill Card: Database Management -->
-                     <div class="bg-cardbg p-6 rounded-lg shadow-lg text-center transform transition duration-300 hover:scale-105 hover:bg-primary/20 border border-transparent hover:border-primary" data-aos="fade-up" data-aos-delay="350">
-                          <i class="fas fa-database text-4xl text-secondary mb-3"></i>
-                          <h4 class="text-lg font-semibold text-white mb-1">Database Management</h4>
-                          <p class="text-gray-400 text-sm mb-2">(SQL, SQLite, MongoDB)</p>
-                          <p class="text-sm text-gray-400">Basic</p>
+                     <div class="glass-card p-6 rounded-xl text-center transform transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="350">
+                          <div class="w-16 h-16 mx-auto bg-secondary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-database text-3xl text-secondary group-hover:text-white transition-colors"></i>
+                          </div>
+                          <h4 class="text-lg font-bold text-white mb-2">Databases</h4>
+                          <span class="inline-block px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs rounded-full border border-yellow-500/30 mt-2">Basic</span>
                      </div>
 
-                     <!-- Skill Card: PC Hardware & System Solutions -->
-                     <div class="bg-cardbg p-6 rounded-lg shadow-lg text-center transform transition duration-300 hover:scale-105 hover:bg-primary/20 border border-transparent hover:border-primary" data-aos="fade-up" data-aos-delay="400">
-                         <i class="fas fa-tools text-4xl text-secondary mb-3"></i>
-                         <h4 class="text-lg font-semibold text-white mb-1">Hardware & System Solutions</h4>
-                         <p class="text-gray-400 text-sm mb-2">(Troubleshooting, OS Installation, Network Setup)</p>
-                         <p class="text-sm text-gray-400">Proficient</p>
+                     <!-- Skill Card: PC Hardware -->
+                     <div class="glass-card p-6 rounded-xl text-center transform transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="400">
+                         <div class="w-16 h-16 mx-auto bg-secondary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-tools text-3xl text-secondary group-hover:text-white transition-colors"></i>
+                         </div>
+                         <h4 class="text-lg font-bold text-white mb-2">Hardware Solutions</h4>
+                         <span class="inline-block px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full border border-green-500/30 mt-2">Proficient</span>
                      </div>
 
-                     <!-- Skill Card: Content Creator (Platforms) -->
-                     <div class="bg-cardbg p-6 rounded-lg shadow-lg text-center transform transition duration-300 hover:scale-105 hover:bg-primary/20 border border-transparent hover:border-primary" data-aos="fade-up" data-aos-delay="450">
-                          <i class="fas fa-pen-fancy text-4xl text-secondary mb-3"></i>
-                          <h4 class="text-lg font-semibold text-white mb-1">Content Creator</h4>
-                          <p class="text-sm text-gray-400">(Facebook, YouTube, TikTok)</p>
-                          <p class="text-sm text-gray-400">Proficient</p>
+                     <!-- Skill Card: Content Creator -->
+                     <div class="glass-card p-6 rounded-xl text-center transform transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 hover:border-primary/50 group" data-aos="fade-up" data-aos-delay="450">
+                          <div class="w-16 h-16 mx-auto bg-secondary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                               <i class="fas fa-pen-fancy text-3xl text-secondary group-hover:text-white transition-colors"></i>
+                          </div>
+                          <h4 class="text-lg font-bold text-white mb-2">Content Creation</h4>
+                          <span class="inline-block px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full border border-green-500/30 mt-2">Proficient</span>
                      </div>
 
                  </div>
@@ -292,31 +232,50 @@
          </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20">
-            <div class="container mx-auto px-6 max-w-4xl" data-aos="fade-up">
+        <section id="contact" class="py-20 relative">
+            <div class="container mx-auto px-6 max-w-4xl relative z-10" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-2">Get In Touch</h2>
                 <div class="section-divider"></div>
                 <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Have a project in mind, a question, or just want to say hello? Feel free to reach out!</p>
 
-                <div class="bg-cardbg p-8 md:p-12 rounded-lg shadow-2xl max-w-2xl mx-auto border border-primary/20">
-                     <form action="https://formspree.io/f/mwpopvdp" method="POST">
+                <div class="glass-card p-8 md:p-12 rounded-2xl shadow-2xl max-w-2xl mx-auto backdrop-blur-md relative overflow-hidden">
+                     <!-- Decorative elements -->
+                     <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-secondary"></div>
+                     
+                     <form action="https://formspree.io/f/mwpopvdp" method="POST" class="relative z-10">
                           <div class="mb-6">
-                              <label for="name" class="block text-gray-300 font-medium mb-2">Your Name</label>
-                              <input type="text" id="name" name="name" placeholder="Kalana Sahan" required class="w-full px-4 py-3 bg-gray-700 text-lighttext border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder-gray-500">
-                         </div>
-                         <div class="mb-6">
-                              <label for="email" class="block text-gray-300 font-medium mb-2">Your Email</label>
-                              <input type="email" id="email" name="email" placeholder="kalana@example.com" required class="w-full px-4 py-3 bg-gray-700 text-lighttext border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder-gray-500">
-                         </div>
-                         <div class="mb-8">
-                              <label for="message" class="block text-gray-300 font-medium mb-2">Your Message</label>
-                              <textarea id="message" name="message" rows="5" placeholder="How can I help you?" required class="w-full px-4 py-3 bg-gray-700 text-lighttext border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder-gray-500"></textarea>
-                         </div>
-                         <div class="text-center">
-                             <button type="submit" class="bg-gradient-to-r from-primary to-secondary text-white font-semibold py-3 px-10 rounded-full shadow-lg hover:opacity-90 transform transition duration-300 focus:outline-none text-lg">
-                                  Send Message <i class="fas fa-paper-plane ml-2"></i>
-                             </button>
-                         </div>
+                              <label for="name" class="block text-gray-300 font-medium mb-2 pl-1">Your Name</label>
+                              <div class="relative group">
+                                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                      <i class="fas fa-user text-gray-500 group-focus-within:text-primary transition-colors"></i>
+                                  </div>
+                                  <input type="text" id="name" name="name" placeholder="Kalana Sahan" required class="w-full pl-10 pr-4 py-3 bg-white/5 text-lighttext border border-gray-600/50 rounded-xl focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder-gray-500">
+                              </div>
+                          </div>
+                          <div class="mb-6">
+                              <label for="email" class="block text-gray-300 font-medium mb-2 pl-1">Your Email</label>
+                              <div class="relative group">
+                                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                      <i class="fas fa-envelope text-gray-500 group-focus-within:text-primary transition-colors"></i>
+                                  </div>
+                                  <input type="email" id="email" name="email" placeholder="kalana@example.com" required class="w-full pl-10 pr-4 py-3 bg-white/5 text-lighttext border border-gray-600/50 rounded-xl focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder-gray-500">
+                              </div>
+                          </div>
+                          <div class="mb-8">
+                              <label for="message" class="block text-gray-300 font-medium mb-2 pl-1">Your Message</label>
+                              <div class="relative group">
+                                  <div class="absolute top-3 left-0 pl-3 pointer-events-none">
+                                      <i class="fas fa-comment-alt text-gray-500 group-focus-within:text-primary transition-colors"></i>
+                                  </div>
+                                  <textarea id="message" name="message" rows="5" placeholder="How can I help you?" required class="w-full pl-10 pr-4 py-3 bg-white/5 text-lighttext border border-gray-600/50 rounded-xl focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder-gray-500"></textarea>
+                              </div>
+                          </div>
+                          <div class="text-center">
+                              <button type="submit" class="group relative inline-flex items-center justify-center px-10 py-3 font-bold text-white transition-all duration-200 bg-gradient-to-r from-primary to-secondary rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary hover:scale-105 shadow-lg hover:shadow-primary/50">
+                                  <span>Send Message</span>
+                                  <i class="fas fa-paper-plane ml-2 group-hover:translate-x-1 transition-transform"></i>
+                              </button>
+                          </div>
                      </form>
                  </div>
                  <div class="text-center mt-12" data-aos="fade-up">
@@ -325,54 +284,35 @@
                      <!-- Social Media Links in Contact Section -->
                      <a href="https://web.facebook.com/kalana.sahan.79" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-3xl"><i class="fab fa-facebook"></i></a>
                      <a href="https://www.instagram.com/kalana._.sahan/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-3xl"><i class="fab fa-instagram"></i></a>
-                     <a href="https://www.linkedin.com/in/kalana-sahan" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-3xl"><i class="fab fa-linkedin"></i></a>
+                     <a href="https://www.linkedin.com/in/kalanasahan" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-3xl"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-black text-gray-500 py-8 mt-8">
-        <div class="container mx-auto px-6 text-center">
-            <div class="mb-6">
-                <p class="text-gray-400 mb-4 text-lg">Follow Me</p>
-                <div class="flex justify-center items-center space-x-5 md:space-x-6">
-                    <!-- Social Media Links in Footer -->
-                     <a href="https://web.facebook.com/kalana.sahan.79" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-facebook"></i></a>
-                     <a href="https://www.instagram.com/kalana._.sahan/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-instagram"></i></a>
-                     <a href="https://www.linkedin.com/in/kalana-sahan" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-linkedin"></i></a>
-                     <a href="https://www.youtube.com/@Part_of_kaali_life" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-youtube"></i></a>
-                     <a href="https://www.tiktok.com/@part_of_kaali_life" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-tiktok"></i></a>
-                     <a href="https://github.com/kaali-k" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition duration-300 text-2xl"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-            <!-- Corrected copyright name -->
-            <p>&copy; <span id="currentYear"></span> Kalana Sahan Dillimuni. All Rights Reserved.</p>
-             <p class="text-sm mt-2">Designed with <i class="fas fa-heart text-primary"></i> using Tailwind CSS & Alpine.js</p>
-        </div>
+    <!-- Footer Component -->
+    <footer id="main-footer" class="bg-black text-gray-500 py-8 mt-8">
+        <!-- Content injected by components.js -->
     </footer>
 
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
     <script>
-        // Initialize AOS (Animate on Scroll)
-        AOS.init({
-            duration: 800, // Shorter duration for faster feel
-            once: false, // Allow animation on scroll up/down (can be true if preferred)
-            offset: 50, // Trigger animations slightly sooner
-        });
+        // Load Components
+        loadHeader(''); // Relative path is empty for root
+        loadFooter('');
 
-        // Dynamic Copyright Year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Typing Effect for Hero Section
+        // Typing Effect (Specific to Index Page)
         const roles = ["Multi-Passionate Creative", "Web Developer", "Mobile App Developer", "Software Developer", "Graphic Designer", "Video Editor", "PC Solutions Expert"];
         let roleIndex = 0;
         let charIndex = 0;
         const typingElement = document.getElementById('typing-effect');
-        const typingSpeed = 100; // Milliseconds per character
-        const erasingSpeed = 50;
-        const delayBetweenRoles = 1500; // Milliseconds
+        const typingSpeed = 80;
+        const erasingSpeed = 40;
+        const delayBetweenRoles = 2000; 
 
         function type() {
             if (typingElement && charIndex < roles[roleIndex].length) {
@@ -392,7 +332,7 @@
             } else {
                 roleIndex = (roleIndex + 1) % roles.length;
                 if (typingElement) {
-                   setTimeout(type, typingSpeed + 110); // Pause before typing next role
+                   setTimeout(type, typingSpeed + 110); 
                 }
             }
         }
@@ -400,12 +340,10 @@
         document.addEventListener('DOMContentLoaded', function() {
           if(typingElement) {
             if (roles.length > 0 && roles[roleIndex]) {
-               setTimeout(type, delayBetweenRoles); // Start after a short delay
+               setTimeout(type, delayBetweenRoles); 
             }
           }
         });
-
     </script>
-
 </body>
 </html>
