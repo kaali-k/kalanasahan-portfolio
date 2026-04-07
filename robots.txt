@@ -1,11 +1,7 @@
-# robots.txt for https://kaali-k.github.io/
+# robots.txt for https://kaali-k.github.io/kalanasahan-portfolio/
 
 User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://kaali-k.github.io/sitemap.xml
-
-# Prevent indexing of asset folders if needed (optional)
-# Disallow: /assets/
-# Disallow: /tmp/
+Sitemap: https://kaali-k.github.io/kalanasahan-portfolio/sitemap.xml
