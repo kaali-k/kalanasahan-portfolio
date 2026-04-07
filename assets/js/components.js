@@ -3,6 +3,20 @@
  * @param {string} basePath - relative path to root ('' for root, '../' for sub-pages)
  */
 
+// ── Google Analytics Integration ──
+(function() {
+    const GA_ID = 'G-CM23LZMT62';
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+})();
+
 function loadHeader(basePath = '') {
     const headerHTML = `
     <nav class="container mx-auto px-6 py-5 flex justify-between items-center max-w-7xl">
