@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Web App – Business Management for a Client | Kalana Sahan</title>
+    <meta name="description" content="First locally-deployed web application project by Kalana Sahan — a business management tool for a local client covering stock, billing, income and expense tracking.">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><script src="../../assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main id="main-content" class="py-16 pt-32"></main>
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="../../index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="../../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">Zentix</a>
+        <a href="../../projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/components.js"></script><script src="../../assets/js/main.js"></script><script src="../../assets/js/subpage.js"></script>
+    <script>
+        loadHeader('../../'); loadFooter('../../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAppDetail({
+                title: 'Local Web App 1',
+                subtitle: 'Business Management System for a Client',
+                description: 'My first real client project — a locally-deployed web application built to manage daily business operations. Covers login, a main dashboard, income and expense tracking, stock management, reminders and reporting, all accessible from any device on the local network.',
+                icon: 'software3/cover.jpg', iconAlt: 'Local Web App icon', iconBg: 'bg-gray-900',
+                badges: [{ label: 'Web App', type: 'cyan' }, { label: 'Local Deploy', type: 'purple' }, { label: 'Client Project', type: 'pink' }],
+                features: [
+                    { icon: 'fas fa-sign-in-alt', title: 'Secure Login', desc: 'User authentication with role-based access for the business owner.' },
+                    { icon: 'fas fa-tachometer-alt', title: 'Dashboard', desc: 'Central overview of key business metrics and daily summaries.' },
+                    { icon: 'fas fa-dollar-sign', title: 'Income & Expense', desc: 'Log and track daily income and expense entries by category.' },
+                    { icon: 'fas fa-box', title: 'Stock Management', desc: 'Basic inventory tracking with product listing and quantity updates.' },
+                    { icon: 'fas fa-bell', title: 'Reminders', desc: 'Set date-based reminders for payments, renewals and tasks.' },
+                    { icon: 'fas fa-chart-bar', title: 'Reports', desc: 'Generate and view financial summaries over selectable periods.' },
+                    { icon: 'fas fa-user-circle', title: 'Profile', desc: 'Owner profile settings and business configuration.' }
+                ],
+                screenshots: [
+                    { file: 'login.png', alt: 'Login Screen' },
+                    { file: 'dashboard.png', alt: 'Dashboard' },
+                    { file: 'income.png', alt: 'Income Tracking' },
+                    { file: 'expense.png', alt: 'Expense Tracking' },
+                    { file: 'report.png', alt: 'Reports' },
+                    { file: 'reminder.png', alt: 'Reminders' },
+                    { file: 'setting.png', alt: 'Settings' },
+                    { file: 'profile.png', alt: 'Profile' }
+                ],
+                screenshotDir: 'software3/',
+                tech: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript', 'Bootstrap', 'XAMPP'],
+                backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
+            });
+        });
+    </script>
+</body>
+</html>

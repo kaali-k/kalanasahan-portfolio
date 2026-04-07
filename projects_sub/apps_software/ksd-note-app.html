@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.S.D Note App – Secure Note Taking | Kalana Sahan</title>
+    <meta name="description" content="K.S.D Note App – Private, offline Flutter note-taking app with categories, settings and a clean UI. By Kalana Sahan Dillimuni.">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><script src="../../assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main id="main-content" class="py-16 pt-32"></main>
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="../../index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="../../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">Zentix</a>
+        <a href="../../projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/components.js"></script><script src="../../assets/js/main.js"></script><script src="../../assets/js/subpage.js"></script>
+    <script>
+        loadHeader('../../'); loadFooter('../../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAppDetail({
+                title: 'K.S.D Note App',
+                subtitle: 'Secure & Private Note-Taking App',
+                description: 'A clean, private note-taking app built with Flutter. Create, organise and manage notes with category support, a full note editor, and configurable settings — all stored locally with zero cloud sync.',
+                icon: 'app4/icon.png', iconAlt: 'KSD Note App icon', iconBg: 'bg-gray-900',
+                badges: [{ label: 'Android', type: 'green' }, { label: 'Notes', type: 'cyan' }, { label: 'Offline', type: 'purple' }],
+                features: [
+                    { icon: 'fas fa-sticky-note', title: 'Note Editor', desc: 'Create and edit notes with a distraction-free rich text editor.' },
+                    { icon: 'fas fa-th-large', title: 'Category Menu', desc: 'Organise notes into categories for quick browsing and filtering.' },
+                    { icon: 'fas fa-lock', title: 'Local Storage Only', desc: 'Notes stay on your device — no accounts, no cloud, no tracking.' },
+                    { icon: 'fas fa-cog', title: 'Settings', desc: 'Customise theme, font size and app behaviour to your preference.' },
+                    { icon: 'fas fa-search', title: 'Quick Search', desc: 'Instantly find notes by title or content keyword.' }
+                ],
+                screenshots: [
+                    { file: 'main.webp', alt: 'Main Notes Screen' },
+                    { file: 'menu.webp', alt: 'Category Menu' },
+                    { file: 'note.webp', alt: 'Note Editor' },
+                    { file: 'setting.webp', alt: 'Settings Screen' }
+                ],
+                screenshotDir: 'app4/',
+                downloadUrl: 'https://github.com/kaali-k/KSD-Note-App/releases/download/v1.0.0/KSD.Note.apk',
+                downloadLabel: 'Download APK',
+                tech: ['Flutter', 'Dart', 'SQLite', 'Hive', 'Provider'],
+                backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
+            });
+        });
+    </script>
+</body>
+</html>

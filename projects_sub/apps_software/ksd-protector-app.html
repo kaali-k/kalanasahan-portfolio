@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSD Protector – Password Manager & Vault | Kalana Sahan</title>
+    <meta name="description" content="KSD Protector – Flutter password manager with secure vault, strength checker, and new entry creation. Fully offline. By Kalana Sahan Dillimuni.">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><script src="../../assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main id="main-content" class="py-16 pt-32"></main>
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="../../index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="../../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">Zentix</a>
+        <a href="../../projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/components.js"></script><script src="../../assets/js/main.js"></script><script src="../../assets/js/subpage.js"></script>
+    <script>
+        loadHeader('../../'); loadFooter('../../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAppDetail({
+                title: 'KSD Protector',
+                subtitle: 'Offline Password Manager & Secure Vault',
+                description: 'A security-focused Flutter app for generating strong passwords, checking their strength, and storing all credentials in an encrypted local vault — completely offline with zero cloud exposure.',
+                icon: 'app2/icon.png', iconAlt: 'KSD Protector icon', iconBg: 'bg-gray-900',
+                badges: [{ label: 'Android', type: 'green' }, { label: 'Security', type: 'pink' }, { label: 'Offline', type: 'purple' }],
+                features: [
+                    { icon: 'fas fa-key', title: 'Password Generator', desc: 'Generate strong passwords with custom length, symbols, numbers and mixed case.' },
+                    { icon: 'fas fa-shield-alt', title: 'Strength Checker', desc: 'Real-time password strength analysis with vulnerability scoring.' },
+                    { icon: 'fas fa-database', title: 'Secure Vault', desc: 'Encrypted local storage for all saved credentials — never leaves the device.' },
+                    { icon: 'fas fa-plus-circle', title: 'Add New Entries', desc: 'Save service name, username, password and notes for each entry.' },
+                    { icon: 'fas fa-eye-slash', title: '100% Offline', desc: 'Zero internet access, zero telemetry, zero ads.' }
+                ],
+                screenshots: [
+                    { file: 'main.webp', alt: 'Main Screen' },
+                    { file: 'checker.webp', alt: 'Password Strength Checker' },
+                    { file: 'addnew.webp', alt: 'Add New Password' },
+                    { file: 'vault.webp', alt: 'Secure Vault' },
+                    { file: 'secure.webp', alt: 'Security Overview' }
+                ],
+                screenshotDir: 'app2/',
+                downloadUrl: 'https://github.com/kaali-k/KSD-Protector/releases/download/v1.0.0/KSD.Protector.apk',
+                downloadLabel: 'Download APK',
+                tech: ['Flutter', 'Dart', 'SQLite', 'flutter_secure_storage', 'Hive', 'Crypto'],
+                backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
+            });
+        });
+    </script>
+</body>
+</html>

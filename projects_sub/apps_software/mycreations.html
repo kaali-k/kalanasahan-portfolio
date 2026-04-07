@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Creations – Apps & Software | Kalana Sahan Dillimuni</title>
+    <meta name="description" content="Mobile apps, desktop software, and web applications developed by Kalana Sahan Dillimuni – including Z Pinger, Z Flow, KSD Protector, MyFinanceApp, POS systems and more.">
+    <meta name="author" content="Kalana Sahan Dillimuni">
+    <meta name="robots" content="index, follow">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../assets/js/tailwind-config.js"></script>
+
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <!-- Scroll Progress -->
+    <div id="scroll-progress" style="width:0%"></div>
+
+    <!-- Background -->
+    <div class="bg-noise" aria-hidden="true"></div>
+    <div class="grid-bg" aria-hidden="true"></div>
+
+    <!-- Header -->
+    <header id="main-header" role="banner"></header>
+
+    <main id="main-content" class="py-16 pt-32">
+        <section id="my-creations" class="container mx-auto px-6 max-w-6xl">
+
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../../index.html">Home</a>
+                <span class="breadcrumb-sep">/</span>
+                <a href="../../projects.html">Projects</a>
+                <span class="breadcrumb-sep">/</span>
+                <span class="text-white">My Creations</span>
+            </nav>
+
+            <!-- Header -->
+            <div class="text-center mb-12" data-aos="fade-up">
+                <span class="badge badge-purple mb-4">By Kalana Sahan</span>
+                <h1 class="text-4xl md:text-6xl font-heading font-bold text-white mb-2">My Creations</h1>
+                <div class="section-divider"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">Explore my mobile apps, desktop software, and web applications — built with passion and purpose.</p>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="100" id="tab-btns">
+                <button onclick="switchTab('apps')" id="tab-apps"
+                        class="tab-btn font-semibold py-3 px-8 rounded-full transition duration-300 focus:outline-none text-base border border-white/5 bg-white/5 text-gray-300 hover:bg-white/10">
+                    <i class="fab fa-android mr-2"></i> Mobile Apps
+                </button>
+                <button onclick="switchTab('software')" id="tab-software"
+                        class="tab-btn font-semibold py-3 px-8 rounded-full transition duration-300 focus:outline-none text-base border border-white/5 bg-white/5 text-gray-300 hover:bg-white/10">
+                    <i class="fas fa-desktop mr-2"></i> Software &amp; Web Apps
+                </button>
+            </div>
+
+            <!-- Mobile Apps Tab -->
+            <div id="tab-content-apps" class="tab-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- MyFinanceApp -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-accent-line"></div>
+                    <div class="h-44 overflow-hidden bg-gray-900 flex items-center justify-center">
+                        <img src="app1/my_app_icon.png" alt="MyFinanceApp icon" class="h-full w-full object-cover hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <h2 class="text-lg font-heading font-bold text-white mb-1 group-hover:text-primary transition-colors">MyFinanceApp</h2>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">A comprehensive mobile app for managing personal finances, tracking expenses, and budgeting.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Flutter</span>
+                            <span class="tech-badge">Finance</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="my-finance-app.html" class="btn-outline text-sm py-2 px-4">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                            <a href="https://github.com/kaali-k/My-Finance-App/releases/download/v1.0.0/Finance.App.apk"
+                               class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-green-600/15 border border-green-600/30 text-green-400 hover:bg-green-600/25 transition-all">
+                                <i class="fas fa-download text-xs"></i> APK
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- KSD Protector -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="card-accent-line"></div>
+                    <div class="h-44 overflow-hidden bg-gray-900 flex items-center justify-center">
+                        <img src="app2/icon.png" alt="KSD Protector icon" class="h-full w-full object-cover hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <h2 class="text-lg font-heading font-bold text-white mb-1">KSD Protector</h2>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">Offline-first mobile app for generating, analyzing, and storing passwords securely.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Flutter</span>
+                            <span class="tech-badge">Security</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="ksd-protector-app.html" class="btn-outline text-sm py-2 px-4">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                            <a href="https://github.com/kaali-k/KSD-Protector/releases/download/v1.0.0/KSD.Protector.apk"
+                               class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-green-600/15 border border-green-600/30 text-green-400 hover:bg-green-600/25 transition-all">
+                                <i class="fas fa-download text-xs"></i> APK
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Morse Code -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-accent-line"></div>
+                    <div class="h-44 overflow-hidden bg-gray-900 flex items-center justify-center">
+                        <img src="app3/icon.png" alt="Morse Code Translator icon" class="h-full object-contain p-4 hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <h2 class="text-lg font-heading font-bold text-white mb-1">Morse Code Translator</h2>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">Intuitive mobile app for bidirectional Morse code translation and comprehensive reference.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Flutter</span>
+                            <span class="tech-badge">Utility</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="ksd-morse-app.html" class="btn-outline text-sm py-2 px-4">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                            <a href="https://github.com/kaali-k/Z-Morse-Code/releases/download/v1.0.0/Z.Morse.Code.apk"
+                               class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-green-600/15 border border-green-600/30 text-green-400 hover:bg-green-600/25 transition-all">
+                                <i class="fas fa-download text-xs"></i> APK
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.ksdmorsecode" target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-green-600/15 border border-green-600/30 text-green-400 hover:bg-green-600/25 transition-all">
+                                <i class="fab fa-google-play text-xs"></i> Play Store
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- KSD Note App -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="card-accent-line"></div>
+                    <div class="h-44 overflow-hidden bg-gray-900 flex items-center justify-center">
+                        <img src="app4/icon.png" alt="KSD Note App icon" class="h-full object-contain p-4 hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <h2 class="text-lg font-heading font-bold text-white mb-1">K.S.D Note App</h2>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">Secure, modern note-taking app built with Flutter — privacy-focused with local storage.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Flutter</span>
+                            <span class="tech-badge">Notes</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="ksd-note-app.html" class="btn-outline text-sm py-2 px-4">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                            <a href="https://github.com/kaali-k/KSD-Note-App/releases/download/v1.0.0/KSD.Note.apk"
+                               class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-green-600/15 border border-green-600/30 text-green-400 hover:bg-green-600/25 transition-all">
+                                <i class="fas fa-download text-xs"></i> APK
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- KSD BIZ Manager -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-accent-line"></div>
+                    <div class="h-44 overflow-hidden bg-gray-900 flex items-center justify-center">
+                        <img src="App5/icon.png" alt="KSD BIZ Manager icon" class="h-full object-contain p-4 hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <h2 class="text-lg font-heading font-bold text-white mb-1">K.S.D BIZ Manager</h2>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">Comprehensive business management solution for small business owners.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Flutter</span>
+                            <span class="tech-badge">Business</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="ksd-biz-manager.html" class="btn-outline text-sm py-2 px-4">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                            <a href="https://github.com/kaali-k/K.S.D-BIZ-Manager/releases/download/v1.0.0/BIZ.Manager.apk"
+                               class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-green-600/15 border border-green-600/30 text-green-400 hover:bg-green-600/25 transition-all">
+                                <i class="fas fa-download text-xs"></i> APK
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Z Flow -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="350">
+                    <div class="card-accent-line"></div>
+                    <div class="h-44 overflow-hidden bg-gray-900 flex items-center justify-center">
+                        <img src="App7/icon.png" alt="Z Flow icon" class="h-full object-contain p-4 hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h2 class="text-lg font-heading font-bold text-white">Z Flow</h2>
+                            <span class="badge badge-purple" style="font-size:0.6rem">Zentix</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">Auto Skip Ad tool + AMOLED black screen power-saving overlay for Android.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Flutter</span>
+                            <span class="tech-badge">Productivity</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="z-flow.html" class="btn-outline text-sm py-2 px-4">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                            <a href="https://github.com/kaali-k/Z-Flow/releases/download/v1.0.0/Z.Flow.Latest.apk"
+                               class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-green-600/15 border border-green-600/30 text-green-400 hover:bg-green-600/25 transition-all">
+                                <i class="fas fa-download text-xs"></i> APK
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Z Pinger -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-accent-line"></div>
+                    <div class="h-44 overflow-hidden bg-gray-900 flex items-center justify-center">
+                        <img src="App6/icon.jpg" alt="Z Pinger icon" class="h-full object-contain p-4 hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h2 class="text-lg font-heading font-bold text-white">Z Pinger</h2>
+                            <span class="badge badge-purple" style="font-size:0.6rem">Zentix</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">Network utility to maintain stable internet connections. Designed for Hutch & unstable ISPs.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Flutter</span>
+                            <span class="tech-badge">Network</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="z-pinger.html" class="btn-outline text-sm py-2 px-4">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.zentix.zpinger" target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-green-600/15 border border-green-600/30 text-green-400 hover:bg-green-600/25 transition-all">
+                                <i class="fab fa-google-play text-xs"></i> Play Store
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Z Filling -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="450">
+                    <div class="card-accent-line"></div>
+                    <div class="h-44 overflow-hidden bg-gray-900 flex items-center justify-center">
+                        <img src="App8/icon.png" alt="Z Filling icon" class="h-full object-contain p-4 hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h2 class="text-lg font-heading font-bold text-white">Z Filling</h2>
+                            <span class="badge badge-purple" style="font-size:0.6rem">Zentix</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">Addictive minimalist puzzle arcade game. Fill grids, score points, earn sweet tiers.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Flutter</span>
+                            <span class="tech-badge">Game</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="z-filling.html" class="btn-outline text-sm py-2 px-4">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                            <a href="https://github.com/kaali-k/Z-Filling/releases/download/v1.0.0/Z.Filling.Latest.apk"
+                               class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-green-600/15 border border-green-600/30 text-green-400 hover:bg-green-600/25 transition-all">
+                                <i class="fas fa-download text-xs"></i> APK
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Software & Web Apps Tab (hidden by default) -->
+            <div id="tab-content-software" class="tab-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+
+                <!-- POS Desktop App -->
+                <article class="project-card glass-card" data-aos="fade-up">
+                    <div class="card-accent-line"></div>
+                    <div class="h-44 overflow-hidden">
+                        <img src="software1/cover.jpg" alt="POS Desktop App screenshot" class="h-full w-full object-cover hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <h2 class="text-lg font-heading font-bold text-white mb-1">POS Desktop App</h2>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">Comprehensive POS application for inventory and analytics. Built with Electron.js.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Electron.js</span>
+                            <span class="tech-badge">Desktop</span>
+                        </div>
+                        <a href="desktop-software1.html" class="btn-outline text-sm py-2 px-4">
+                            <i class="fas fa-info-circle"></i> View Details
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Web-based POS -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-accent-line"></div>
+                    <div class="h-44 overflow-hidden">
+                        <img src="software2/cover.jpg" alt="Web POS screenshot" class="h-full w-full object-cover hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <h2 class="text-lg font-heading font-bold text-white mb-1">Web-based POS</h2>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">Streamlined Sales, Billing, and Operational Insights for SMBs in local environments.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Web App</span>
+                            <span class="tech-badge">Local</span>
+                        </div>
+                        <a href="local-web-app-2.html" class="btn-outline text-sm py-2 px-4">
+                            <i class="fas fa-info-circle"></i> View Details
+                        </a>
+                    </div>
+                </article>
+
+                <!-- KSD Pasteboard -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-accent-line"></div>
+                    <div class="h-44 overflow-hidden bg-gray-900 flex items-center justify-center">
+                        <img src="software4/icon.png" alt="KSD Pasteboard icon" class="h-full object-contain p-4 hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <h2 class="text-lg font-heading font-bold text-white mb-1">K.S.D Pasteboard</h2>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">Advanced clipboard manager for desktop enhancing workflow with history and search.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Desktop</span>
+                            <span class="tech-badge">Utility</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="ksd-pasteboard.html" class="btn-outline text-sm py-2 px-4">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                             <a href="https://github.com/kaali-k/KSD-Pasteboard/releases/download/v1.0.0/K.S.D.Pasteboard.Setup.1.0.0.exe"
+                               class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-green-600/15 border border-green-600/30 text-green-400 hover:bg-green-600/25 transition-all">
+                                <i class="fas fa-download text-xs"></i> .exe
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Local Web App 1 -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-accent-line"></div>
+                    <div class="h-44 overflow-hidden">
+                        <img src="software3/cover.jpg" alt="Local Web App screenshot" class="h-full w-full object-cover hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <h2 class="text-lg font-heading font-bold text-white mb-1">Local Web App 1</h2>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">First local web application project — business management for a local client.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Web App</span>
+                            <span class="tech-badge">Local</span>
+                        </div>
+                        <a href="local-web-app-1.html" class="btn-outline text-sm py-2 px-4">
+                            <i class="fas fa-info-circle"></i> View Details
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Back Button -->
+            <div class="text-center mt-14">
+                <a href="../../projects.html" class="btn-outline">
+                    <i class="fas fa-arrow-left"></i> Back to Projects
+                </a>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation" aria-label="Mobile navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="../../index.html" class="mobile-nav-link" onclick="closeMobileNav()">Home</a>
+        <a href="../../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="closeMobileNav()">Zentix</a>
+        <a href="../../projects.html" class="mobile-nav-link" onclick="closeMobileNav()">Projects</a>
+        <a href="../../index.html#contact" class="mobile-nav-link" onclick="closeMobileNav()">Contact</a>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/components.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        loadHeader('../../');
+        loadFooter('../../');
+
+        function closeMobileNav() {
+            document.getElementById('mobile-nav').classList.remove('open');
+        }
+        document.getElementById('close-mobile-nav').addEventListener('click', closeMobileNav);
+
+        // Tab switching (no Alpine needed)
+        let activeTab = 'apps';
+        function switchTab(tab) {
+            activeTab = tab;
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // Show active
+            document.getElementById('tab-content-' + tab).classList.remove('hidden');
+            // Update button styles
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-gradient-to-r', 'from-primary', 'to-secondary', 'text-white', 'shadow-lg');
+                btn.classList.add('bg-white/5', 'text-gray-300');
+            });
+            const activeBtn = document.getElementById('tab-' + tab);
+            activeBtn.classList.remove('bg-white/5', 'text-gray-300');
+            activeBtn.classList.add('bg-gradient-to-r', 'from-primary', 'to-secondary', 'text-white', 'shadow-lg');
+        }
+        // Init first tab
+        document.addEventListener('DOMContentLoaded', () => switchTab('apps'));
+    </script>
+</body>
+</html>

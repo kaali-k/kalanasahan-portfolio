@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.S.D Pasteboard – Clipboard Manager Desktop App | Kalana Sahan</title>
+    <meta name="description" content="K.S.D Pasteboard – Electron.js desktop clipboard manager with history, global shortcuts, instant search, and data export for Windows.">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><script src="../../assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main id="main-content" class="py-16 pt-32"></main>
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="../../index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="../../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">Zentix</a>
+        <a href="../../projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/components.js"></script><script src="../../assets/js/main.js"></script><script src="../../assets/js/subpage.js"></script>
+    <script>
+        loadHeader('../../'); loadFooter('../../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAppDetail({
+                title: 'K.S.D Pasteboard',
+                subtitle: 'Advanced Clipboard Manager for Desktop (Windows)',
+                description: 'K.S.D Pasteboard is an Electron.js desktop application that automatically captures and stores your clipboard history with a beautiful dark UI, global keyboard shortcuts, powerful search, and JSON export — built to supercharge your daily workflow.',
+                icon: 'software4/icon.png', iconAlt: 'KSD Pasteboard icon', iconBg: 'bg-gray-900',
+                badges: [{ label: 'Desktop App', type: 'cyan' }, { label: 'Electron.js', type: 'purple' }, { label: 'Windows', type: 'green' }],
+                downloadUrl: 'https://github.com/kaali-k/KSD-Pasteboard/releases/download/v1.0.0/K.S.D.Pasteboard.Setup.1.0.0.exe',
+                downloadLabel: 'Download for Windows',
+                features: [
+                    { icon: 'fas fa-clipboard-list', title: 'Real-time Clipboard History', desc: 'Automatically captures every text copy with timestamps — never lose anything.' },
+                    { icon: 'fas fa-keyboard', title: 'Global Shortcut', desc: 'Customisable hotkey to instantly open/close Pasteboard from anywhere on screen.' },
+                    { icon: 'fas fa-search', title: 'Instant Search', desc: 'Find any clipboard entry instantly with a fast responsive search bar.' },
+                    { icon: 'fas fa-sliders-h', title: 'Custom Settings', desc: 'Set max history size, enable auto-start on boot, and configure UI preferences.' },
+                    { icon: 'fas fa-file-export', title: 'JSON Export', desc: 'Export your full clipboard history as a JSON file for backup and portability.' },
+                    { icon: 'fas fa-moon', title: 'Dark UI', desc: 'Clean minimalist dark interface with custom dialogs for a premium feel.' }
+                ],
+                screenshots: [
+                    { file: 'Dashboard.webp', alt: 'Pasteboard Dashboard' },
+                    { file: 'Setting.webp', alt: 'Settings Screen' }
+                ],
+                screenshotDir: 'software4/',
+                tech: ['Electron.js', 'Node.js', 'JavaScript', 'HTML/CSS', 'SQLite3', 'clipboard-event'],
+                backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
+            });
+        });
+    </script>
+</body>
+</html>

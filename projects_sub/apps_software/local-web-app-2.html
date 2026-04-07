@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web-Based POS System – PHP/MySQL Business Solution | Kalana Sahan</title>
+    <meta name="description" content="Web-based POS and business management system with PHP, MySQL and Tailwind CSS — billing, item management, sales reports and user roles for local deployment.">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><script src="../../assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main id="main-content" class="py-16 pt-32"></main>
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="../../index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="../../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">Zentix</a>
+        <a href="../../projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/components.js"></script><script src="../../assets/js/main.js"></script><script src="../../assets/js/subpage.js"></script>
+    <script>
+        loadHeader('../../'); loadFooter('../../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAppDetail({
+                title: 'Web-Based POS System',
+                subtitle: 'PHP/MySQL Business Management for Local Deployment',
+                description: 'A fully-featured locally-deployable web POS and business management solution. Built with a PHP + MySQL backend and Tailwind CSS frontend — handles billing, item management, sales reporting, user roles and receipt generation for small retail and service businesses.',
+                icon: 'software2/cover.jpg', iconAlt: 'Web POS icon', iconBg: 'bg-gray-900',
+                badges: [{ label: 'Web App', type: 'cyan' }, { label: 'PHP + MySQL', type: 'purple' }, { label: 'Local Deploy', type: 'pink' }],
+                features: [
+                    { icon: 'fas fa-user-lock', title: 'Role-Based Auth', desc: 'Owner and Worker login roles with scoped permissions and secure sessions.' },
+                    { icon: 'fas fa-file-invoice-dollar', title: 'Billing System', desc: 'Fast bill creation with add-ons, real-time totals, tax and thermal receipt printing.' },
+                    { icon: 'fas fa-boxes', title: 'Item Management', desc: 'Add, edit and delete products and add-ons with pricing and availability controls.' },
+                    { icon: 'fas fa-chart-line', title: 'Sales Reports', desc: 'Income/expense tracking with date-range filters and downloadable summaries.' },
+                    { icon: 'fas fa-search', title: 'Bill Search & Reprint', desc: 'Search any bill by ID, view full details, reprint or delete (owner only).' },
+                    { icon: 'fas fa-cog', title: 'Business Settings', desc: 'Configure currency, tax rate, business name, address and receipt footer.' }
+                ],
+                screenshots: [
+                    { file: 'login.webp', alt: 'Login Page' },
+                    { file: 'dashboard.webp', alt: 'Dashboard' },
+                    { file: 'billing.webp', alt: 'Billing Interface' },
+                    { file: 'manageitem.webp', alt: 'Manage Items' },
+                    { file: 'billdetails.webp', alt: 'Bill Details' },
+                    { file: 'salereport.webp', alt: 'Sales Reports' },
+                    { file: 'report.webp', alt: 'Income & Expense Report' },
+                    { file: 'manageusers.webp', alt: 'Manage Users' },
+                    { file: 'profile.webp', alt: 'User Profile' }
+                ],
+                screenshotDir: 'software2/',
+                tech: ['PHP', 'MySQL', 'HTML', 'CSS', 'Tailwind CSS', 'JavaScript', 'XAMPP/WAMP'],
+                backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
+            });
+        });
+    </script>
+</body>
+</html>

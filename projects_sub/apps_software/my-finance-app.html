@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyFinanceApp – Personal Finance Manager | Kalana Sahan</title>
+    <meta name="description" content="MyFinanceApp – Flutter mobile app for tracking income, expenses, budgets, reminders and reports. By Kalana Sahan Dillimuni.">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><script src="../../assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main id="main-content" class="py-16 pt-32"></main>
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="../../index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="../../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">Zentix</a>
+        <a href="../../projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/components.js"></script><script src="../../assets/js/main.js"></script><script src="../../assets/js/subpage.js"></script>
+    <script>
+        loadHeader('../../'); loadFooter('../../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAppDetail({
+                title: 'MyFinanceApp',
+                subtitle: 'Personal Finance & Expense Manager',
+                description: 'A comprehensive Flutter mobile app to manage personal finances. Track income and expenses by category, set monthly budgets, schedule reminders, and generate detailed reports — all stored securely offline on your device.',
+                icon: 'app1/my_app_icon.png', iconAlt: 'MyFinanceApp icon', iconBg: 'bg-gray-900',
+                badges: [{ label: 'Android', type: 'green' }, { label: 'Finance', type: 'cyan' }],
+                features: [
+                    { icon: 'fas fa-wallet', title: 'Income & Expense Tracking', desc: 'Log daily transactions with categories, notes and date filtering.' },
+                    { icon: 'fas fa-chart-pie', title: 'Budget Planning', desc: 'Set monthly budgets per category and monitor spending progress.' },
+                    { icon: 'fas fa-chart-bar', title: 'Visual Reports', desc: 'Charts and graphs showing spending patterns over custom date ranges.' },
+                    { icon: 'fas fa-bell', title: 'Reminders', desc: 'Schedule payment and bill reminders so nothing slips.' },
+                    { icon: 'fas fa-sign-in-alt', title: 'Secure Login', desc: 'PIN/password protected access keeps your financial data private.' },
+                    { icon: 'fas fa-cog', title: 'Settings & Customization', desc: 'Currency, theme and category customization to fit your workflow.' }
+                ],
+                screenshots: [
+                    { file: 'login.webp', alt: 'Login Screen' },
+                    { file: 'dashboard.webp', alt: 'Dashboard' },
+                    { file: 'income.webp', alt: 'Income Tracking' },
+                    { file: 'expense.webp', alt: 'Expense Tracking' },
+                    { file: 'report.webp', alt: 'Reports' },
+                    { file: 'reminders.webp', alt: 'Reminders' },
+                    { file: 'settingscreen1.webp', alt: 'Settings' },
+                    { file: 'settingscreen2.webp', alt: 'Settings 2' },
+                    { file: 'rejister.webp', alt: 'Register Screen' }
+                ],
+                screenshotDir: 'app1/',
+                downloadUrl: 'https://github.com/kaali-k/My-Finance-App/releases/download/v1.0.0/Finance.App.apk',
+                downloadLabel: 'Download APK',
+                tech: ['Flutter', 'Dart', 'SQLite', 'fl_chart', 'Provider', 'Local Notifications'],
+                backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
+            });
+        });
+    </script>
+</body>
+</html>

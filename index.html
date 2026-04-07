@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== PRIMARY SEO TAGS ===== -->
+    <title>Kalana Sahan | Web Developer, App Developer & Graphic Designer | Sri Lanka</title>
+    <meta name="description" content="Kalana Sahan Dillimuni – Full-stack web developer, mobile app developer, graphic designer & video editor based in Sri Lanka. Founder of Zentix. NVQ L3 Certified, pursuing NVQ L5.">
+    <meta name="keywords" content="Kalana Sahan, Kalana Sahan Dillimuni, web developer Sri Lanka, app developer Sri Lanka, graphic designer Sri Lanka, Zentix, kaali-k, portfolio 2026, mobile developer">
+    <meta name="author" content="Kalana Sahan Dillimuni">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kaali-k.github.io/portfolio-2026/">
+
+    <!-- ===== OPEN GRAPH (Facebook / Social Sharing) ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kaali-k.github.io/portfolio-2026/">
+    <meta property="og:title" content="Kalana Sahan | Developer & Designer Portfolio">
+    <meta property="og:description" content="Creative developer & designer based in Sri Lanka. Building web, mobile apps & digital experiences. Founder of Zentix.">
+    <meta property="og:image" content="https://kaali-k.github.io/portfolio-2026/Profile.jpg">
+    <meta property="og:site_name" content="Kalana Sahan Portfolio">
+    <meta property="og:locale" content="en_US">
+
+    <!-- ===== TWITTER CARD ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kalana Sahan | Developer & Designer Portfolio">
+    <meta name="twitter:description" content="Creative developer & designer based in Sri Lanka. Building web, mobile apps & digital experiences.">
+    <meta name="twitter:image" content="https://kaali-k.github.io/portfolio-2026/Profile.jpg">
+
+    <!-- ===== STRUCTURED DATA (JSON-LD) ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Kalana Sahan Dillimuni",
+      "url": "https://kaali-k.github.io/portfolio-2026/",
+      "image": "https://kaali-k.github.io/portfolio-2026/Profile.jpg",
+      "sameAs": [
+        "https://github.com/kaali-k",
+        "https://www.linkedin.com/in/kalanasahan",
+        "https://www.instagram.com/kalana._.sahan/",
+        "https://web.facebook.com/kalana.sahan.79",
+        "https://play.google.com/store/apps/dev?id=8379321856662439375"
+      ],
+      "jobTitle": "Web & App Developer, Graphic Designer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Zentix"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "LK"
+      },
+      "knowsAbout": ["Web Development", "Mobile App Development", "Graphic Design", "Video Editing", "Software Development"],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "ICT NVQ Level 3 Certified"
+      }
+    }
+    </script>
+
+    <!-- ===== FONTS ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- ===== TAILWIND CSS ===== -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+
+    <!-- ===== AOS Animation ===== -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+
+    <!-- ===== Font Awesome ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- ===== CUSTOM CSS ===== -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" style="width:0%"></div>
+
+    <!-- Background Effects -->
+    <div class="bg-noise" aria-hidden="true"></div>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div id="cursor-glow" class="hidden md:block" aria-hidden="true"></div>
+
+    <!-- Dragon Scroll Animation -->
+    <div id="dragon-container" aria-hidden="true">
+        <canvas id="dragon-trail-canvas"></canvas>
+        <svg id="dragon-svg" viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg" style="top:50px">
+            <!-- Dragon body animated SVG -->
+            <defs>
+                <linearGradient id="dragonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+                </linearGradient>
+                <filter id="dragonGlow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+            </defs>
+            <!-- Dragon head -->
+            <g filter="url(#dragonGlow)">
+                <!-- Snout -->
+                <ellipse cx="50" cy="30" rx="18" ry="12" fill="url(#dragonGrad)" opacity="0.9"/>
+                <!-- Eye left -->
+                <circle cx="42" cy="26" r="4" fill="#06b6d4"/>
+                <circle cx="42" cy="26" r="2" fill="white"/>
+                <circle cx="43" cy="25" r="1" fill="#050508"/>
+                <!-- Eye right -->
+                <circle cx="58" cy="26" r="4" fill="#06b6d4"/>
+                <circle cx="58" cy="26" r="2" fill="white"/>
+                <circle cx="59" cy="25" r="1" fill="#050508"/>
+                <!-- Horns -->
+                <path d="M40 18 L35 5 L43 15" fill="#a855f7" opacity="0.8"/>
+                <path d="M60 18 L65 5 L57 15" fill="#a855f7" opacity="0.8"/>
+                <!-- Nostrils -->
+                <circle cx="46" cy="33" r="2" fill="#06b6d4" opacity="0.7"/>
+                <circle cx="54" cy="33" r="2" fill="#06b6d4" opacity="0.7"/>
+                <!-- Teeth -->
+                <path d="M44 40 L47 47 L50 40 L53 47 L56 40" stroke="#7c3aed" stroke-width="1.5" fill="none" opacity="0.8"/>
+                <!-- Neck -->
+                <path d="M35 38 Q30 55 33 70 Q36 85 30 100" stroke="url(#dragonGrad)" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.85"/>
+                <!-- Wing left -->
+                <path d="M35 60 Q10 45 5 65 Q15 75 35 70" fill="#7c3aed" opacity="0.5"/>
+                <!-- Wing right -->
+                <path d="M65 55 Q85 40 90 60 Q80 72 65 65" fill="#7c3aed" opacity="0.5"/>
+                <!-- Body -->
+                <path d="M33 100 Q28 115 30 130 Q32 145 28 160" stroke="url(#dragonGrad)" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.8"/>
+                <!-- Tail -->
+                <path d="M28 160 Q20 165 15 175 Q10 180 5 178" stroke="url(#dragonGrad)" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.7"/>
+                <!-- Scales/spines -->
+                <path d="M32 75 L24 68" stroke="#a855f7" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+                <path d="M31 88 L22 82" stroke="#a855f7" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                <path d="M30 105 L21 99" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                <!-- Fire breath (particles) -->
+                <circle cx="50" cy="50" r="3" fill="#f59e0b" opacity="0" id="fire1"/>
+                <circle cx="55" cy="55" r="2" fill="#ef4444" opacity="0" id="fire2"/>
+            </g>
+        </svg>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header id="main-header" role="banner">
+        <!-- injected by components.js -->
+    </header>
+
+    <main id="main-content">
+        <!-- ============================================
+             HERO SECTION
+             ============================================ -->
+        <section id="home" aria-label="Hero introduction">
+            <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+            <div class="container mx-auto px-6 max-w-7xl relative z-10">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-16">
+                    <!-- Text Content -->
+                    <div class="lg:w-3/5" data-aos="fade-right" data-aos-duration="900">
+                        <div class="hero-label">
+                            <span>Portfolio 2026</span>
+                        </div>
+
+                        <h1 class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-heading font-extrabold text-white mb-4 leading-none tracking-tight">
+                            I'm <span class="text-gradient">Kalana<br>Sahan</span>
+                        </h1>
+
+                        <p class="text-xl md:text-2xl text-gray-300 mb-3 font-light h-8 typing-cursor" id="typing-effect"></p>
+
+                        <p class="text-base text-gray-400 mb-8 max-w-xl leading-relaxed">
+                            NVQ Level 3 Certified | Pursuing NVQ Level 5 | Bringing bold ideas to life through cutting-edge design, immersive video production, and full-stack software engineering.
+                        </p>
+
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="badge badge-purple"><i class="fas fa-code"></i> Dev</span>
+                            <span class="badge badge-cyan"><i class="fas fa-mobile-alt"></i> App</span>
+                            <span class="badge badge-green"><i class="fas fa-palette"></i> Design</span>
+                            <span class="badge badge-pink"><i class="fas fa-film"></i> Video</span>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="flex flex-wrap gap-4">
+                            <a href="projects.html" class="btn-primary" id="btn-view-projects">
+                                View My Work <i class="fas fa-arrow-right text-sm"></i>
+                            </a>
+                            <a href="#contact" class="btn-outline" id="btn-contact">
+                                Get In Touch
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Profile Image -->
+                    <div class="lg:w-2/5 flex justify-center" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
+                        <div class="relative">
+                            <!-- Orbit rings -->
+                            <div class="absolute inset-0 rounded-full border border-purple-800/30 scale-110 animate-spin" style="animation-duration: 20s;" aria-hidden="true"></div>
+                            <div class="absolute inset-0 rounded-full border border-cyan-800/20 scale-125 animate-spin" style="animation-duration: 30s; animation-direction: reverse;" aria-hidden="true"></div>
+
+                            <!-- Glow -->
+                            <div class="absolute -inset-4 bg-gradient-to-r from-primary to-secondary rounded-full blur-2xl opacity-20" aria-hidden="true"></div>
+
+                            <!-- Profile Image -->
+                            <div class="relative z-10 floating-img">
+                                <img src="Profile.jpg"
+                                     alt="Kalana Sahan Dillimuni – Web Developer and Designer from Sri Lanka"
+                                     class="w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full object-cover object-top border-2 border-white/10 shadow-2xl"
+                                     loading="eager">
+                            </div>
+
+                            <!-- Floating tech badges -->
+                            <div class="absolute -bottom-3 -right-3 z-20 glass-card rounded-xl px-3 py-2 text-sm font-semibold flex items-center gap-2 shadow-xl" data-aos="zoom-in" data-aos-delay="600">
+                                <i class="fas fa-code text-primary"></i>
+                                <span>Full Stack</span>
+                            </div>
+                            <div class="absolute -top-3 -left-3 z-20 glass-card rounded-xl px-3 py-2 text-sm font-semibold flex items-center gap-2 shadow-xl" data-aos="zoom-in" data-aos-delay="700">
+                                <i class="fas fa-mobile-alt text-secondary"></i>
+                                <span>App Dev</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Down -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-600" aria-label="Scroll down">
+                <span class="text-xs font-mono tracking-widest uppercase opacity-60">Scroll</span>
+                <div class="w-px h-12 bg-gradient-to-b from-gray-600 to-transparent"></div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             ABOUT SECTION
+             ============================================ -->
+        <section id="about" class="py-16" aria-label="About Kalana Sahan">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <span class="badge badge-purple mb-4">Who I Am</span>
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-2">About Me</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    <!-- Text -->
+                    <div class="lg:w-1/2 space-y-5 text-gray-300" data-aos="fade-right">
+                        <p class="text-lg leading-relaxed">
+                            I'm a <strong class="text-white">multi-passionate creative and developer</strong> based in Sri Lanka, driven by a deep fascination for how visuals and technology transform ideas into reality.
+                        </p>
+                        <p class="leading-relaxed">
+                            My foundation is strong – holding an <strong class="text-secondary">NVQ Level 3 in ICT</strong>, currently advancing towards NVQ Level 5. I'm perpetually expanding my expertise in web development, software engineering, and app development.
+                        </p>
+                        <p class="leading-relaxed">
+                            As the founder of <strong class="text-gradient-zentix">Zentix</strong>, I build powerful tools and apps that solve real problems. Whether crafting pixel-perfect UI, composing video narratives, or architecting backend systems – I thrive at the intersection of creativity and engineering.
+                        </p>
+                        <p class="font-semibold text-primary text-lg">Let's build something extraordinary together! ✨</p>
+
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-4 mt-8" data-aos="fade-up" data-aos-delay="200">
+                            <div class="text-center p-4 glass-card rounded-xl">
+                                <div class="text-3xl font-heading font-bold text-gradient">10+</div>
+                                <div class="text-xs text-gray-400 mt-1">Projects</div>
+                            </div>
+                            <div class="text-center p-4 glass-card rounded-xl">
+                                <div class="text-3xl font-heading font-bold text-gradient">5+</div>
+                                <div class="text-xs text-gray-400 mt-1">Apps</div>
+                            </div>
+                            <div class="text-center p-4 glass-card rounded-xl">
+                                <div class="text-3xl font-heading font-bold text-gradient">1</div>
+                                <div class="text-xs text-gray-400 mt-1">Brand</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Focus Areas -->
+                    <div class="lg:w-1/2" data-aos="fade-left" data-aos-delay="200">
+                        <div class="glass-card p-8 rounded-2xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl -mr-10 -mt-10" aria-hidden="true"></div>
+                            <h3 class="text-xl font-heading font-bold text-white mb-6 relative z-10 flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center"><i class="fas fa-bullseye text-primary text-sm"></i></span>
+                                Core Focus Areas
+                            </h3>
+                            <ul class="space-y-4 relative z-10">
+                                <li class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5 group">
+                                    <i class="fas fa-palette w-5 text-center text-primary group-hover:scale-125 transition-transform"></i>
+                                    <span>Graphic Design</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5 group">
+                                    <i class="fas fa-film w-5 text-center text-secondary group-hover:scale-125 transition-transform"></i>
+                                    <span>Video Editing &amp; Production</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5 group">
+                                    <i class="fas fa-laptop-code w-5 text-center text-primary group-hover:scale-125 transition-transform"></i>
+                                    <span>Web Development &amp; Design</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5 group">
+                                    <i class="fas fa-mobile-alt w-5 text-center text-secondary group-hover:scale-125 transition-transform"></i>
+                                    <span>Mobile App Development</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5 group">
+                                    <i class="fas fa-cogs w-5 text-center text-primary group-hover:scale-125 transition-transform"></i>
+                                    <span>Software Development</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5 group">
+                                    <i class="fas fa-desktop w-5 text-center text-secondary group-hover:scale-125 transition-transform"></i>
+                                    <span>PC Hardware &amp; Software Solutions</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SKILLS SECTION
+             ============================================ -->
+        <section id="skills" class="py-16 relative" aria-label="Technical skills">
+            <div class="container mx-auto px-6 max-w-6xl relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <span class="badge badge-cyan mb-4">What I Know</span>
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-2">Technical Skills</h2>
+                    <div class="section-divider"></div>
+                    <p class="text-gray-400 max-w-2xl mx-auto">A snapshot of the technologies and tools that power my work</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                    <!-- Skill: Full Stack Dev -->
+                    <div class="skill-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="skill-icon mx-auto"><i class="fas fa-code text-primary text-2xl"></i></div>
+                        <h3 class="font-heading font-bold text-white text-base mb-2">AI-Assisted Full Stack Dev</h3>
+                        <span class="badge badge-green text-xs">Expert</span>
+                    </div>
+                    <!-- Skill: Graphic Design -->
+                    <div class="skill-card glass-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="skill-icon mx-auto"><i class="fas fa-palette text-primary text-2xl"></i></div>
+                        <h3 class="font-heading font-bold text-white text-base mb-2">Graphic Design</h3>
+                        <span class="badge badge-purple text-xs">Proficient</span>
+                    </div>
+                    <!-- Skill: Video Editing -->
+                    <div class="skill-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="skill-icon mx-auto"><i class="fas fa-video text-secondary text-2xl"></i></div>
+                        <h3 class="font-heading font-bold text-white text-base mb-2">Video Production</h3>
+                        <span class="badge badge-purple text-xs">Proficient</span>
+                    </div>
+                    <!-- Skill: Mobile App -->
+                    <div class="skill-card glass-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="skill-icon mx-auto"><i class="fas fa-mobile-alt text-secondary text-2xl"></i></div>
+                        <h3 class="font-heading font-bold text-white text-base mb-2">Mobile App Dev</h3>
+                        <span class="badge badge-cyan text-xs">Intermediate</span>
+                    </div>
+                    <!-- Skill: Software Dev -->
+                    <div class="skill-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="skill-icon mx-auto"><i class="fas fa-cogs text-primary text-2xl"></i></div>
+                        <h3 class="font-heading font-bold text-white text-base mb-2">Software Dev</h3>
+                        <span class="badge badge-cyan text-xs">Intermediate</span>
+                    </div>
+                    <!-- Skill: Databases -->
+                    <div class="skill-card glass-card" data-aos="fade-up" data-aos-delay="350">
+                        <div class="skill-icon mx-auto"><i class="fas fa-database text-secondary text-2xl"></i></div>
+                        <h3 class="font-heading font-bold text-white text-base mb-2">Databases</h3>
+                        <span class="badge badge-pink text-xs">Basic</span>
+                    </div>
+                    <!-- Skill: Hardware -->
+                    <div class="skill-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="skill-icon mx-auto"><i class="fas fa-tools text-primary text-2xl"></i></div>
+                        <h3 class="font-heading font-bold text-white text-base mb-2">Hardware Solutions</h3>
+                        <span class="badge badge-purple text-xs">Proficient</span>
+                    </div>
+                    <!-- Skill: Content Creation -->
+                    <div class="skill-card glass-card" data-aos="fade-up" data-aos-delay="450">
+                        <div class="skill-icon mx-auto"><i class="fas fa-pen-fancy text-secondary text-2xl"></i></div>
+                        <h3 class="font-heading font-bold text-white text-base mb-2">Content Creation</h3>
+                        <span class="badge badge-purple text-xs">Proficient</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             ZENTIX SECTION
+             ============================================ -->
+        <section id="zentix" class="py-16 zentix-hero-bg" aria-label="Zentix - My Tech Brand">
+            <div class="container mx-auto px-6 max-w-6xl relative z-10">
+                <!-- Header -->
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <span class="badge badge-purple mb-4">My Brand</span>
+                    <div class="flex items-center justify-center gap-4 mb-4">
+                        <img src="assets/zentix-logo.png" alt="Zentix logo" class="h-14 w-auto zentix-logo-glow" loading="lazy">
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4">
+                        <span class="text-gradient-zentix">Zentix</span>
+                    </h2>
+                    <div class="section-divider"></div>
+                    <p class="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
+                        Zentix is my tech brand — where I build innovative Android apps, tools, and digital solutions that make everyday life smarter and more powerful.
+                    </p>
+                </div>
+
+                <!-- Connect Buttons -->
+                <div class="flex flex-wrap justify-center gap-4 mb-16" data-aos="fade-up" data-aos-delay="100">
+                    <a href="https://play.google.com/store/apps/dev?id=8379321856662439375"
+                       target="_blank" rel="noopener noreferrer"
+                       class="social-btn social-btn-google"
+                       aria-label="Zentix on Google Play Store">
+                        <i class="fab fa-google-play text-lg"></i>
+                        <span>Google Play Store</span>
+                    </a>
+                    <a href="https://web.facebook.com/profile.php?id=61584803565063"
+                       target="_blank" rel="noopener noreferrer"
+                       class="social-btn social-btn-fb"
+                       aria-label="Zentix on Facebook">
+                        <i class="fab fa-facebook text-lg"></i>
+                        <span>Zentix Official</span>
+                    </a>
+                    <a href="mailto:zentixteamofficial@gmail.com"
+                       class="social-btn social-btn-email"
+                       aria-label="Email Zentix">
+                        <i class="fas fa-envelope text-lg"></i>
+                        <span>zentixteamofficial@gmail.com</span>
+                    </a>
+                </div>
+
+                <!-- Stats Row -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16" data-aos="fade-up" data-aos-delay="150">
+                    <div class="zentix-stat">
+                        <div class="zentix-stat-number">8+</div>
+                        <div class="text-xs text-gray-400 mt-1 font-medium uppercase tracking-wide">App Releases</div>
+                    </div>
+                    <div class="zentix-stat">
+                        <div class="zentix-stat-number">5+</div>
+                        <div class="text-xs text-gray-400 mt-1 font-medium uppercase tracking-wide">Unique Apps</div>
+                    </div>
+                    <div class="zentix-stat">
+                        <div class="zentix-stat-number">🇱🇰</div>
+                        <div class="text-xs text-gray-400 mt-1 font-medium uppercase tracking-wide">Based in SL</div>
+                    </div>
+                    <div class="zentix-stat">
+                        <div class="zentix-stat-number">∞</div>
+                        <div class="text-xs text-gray-400 mt-1 font-medium uppercase tracking-wide">Innovations</div>
+                    </div>
+                </div>
+
+                <!-- CTA to Zentix Page -->
+                <div class="text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <a href="zentix.html" class="btn-primary text-lg px-10 py-4" id="btn-zentix-explore">
+                        <i class="fas fa-rocket"></i>
+                        Explore Zentix Universe
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CTA BANNER
+             ============================================ -->
+        <section class="py-20 relative" aria-label="Call to action">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20" aria-hidden="true"></div>
+            <div class="absolute inset-0 border-y border-primary/10" aria-hidden="true"></div>
+            <div class="container mx-auto px-6 text-center relative z-10" data-aos="zoom-in">
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-6">Ready to see what I can build?</h2>
+                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Explore my portfolio of projects — from web apps and mobile tools to creative designs.</p>
+                <a href="projects.html" class="btn-primary text-lg px-10 py-4" id="btn-explore-work">
+                    Explore My Projects <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CONTACT SECTION
+             ============================================ -->
+        <section id="contact" class="py-16 relative" aria-label="Contact Kalana Sahan">
+            <div class="container mx-auto px-6 max-w-4xl relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <span class="badge badge-purple mb-4">Let's Talk</span>
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-2">Get In Touch</h2>
+                    <div class="section-divider"></div>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Have a project in mind, a collaboration idea, or just want to say hello? I'd love to hear from you.</p>
+                </div>
+
+                <div class="glass-card p-8 md:p-12 rounded-2xl shadow-2xl max-w-2xl mx-auto relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary" aria-hidden="true"></div>
+
+                    <form action="https://formspree.io/f/mwpopvdp" method="POST" id="contact-form">
+                        <div class="mb-6">
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Your Name</label>
+                            <div class="relative">
+                                <i class="fas fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"></i>
+                                <input type="text" id="name" name="name" placeholder="Kalana Sahan" required class="form-input">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Your Email</label>
+                            <div class="relative">
+                                <i class="fas fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"></i>
+                                <input type="email" id="email" name="email" placeholder="you@example.com" required class="form-input">
+                            </div>
+                        </div>
+                        <div class="mb-8">
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Your Message</label>
+                            <div class="relative">
+                                <i class="fas fa-comment-alt absolute left-3 top-4 text-gray-500 pointer-events-none"></i>
+                                <textarea id="message" name="message" rows="5" placeholder="How can I help you?" required class="form-input resize-none" style="padding-top:1rem"></textarea>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" id="submit-btn" class="btn-primary w-full justify-center py-4">
+                                Send Message <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Social Links -->
+                <div class="text-center mt-14" data-aos="fade-up">
+                    <p class="text-gray-500 mb-5 text-sm uppercase tracking-widest">Or find me on</p>
+                    <div class="flex justify-center items-center gap-4 flex-wrap">
+                        <a href="https://web.facebook.com/kalana.sahan.79" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/kalana._.sahan/" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/kalanasahan" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/kaali-k" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@Part_of_kaali_life" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@part_of_kaali_life" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="main-footer" class="py-10" role="contentinfo">
+        <!-- injected by components.js -->
+    </footer>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation" aria-label="Mobile navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="index.html" class="mobile-nav-link" onclick="closeMobileNav()">Home</a>
+        <a href="index.html#about" class="mobile-nav-link" onclick="closeMobileNav()">About</a>
+        <a href="index.html#skills" class="mobile-nav-link" onclick="closeMobileNav()">Skills</a>
+        <a href="zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="closeMobileNav()">Zentix</a>
+        <a href="projects.html" class="mobile-nav-link" onclick="closeMobileNav()">Projects</a>
+        <a href="index.html#contact" class="mobile-nav-link" onclick="closeMobileNav()">Contact</a>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // ---- INIT ----
+        loadHeader('');
+        loadFooter('');
+
+        // ---- TYPING EFFECT ----
+        const roles = [
+            "Web Developer",
+            "App Developer",
+            "Graphic Designer",
+            "Video Editor",
+            "Founder of Zentix",
+            "Software Engineer",
+            "Content Creator",
+            "PC Solutions Expert"
+        ];
+        let roleIndex = 0, charIndex = 0, isErasing = false;
+        const typingEl = document.getElementById('typing-effect');
+
+        function typeEffect() {
+            if (!typingEl) return;
+            const currentRole = roles[roleIndex];
+            if (!isErasing) {
+                typingEl.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+                if (charIndex === currentRole.length) {
+                    isErasing = true;
+                    setTimeout(typeEffect, 2000);
+                } else {
+                    setTimeout(typeEffect, 80);
+                }
+            } else {
+                typingEl.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+                if (charIndex === 0) {
+                    isErasing = false;
+                    roleIndex = (roleIndex + 1) % roles.length;
+                    setTimeout(typeEffect, 300);
+                } else {
+                    setTimeout(typeEffect, 40);
+                }
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(typeEffect, 1000);
+        });
+
+        // ---- MOBILE NAV ----
+        function closeMobileNav() {
+            document.getElementById('mobile-nav').classList.remove('open');
+        }
+        document.getElementById('close-mobile-nav').addEventListener('click', closeMobileNav);
+    </script>
+</body>
+</html>

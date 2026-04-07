@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zentix – Android Apps & Digital Tools | Sri Lanka</title>
+    <meta name="description" content="Zentix is a Sri Lankan indie software brand by Kalana Sahan Dillimuni. We build Android apps, custom keyboards, utility tools, and mobile games.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Kalana Sahan Dillimuni">
+    <meta name="keywords" content="Zentix, Android apps, Z Pinger, Z Filling, Z Sri keyboard, Z Morse Code, Kalana Sahan, Sri Lanka">
+    <meta property="og:title" content="Zentix – Android Apps by Kalana Sahan">
+    <meta property="og:description" content="From productivity tools and custom keyboards to utility apps and specialized solutions — made in Sri Lanka.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Hero BG */
+        .zentix-hero-bg {
+            background:
+                radial-gradient(ellipse 90% 70% at 50% 0%, rgba(124,58,237,0.22) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 50% at 80% 60%, rgba(6,182,212,0.1) 0%, transparent 70%),
+                var(--bg-primary);
+        }
+        /* Big wordmark */
+        .zentix-wordmark {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(4rem, 14vw, 9rem);
+            background: linear-gradient(135deg, #a78bfa 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
+        /* Link card (Play Store / Facebook / Email) */
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.85rem 1.4rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 0.875rem;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+        .link-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(124,58,237,0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+        .link-card .card-icon {
+            width: 40px; height: 40px;
+            border-radius: 0.625rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+        .link-card .card-label { font-size: 0.7rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.06em; }
+        .link-card .card-name { font-weight: 700; font-size: 0.95rem; line-height: 1.1; }
+
+        /* Stat */
+        .stat-item { text-align: center; }
+        .stat-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        /* App row card */
+        .app-row {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 1.25rem;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .app-row::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--gradient-main);
+            transform: scaleX(0);
+            transition: transform 0.35s ease;
+            transform-origin: left;
+        }
+        .app-row:hover {
+            border-color: rgba(124,58,237,0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+        .app-row:hover::before { transform: scaleX(1); }
+
+        /* App icon */
+        .app-icon {
+            width: 72px; height: 72px;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+        }
+        .app-icon img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Status pill */
+        .status-live {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-size: 0.7rem; font-weight: 600;
+            color: #4ade80; letter-spacing: 0.05em; text-transform: uppercase;
+        }
+        .status-live::before {
+            content: ''; width: 6px; height: 6px;
+            border-radius: 50%; background: #4ade80;
+            animation: blink 1.4s infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .status-dev {
+            font-size: 0.7rem; font-weight: 600;
+            color: #fbbf24; letter-spacing: 0.05em; text-transform: uppercase;
+        }
+
+        /* Download / store btns */
+        .btn-dl {
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            padding: 0.5rem 1.1rem;
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            color: white; font-size: 0.82rem; font-weight: 600;
+            border-radius: 100px; text-decoration: none;
+            transition: transform 0.25s, box-shadow 0.25s;
+            box-shadow: 0 4px 14px rgba(22,163,74,0.3);
+        }
+        .btn-dl:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(22,163,74,0.4); }
+        .btn-ghost {
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            padding: 0.5rem 1.1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #d4d4d8; font-size: 0.82rem; font-weight: 500;
+            border-radius: 100px; text-decoration: none;
+            transition: all 0.25s;
+        }
+        .btn-ghost:hover { background: rgba(124,58,237,0.12); border-color: rgba(124,58,237,0.3); color: white; }
+    </style>
+</head>
+<body class="bg-darkbg text-lighttext">
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <canvas id="dragon-canvas" aria-hidden="true"></canvas>
+
+    <header id="main-header" role="banner"></header>
+
+    <main id="main-content">
+
+        <!-- ══════════════════════════════
+             HERO
+             ══════════════════════════════ -->
+        <section class="zentix-hero-bg pt-36 pb-20 relative overflow-hidden">
+            <!-- decorative ring -->
+            <div class="absolute -left-48 top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none opacity-30"
+                 style="border:1px solid rgba(124,58,237,0.2);"></div>
+            <div class="absolute -left-24 top-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full pointer-events-none opacity-20"
+                 style="border:1px solid rgba(6,182,212,0.3);"></div>
+
+            <div class="container mx-auto px-6 max-w-5xl text-center relative z-10">
+
+                <!-- Logo + wordmark -->
+                <div class="flex flex-col items-center gap-4 mb-6" data-aos="fade-down">
+                    <img src="assets/zentix-logo.png" alt="Zentix Logo"
+                         class="w-20 h-20 rounded-2xl shadow-2xl border border-white/10"
+                         onerror="this.style.display='none'">
+                    <div class="zentix-wordmark">ZENTIX</div>
+                </div>
+
+                <p class="text-gray-300 text-lg md:text-xl mb-2 font-light" data-aos="fade-up" data-aos-delay="80">
+                    Building the Future, One App at a Time
+                </p>
+                <p class="font-mono text-secondary text-sm tracking-widest mb-10" data-aos="fade-up" data-aos-delay="120">
+                    Android Apps · Digital Tools · Sri Lanka 🇱🇰
+                </p>
+
+                <!-- Link cards -->
+                <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="180">
+                    <a href="https://play.google.com/store/apps/dev?id=8379321856662439375"
+                       target="_blank" rel="noopener noreferrer" class="link-card">
+                        <div class="card-icon" style="background:#16a34a22">
+                            <i class="fab fa-google-play text-green-400"></i>
+                        </div>
+                        <div>
+                            <div class="card-label">Available on</div>
+                            <div class="card-name">Google Play Store</div>
+                        </div>
+                    </a>
+                    <a href="https://web.facebook.com/profile.php?id=61584803565063"
+                       target="_blank" rel="noopener noreferrer" class="link-card">
+                        <div class="card-icon" style="background:#1d4ed822">
+                            <i class="fab fa-facebook text-blue-400"></i>
+                        </div>
+                        <div>
+                            <div class="card-label">Follow us on</div>
+                            <div class="card-name">Facebook</div>
+                        </div>
+                    </a>
+                    <a href="mailto:zentixteamofficial@gmail.com" class="link-card">
+                        <div class="card-icon" style="background:#7c3aed22">
+                            <i class="fas fa-envelope text-primary-light"></i>
+                        </div>
+                        <div>
+                            <div class="card-label">Contact us at</div>
+                            <div class="card-name">Official Email</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════
+             STATS
+             ══════════════════════════════ -->
+        <section class="py-12 border-y border-white/5">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="0">
+                        <div class="stat-num">4</div>
+                        <div class="text-gray-400 text-sm mt-1 font-medium">Apps Released</div>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="80">
+                        <div class="text-center">
+                            <p class="text-secondary font-mono text-xs uppercase tracking-widest mb-1">Explore</p>
+                        </div>
+                        <div class="stat-num">5+</div>
+                        <div class="text-gray-400 text-sm mt-1 font-medium">Projects</div>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="160">
+                        <div class="stat-num">100%</div>
+                        <div class="text-gray-400 text-sm mt-1 font-medium">Passion Driven</div>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="240">
+                        <div class="stat-num">🚀</div>
+                        <div class="text-gray-400 text-sm mt-1 font-medium">More Coming</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════
+             APPS
+             ══════════════════════════════ -->
+        <section id="apps" class="py-16">
+            <div class="container mx-auto px-6 max-w-5xl">
+
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <span class="badge badge-purple mb-4">Our Apps</span>
+                    <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-2">Zentix Apps</h2>
+                    <div class="section-divider"></div>
+                    <p class="text-gray-400 max-w-xl mx-auto">
+                        From productivity tools and custom keyboards to utility apps and specialized solutions.
+                    </p>
+                </div>
+
+                <div class="space-y-5">
+
+                    <!-- Z Pinger -->
+                    <article class="app-row p-6 md:p-8" data-aos="fade-up" data-aos-delay="0">
+                        <div class="flex flex-col sm:flex-row gap-5 items-start">
+                            <div class="app-icon bg-black">
+                                <img src="projects_sub/apps_software/App6/icon.jpg" alt="Z Pinger icon"
+                                     onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-wifi\' style=\'color:#06b6d4; font-size:2rem\'></i>'">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex flex-wrap items-center gap-3 mb-1">
+                                    <h3 class="text-xl font-heading font-bold text-white">Z Pinger</h3>
+                                    <span class="status-live">Live</span>
+                                </div>
+                                <p class="text-secondary text-sm font-semibold mb-2">Network Connection Keeper · Android</p>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                    Keeps your internet connection alive by preventing the network from entering idle mode.
+                                    Made for Hutch users and unstable ISPs. Adjustable ping intervals, live log, custom URL profiles.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="tech-badge">Flutter</span>
+                                    <span class="tech-badge">Network Utility</span>
+                                    <span class="tech-badge">Android</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://play.google.com/store/apps/details?id=com.zentix.zpinger"
+                                       target="_blank" rel="noopener noreferrer" class="btn-ghost" title="Official Play Store App">
+                                        <i class="fab fa-google-play"></i> Play Store
+                                    </a>
+                                    <a href="https://github.com/kaali-k/Z-Pinger/releases/download/v1.0.0/Z.Pinger.apk"
+                                       class="btn-dl" title="Download Direct APK from GitHub">
+                                        <i class="fas fa-download"></i> Download APK
+                                    </a>
+                                    <a href="projects_sub/apps_software/z-pinger.html" class="btn-ghost">
+                                        <i class="fas fa-info-circle"></i> Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Z Morse Code -->
+                    <article class="app-row p-6 md:p-8" data-aos="fade-up" data-aos-delay="80">
+                        <div class="flex flex-col sm:flex-row gap-5 items-start">
+                            <div class="app-icon" style="background:linear-gradient(135deg,#1e1b4b,#0c0a1e);">
+                                <img src="projects_sub/apps_software/app3/icon.png" alt="Z Morse Code icon"
+                                     onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-satellite-dish\' style=\'color:#a78bfa; font-size:2rem\'></i>'">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex flex-wrap items-center gap-3 mb-1">
+                                    <h3 class="text-xl font-heading font-bold text-white">Z Morse Code</h3>
+                                    <span class="status-live">Live</span>
+                                </div>
+                                <p class="text-secondary text-sm font-semibold mb-2">Bidirectional Morse Code Translator · Android</p>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                    Encode and decode Morse code instantly in both directions.
+                                    Features audio playback, full international reference chart, and copy/share output.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="tech-badge">Flutter</span>
+                                    <span class="tech-badge">Utility</span>
+                                    <span class="tech-badge">Android</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://play.google.com/store/apps/details?id=com.ksdmorsecode"
+                                       target="_blank" rel="noopener noreferrer" class="btn-ghost" title="Official Play Store App">
+                                        <i class="fab fa-google-play"></i> Play Store
+                                    </a>
+                                    <a href="https://github.com/kaali-k/Z-Morse-Code/releases/download/v1.0.0/Z.Morse.Code.apk"
+                                       class="btn-dl" title="Download Official APK from GitHub">
+                                        <i class="fas fa-download"></i> Download APK
+                                    </a>
+                                    <a href="projects_sub/apps_software/ksd-morse-app.html" class="btn-ghost">
+                                        <i class="fas fa-info-circle"></i> Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Z Filling -->
+                    <article class="app-row p-6 md:p-8" data-aos="fade-up" data-aos-delay="160">
+                        <div class="flex flex-col sm:flex-row gap-5 items-start">
+                            <div class="app-icon" style="background:black;">
+                                <img src="projects_sub/apps_software/App8/icon.png" alt="Z Filling icon"
+                                     onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size:2.2rem;\'>🎮</span>'">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex flex-wrap items-center gap-3 mb-1">
+                                    <h3 class="text-xl font-heading font-bold text-white">Z Filling</h3>
+                                    <span class="status-live">Live</span>
+                                </div>
+                                <p class="text-secondary text-sm font-semibold mb-2">Puzzle Arcade Game · Android</p>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                    Fill the grid, score points, earn sweet tiers. An addictive puzzle game with
+                                    simple mechanics and deep strategy — built for quick sessions or long runs.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="tech-badge">Flutter</span>
+                                    <span class="tech-badge">Mobile Game</span>
+                                    <span class="tech-badge">Android</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://play.google.com/store/apps/dev?id=8379321856662439375"
+                                       target="_blank" rel="noopener noreferrer" class="btn-ghost">
+                                        <i class="fab fa-google-play"></i> Play Store
+                                    </a>
+                                    <a href="https://github.com/kaali-k/Z-Filling/releases/download/v1.0.0/Z.Filling.Latest.apk"
+                                       class="btn-dl" title="Download Official APK from GitHub">
+                                        <i class="fas fa-download"></i> Download APK
+                                    </a>
+                                    <a href="projects_sub/apps_software/z-filling.html" class="btn-ghost">
+                                        <i class="fas fa-info-circle"></i> Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Z Sri -->
+                    <article class="app-row p-6 md:p-8" data-aos="fade-up" data-aos-delay="240">
+                        <div class="flex flex-col sm:flex-row gap-5 items-start">
+                            <div class="app-icon" style="background:linear-gradient(135deg,#1a0a1a,#0f0518);">
+                                <span style="font-size:2.2rem;">⌨️</span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex flex-wrap items-center gap-3 mb-1">
+                                    <h3 class="text-xl font-heading font-bold text-white">Z Sri</h3>
+                                    <span class="status-dev">In Development</span>
+                                </div>
+                                <p class="text-secondary text-sm font-semibold mb-2">Singlish Smart Keyboard · Android</p>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                    A custom Android keyboard built for Sri Lankans — type Sinhala using Singlish
+                                    (romanized phonetic input). Smart auto-capitalization, sentence-boundary detection,
+                                    and a clean modern layout designed for everyday use.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="tech-badge">Android</span>
+                                    <span class="tech-badge">Custom IME</span>
+                                    <span class="tech-badge">Sinhala / Singlish</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-500 text-xs">
+                                        <i class="fas fa-code text-primary/60"></i> Coming Soon
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════
+             BACK TO PORTFOLIO
+             ══════════════════════════════ -->
+        <section class="py-20" data-aos="fade-up">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <div class="relative rounded-2xl overflow-hidden text-center p-10 md:p-14"
+                     style="background: linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(6,182,212,0.07) 50%, rgba(124,58,237,0.12) 100%); border: 1px solid rgba(124,58,237,0.18);">
+                    <!-- glow -->
+                    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(124,58,237,0.1) 0%, transparent 70%);"></div>
+                    <div class="relative z-10">
+                        <p class="font-mono text-secondary text-xs uppercase tracking-widest mb-3">Made by</p>
+                        <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-3">
+                            Kalana Sahan Dillimuni
+                        </h2>
+                        <p class="text-gray-400 mb-8 max-w-md mx-auto">
+                            Zentix is one part of what I do. Explore the full portfolio — projects, skills, and more.
+                        </p>
+                        <a href="index.html"
+                           class="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-white text-base transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                           style="background: linear-gradient(135deg, #7c3aed, #06b6d4); box-shadow: 0 8px 30px rgba(124,58,237,0.35);">
+                            <i class="fas fa-home"></i>
+                            View Full Portfolio
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════
+             CONNECT
+             ══════════════════════════════ -->
+        <section id="connect" class="py-16 border-t border-white/5" data-aos="fade-up">
+            <div class="container mx-auto px-6 max-w-3xl text-center">
+                <span class="badge badge-cyan mb-4">Get in Touch</span>
+                <h2 class="text-2xl md:text-4xl font-heading font-bold text-white mb-3">Connect with Zentix</h2>
+                <div class="section-divider"></div>
+                <p class="text-gray-400 mb-10 max-w-xl mx-auto">
+                    Have questions, feedback, or want to follow our progress? Reach us on any of these channels.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://play.google.com/store/apps/dev?id=8379321856662439375"
+                       target="_blank" rel="noopener noreferrer" class="social-btn social-btn-google">
+                        <i class="fab fa-google-play"></i> Google Play
+                    </a>
+                    <a href="https://web.facebook.com/profile.php?id=61584803565063"
+                       target="_blank" rel="noopener noreferrer" class="social-btn social-btn-facebook">
+                        <i class="fab fa-facebook"></i> Facebook Page
+                    </a>
+                    <a href="mailto:zentixteamofficial@gmail.com" class="social-btn">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">✦ Zentix</a>
+        <a href="projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+        <a href="index.html#contact" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Contact</a>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        loadHeader('./');
+        loadFooter('./');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => {
+            document.getElementById('mobile-nav').classList.remove('open');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery - Kalana Sahan Dillimuni</title>
+    <meta name="robots" content="index, follow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../assets/js/tailwind-config.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            /* Background and text color are handled by Tailwind classes on body */
+            line-height: 1.6;
+        }
+
+         /* Custom gradient text (if needed elsewhere, keeping for consistency) */
+ .text-gradient {
+ background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ background-clip: text;
+ text-fill-color: transparent;
+}
+        .section-divider {
+ height: 2px;
+background: linear-gradient(90deg, #ff416c, #ff4b2b);
+ width: 80px;
+ margin: 1rem auto 2rem auto; /* Centered divider */
+}
+
+         /* Style for the modal overlay */
+        .modal-overlay {
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             z-index: 100; /* Higher z-index to appear on top */
+             backdrop-filter: blur(5px); /* Optional blur effect */
+             -webkit-backdrop-filter: blur(5px); /* Safari support */
+        }
+
+         /* Style for the modal content */
+        .modal-content {
+             position: relative; /* For positioning close button */
+             background-color: #1a1a1a; /* Dark background */
+             padding: 1.5rem; /* p-6 in Tailwind */
+             border-radius: 0.5rem; /* rounded-lg in Tailwind */
+             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+             max-width: 90%; /* Limit max width */
+             max-height: 90%; /* Limit max height */
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             overflow: hidden; /* Hide parts of the image that might exceed */
+        }
+
+         /* Style for the modal image */
+        .modal-image {
+             display: block; /* Remove extra space below image */
+             max-width: 100%; /* Ensure image fits within modal */
+             max-height: 70vh; /* Limit image height to avoid overflow, adjust as needed */
+             object-fit: contain; /* Ensure entire image is visible, maintaining aspect ratio */
+             margin-bottom: 1rem; /* Space below image */
+        }
+
+         /* Style for the close button */
+        .close-button {
+             position: absolute;
+             top: 10px;
+             right: 10px;
+             background: none;
+             border: none;
+             font-size: 1.8rem; /* Larger size */
+             color: #e0e0e0; /* Light text color */
+             cursor: pointer;
+             z-index: 110; /* Higher z-index than modal content */
+             transition: color 0.3s ease;
+        }
+        .close-button:hover {
+             color: var(--secondary); /* Highlight on hover */
+        }
+
+        /* Style for navigation buttons */
+        .nav-button {
+             position: absolute;
+             top: 50%; /* Center vertically */
+             transform: translateY(-50%); /* Adjust for button height */
+             background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+             color: white;
+             border: none;
+             padding: 1rem;
+             cursor: pointer;
+             font-size: 1.5rem;
+             z-index: 105; /* Below close button, above image */
+             transition: background-color 0.3s ease;
+             border-radius: 0.25rem; /* Slightly rounded */
+        }
+        .nav-button:hover {
+             background-color: rgba(0, 0, 0, 0.8); /* Darker on hover */
+        }
+        #prevButton {
+             left: 10px;
+        }
+        #nextButton {
+             right: 10px;
+        }
+         /* Hide navigation buttons if not applicable (e.g., only one image) - handled by JS */
+         .nav-button.hidden {
+             display: none;
+         }
+
+
+    </style>
+</head>
+<body class="bg-darkbg text-lighttext">
+
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header><script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+             duration: 800, // Shorter duration for faster feel
+ once: false, // Allow animation on scroll up/down
+ offset: 50, // Trigger animations slightly sooner
+        });
+
+        // Dynamic Copyright Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Note: Typing effect script from index.html is not needed here.
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Image Data ---
+            // Add your image file paths and captions here.
+            // Assume images are in the 'assets/images/gallery/' folder relative to this HTML file.
+            const images = [
+                { src: 'assets/images/gallery/image1.jpg', caption: 'Image 1 Caption' },
+                { src: 'assets/images/gallery/image2.jpg', caption: 'Image 2 Caption' },
+                { src: 'assets/images/gallery/image3.jpg', caption: 'Image 3 Caption' },
+                { src: 'assets/images/gallery/image4.jpg', caption: 'Image 4 Caption' },
+                { src: 'assets/images/gallery/image5.jpg', caption: 'Image 5 Caption' },
+                 // Add more image objects here
+                 // Example: { src: 'assets/images/gallery/your_photo.png', caption: 'A photo from my project' },
+                 // Example: { src: 'assets/images/gallery/another_image.jpg', caption: 'Beautiful scenery' },
+            ];
+
+            // --- DOM Elements ---
+            const imageGrid = document.getElementById('imageGrid');
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const imageCaption = document.getElementById('imageCaption');
+            const closeButton = document.getElementById('closeButton');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+
+            let currentImageIndex = 0; // To keep track of the currently viewed image index
+
+
+            // --- Functions ---
+
+            // Render the image grid
+            function renderGallery() {
+                 imageGrid.innerHTML = ''; // Clear loading placeholder
+
+                 if (images.length === 0) {
+                     imageGrid.innerHTML = '<p class="text-center text-gray-400 col-span-full">No images to display.</p>';
+                     return;
+                 }
+
+                images.forEach((image, index) => {
+                    const galleryItem = document.createElement('div');
+                    // Tailwind classes for grid item / thumbnail
+                    galleryItem.className = 'relative group cursor-pointer overflow-hidden rounded-lg shadow-lg bg-cardbg'
+                                             + ' transform transition duration-300 hover:scale-105'; // Add hover effect
+
+                    const img = document.createElement('img');
+                    img.src = image.src;
+                    img.alt = image.caption || `Gallery Image ${index + 1}`; // Use caption as alt text
+                     // Tailwind classes for thumbnail image
+                    img.className = 'w-full h-48 object-cover rounded-lg transition duration-300 group-hover:opacity-80'; // Ensure cover and hover effect
+
+                    // Optional: Overlay for hover effect or icon
+                    const overlay = document.createElement('div');
+                     overlay.className = 'absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300';
+                    overlay.innerHTML = '<i class="fas fa-expand text-white text-2xl"></i>'; // Expand icon
+
+                    galleryItem.appendChild(img);
+                    galleryItem.appendChild(overlay);
+
+
+                    // Add click listener to open modal
+                    galleryItem.addEventListener('click', () => openModal(index));
+
+                    // Add AOS animation to each gallery item
+                    galleryItem.setAttribute('data-aos', 'fade-up');
+                     galleryItem.setAttribute('data-aos-delay', index * 50); // Stagger animation
+
+                    imageGrid.appendChild(galleryItem);
+                });
+            }
+
+            // Open the modal
+            function openModal(index) {
+                 if (index < 0 || index >= images.length) return; // Validate index
+
+                currentImageIndex = index; // Set current index
+                modalImage.src = images[currentImageIndex].src; // Set modal image source
+                modalImage.alt = images[currentImageIndex].caption || `Gallery Image ${currentImageIndex + 1}`; // Set modal image alt text
+                imageCaption.textContent = images[currentImageIndex].caption || ''; // Set caption
+
+                // Show the modal overlay
+                imageModal.classList.remove('hidden');
+
+                 // Show/hide navigation buttons if only one image
+                 if (images.length <= 1) {
+                     prevButton.classList.add('hidden');
+                     nextButton.classList.add('hidden');
+                 } else {
+                      prevButton.classList.remove('hidden');
+                      nextButton.classList.remove('hidden');
+                 }
+
+
+                 // Optional: Prevent body scrolling when modal is open
+                 document.body.style.overflow = 'hidden';
+
+            }
+
+            // Close the modal
+             function closeModal(event) {
+                 // Close only if clicked on the overlay or the close button, not the image itself
+                 if (event.target === imageModal || event.target === closeButton || closeButton.contains(event.target)) {
+                    imageModal.classList.add('hidden');
+                     // Restore body scrolling
+                    document.body.style.overflow = '';
+                 }
+             }
+
+            // Navigate to the previous image
+            function showPrevImage() {
+                currentImageIndex--;
+                if (currentImageIndex < 0) {
+                    currentImageIndex = images.length - 1; // Wrap around to the last image
+                }
+                updateModalImage(); // Update the modal content
+            }
+
+            // Navigate to the next image
+            function showNextImage() {
+                currentImageIndex++;
+                if (currentImageIndex >= images.length) {
+                    currentImageIndex = 0; // Wrap around to the first image
+                }
+                updateModalImage(); // Update the modal content
+            }
+
+            // Update modal image and caption based on current index
+            function updateModalImage() {
+                 if (images.length === 0) return; // Should not happen if modal is open, but safety check
+                modalImage.src = images[currentImageIndex].src;
+                modalImage.alt = images[currentImageIndex].caption || `Gallery Image ${currentImageIndex + 1}`;
+                imageCaption.textContent = images[currentImageIndex].caption || '';
+            }
+
+
+            // --- Event Listeners for Modal Navigation ---
+            prevButton.addEventListener('click', (event) => {
+                 event.stopPropagation(); // Prevent modal from closing when clicking button
+                 showPrevImage();
+            });
+            nextButton.addEventListener('click', (event) => {
+                 event.stopPropagation(); // Prevent modal from closing when clicking button
+                 showNextImage();
+            });
+            closeButton.addEventListener('click', (event) => {
+                 event.stopPropagation(); // Prevent modal from closing
+                 closeModal(event); // Call closeModal function
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !imageModal.classList.contains('hidden')) {
+                     closeModal(event); // Call closeModal function
+                }
+                 // Navigate with arrow keys when modal is open
+                 if (!imageModal.classList.contains('hidden')) {
+                      if (event.key === 'ArrowLeft') {
+                           showPrevImage();
+                      } else if (event.key === 'ArrowRight') {
+                           showNextImage();
+                      }
+                 }
+            });
+
+
+            // --- Initialization ---
+            renderGallery(); // Load and display the image grid when the page loads
+        });
+    </script>
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="../index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">Zentix</a>
+        <a href="../projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+    </div>
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        loadHeader('../');
+        loadFooter('../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+    </script>
+</body>
+</html>

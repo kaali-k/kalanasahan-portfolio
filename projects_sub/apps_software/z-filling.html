@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z Filling – Minimalist Puzzle Game | Zentix Games</title>
+    <meta name="description" content="Z Filling is an addictive minimalist puzzle arcade game by Zentix Games. Challenge your brain, fill grids, and unlock sweet tiers.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+
+    <main id="main-content" class="py-16 pt-32"></main>
+
+    <footer id="main-footer" role="contentinfo"></footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/components.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/subpage.js"></script>
+    <script>
+        loadHeader('../../'); loadFooter('../../');
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAppDetail({
+                title: 'Z Filling',
+                subtitle: 'Minimalist Puzzle Arcade Game',
+                description: 'Challenge your spatial reasoning with Z Filling. An addictive arcade experience where you fill grids to earn sweet rewards. Simple to learn, hard to master, and designed for pure, focused gameplay.',
+                icon: 'App8/icon.png', iconAlt: 'Z Filling Icon', iconBg: 'bg-black',
+                isZentix: true,
+                playStoreUrl: 'https://play.google.com/store/apps/dev?id=8379321856662439375',
+                downloadUrl: 'https://github.com/kaali-k/Z-Filling/releases/download/v1.0.0/Z.Filling.Latest.apk',
+                downloadLabel: 'Download APK',
+                badges: [{ label: 'Android', type: 'green' }, { label: 'Zentix Games', type: 'purple' }],
+                features: [
+                    { icon: 'fas fa-brain', title: 'Brain Training', desc: 'Enhance your spatial awareness and logic with increasingly complex grids.' },
+                    { icon: 'fas fa-trophy', title: 'Sweet Tiers', desc: 'Unlock progress levels and climb up the "Sweet Tier" rankings.' },
+                    { icon: 'fas fa-gamepad', title: 'Smooth Mechanics', desc: 'Optimized touch controls for a seamless and responsive gaming experience.' },
+                    { icon: 'fas fa-palette', title: 'Minimalist Art', desc: 'Clean, distraction-free visual design that focuses entirely on the gameplay.' },
+                    { icon: 'fas fa-mobile-alt', title: 'Quick Sessions', desc: 'Designed for short bursts of play or long strategic sessions anywhere.' }
+                ],
+                screenshots: [
+                    { file: 'Sweet Merge Drop Game! (Main Menu).png', alt: 'Z Filling Main Menu' },
+                    { file: 'Sweet Merge Adventure! (Gameplay).png', alt: 'Z Filling Gameplay' },
+                    { file: 'Unlock Sweet Tiers! (Sweet Collection).png', alt: 'Unlock Sweet Tiers' },
+                    { file: 'Multiple Game Modes! (Mode Selection).png', alt: 'Game Modes Selection' },
+                    { file: 'Beat Your Best Score! (Leaderboard).png', alt: 'Leaderboard & Highscores' },
+                    { file: 'Customize Your Game! (Settings).png', alt: 'Settings and Customization' }
+                ],
+                screenshotDir: 'App8/',
+                tech: ['Flutter', 'Flame Logic', 'Dart', 'Custom Painters', 'Material Design'],
+                backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
+            });
+        });
+    </script>
+</body>
+</html>

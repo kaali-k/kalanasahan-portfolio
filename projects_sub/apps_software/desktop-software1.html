@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Desktop App – Point of Sale System | Kalana Sahan</title>
+    <meta name="description" content="Desktop POS application for small retail businesses — billing, inventory management, product catalog and sales dashboard. By Kalana Sahan Dillimuni.">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><script src="../../assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main id="main-content" class="py-16 pt-32"></main>
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="../../index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="../../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">Zentix</a>
+        <a href="../../projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/components.js"></script><script src="../../assets/js/main.js"></script><script src="../../assets/js/subpage.js"></script>
+    <script>
+        loadHeader('../../'); loadFooter('../../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAppDetail({
+                title: 'POS Desktop App',
+                subtitle: 'Point of Sale & Inventory Management',
+                description: 'A full-featured desktop Point of Sale application for small retail businesses. Manage your product catalogue, process sales orders, track inventory and monitor performance from a clean central dashboard.',
+                icon: 'software1/cover.jpg', iconAlt: 'POS Desktop App', iconBg: 'bg-gray-900',
+                badges: [{ label: 'Desktop App', type: 'cyan' }, { label: 'Python', type: 'purple' }],
+                features: [
+                    { icon: 'fas fa-tachometer-alt', title: 'Sales Dashboard', desc: 'Overview of daily sales, revenue, and product performance at a glance.' },
+                    { icon: 'fas fa-cash-register', title: 'POS Interface', desc: 'Fast and intuitive billing screen for processing customer purchases.' },
+                    { icon: 'fas fa-boxes', title: 'Product Management', desc: 'Add, edit and categorise products with pricing and stock levels.' },
+                    { icon: 'fas fa-clipboard-list', title: 'Order Tracking', desc: 'View and manage all orders with status tracking and history.' },
+                    { icon: 'fas fa-cog', title: 'Settings', desc: 'Configure store info, tax rates, currency and print receipt options.' }
+                ],
+                screenshots: [
+                    { file: 'dashboard.webp', alt: 'Dashboard' },
+                    { file: 'pos.webp', alt: 'POS Screen' },
+                    { file: 'order.webp', alt: 'Order Management' },
+                    { file: 'product.webp', alt: 'Product Catalogue' },
+                    { file: 'setting.webp', alt: 'Settings' }
+                ],
+                screenshotDir: 'software1/',
+                tech: ['Python', 'Tkinter', 'SQLite', 'ReportLab', 'Pillow'],
+                backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
+            });
+        });
+    </script>
+</body>
+</html>

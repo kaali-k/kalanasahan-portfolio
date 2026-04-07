@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Solver - Kalana Sahan Dillimuni</title>
+    <meta name="robots" content="index, follow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../assets/js/tailwind-config.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            /* Background and text color are handled by Tailwind classes on body */
+            line-height: 1.6;
+        }
+
+         /* Custom gradient text (if needed elsewhere, keeping for consistency) */
+.text-gradient {
+ background: linear-gradient(90deg, #ff416c, #ff4b2b); /* Example gradient */
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ background-clip: text;
+ text-fill-color: transparent;
+ }
+        .section-divider {
+ background: linear-gradient(90deg, #ff416c, #ff4b2b);
+ width: 80px;
+margin: 1rem auto 2rem auto; /* Centered divider */
+ }
+
+        /* Optional: Custom styles if needed */
+        *, *::before, *::after {
+             box-sizing: border-box;
+        }
+
+         /* Hide number input arrows */
+         input[type=number]::-webkit-inner-spin-button,
+         input[type=number]::-webkit-outer-spin-button {
+             -webkit-appearance: none;
+             margin: 0;
+         }
+         input[type=number] {
+             -moz-appearance: textfield;
+         }
+
+         /* Specific grid for the multiplication table */
+         #multiplicationTable {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+             gap: 10px;
+         }
+         #multiplicationTable div {
+              background-color: rgba(255, 75, 43, 0.1); /* Light background */
+              border: 1px solid rgba(255, 75, 43, 0.4); /* Border */
+              padding: 8px;
+              border-radius: 4px;
+              font-weight: normal; /* Less bold than result */
+              color: var(--lighttext); /* Use light text */
+              text-align: center;
+              word-break: break-all; /* Prevent overflow */
+         }
+
+
+    </style>
+</head>
+<body class="bg-darkbg text-lighttext">
+
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main class="py-16 pt-28 flex justify-center items-center min-h-screen"> <section id="math-solver-project" class="container mx-auto px-6 max-w-6xl flex justify-center items-center">
+            <div class="w-full max-w-xl" data-aos="zoom-in" data-aos-delay="200"> <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-2" data-aos="fade-up">Math Solver</h2> <div class="section-divider" data-aos="fade-up" data-aos-delay="100"></div>
+                <p class="text-center text-gray-400 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="150">Solve equations and generate multiplication tables.</p>
+
+
+                <div class="math-solver-container bg-cardbg rounded-lg shadow-xl border border-primary/20 p-6">
+
+                    <div class="section mb-8 pb-6 border-b border-primary/50">
+                        <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-equals mr-2 text-secondary"></i> Equation Solver</h3>
+                        <div class="input-group flex gap-4">
+                            <input id="equation" placeholder="Enter equation (e.g., 2+2*3 + sin(pi/2))"
+                                   class="flex-grow px-4 py-2 bg-gray-700 text-lighttext border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder-gray-500">
+                            <button id="solveBtn" class="btn bg-primary text-white font-semibold rounded-md hover:bg-secondary transition duration-300 px-6 py-2 flex items-center justify-center">
+                                <i class="fas fa-calculator mr-2"></i> Calculate
+                            </button>
+                        </div>
+                        <div id="equationResult" class="result-container mt-4 p-4 bg-gray-800 rounded-md font-bold text-center border-l-4 border-primary hidden"></div> </div>
+
+                    <div class="section mb-0 pb-0"> <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-table mr-2 text-secondary"></i> Multiplication Table</h3>
+                        <div class="input-group flex gap-4 items-end"> <div class="flex-grow">
+                                <label for="tableNumber" class="block mb-2 text-lighttext font-medium">Number:</label>
+                                <input id="tableNumber" type="number" placeholder="Enter number"
+                                       class="w-full px-4 py-2 bg-gray-700 text-lighttext border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder-gray-500">
+                            </div>
+                             <div class="flex-grow">
+                                <label for="tableLimit" class="block mb-2 text-lighttext font-medium">Limit (e.g., 10):</label>
+                                <input id="tableLimit" type="number" placeholder="Enter limit (default 10)" value="10"
+                                       class="w-full px-4 py-2 bg-gray-700 text-lighttext border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder-gray-500">
+                            </div>
+
+                            <button id="generateBtn" class="btn bg-primary text-white font-semibold rounded-md hover:bg-secondary transition duration-300 px-6 py-2 flex items-center justify-center">
+                                <i class="fas fa-list-ol mr-2"></i> Generate
+                            </button>
+                        </div>
+                        <div id="multiplicationTable" class="mt-4 p-4 bg-gray-800 rounded-md border-l-4 border-primary"></div> <div id="tableError" class="error text-primary text-center mt-4 text-sm font-medium hidden"></div> </div>
+
+                </div>
+            </div>
+         </section>
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+             duration: 800, // Shorter duration for faster feel
+ once: false, // Allow animation on scroll up/down
+ offset: 50, // Trigger animations slightly sooner
+        });
+
+        // Dynamic Copyright Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Note: Typing effect script from index.html is not needed here.
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const equationInput = document.getElementById('equation');
+            const solveBtn = document.getElementById('solveBtn');
+            const equationResultDiv = document.getElementById('equationResult'); // Renamed result div for clarity
+
+            const tableNumberInput = document.getElementById('tableNumber');
+            const tableLimitInput = document.getElementById('tableLimit'); // New input
+            const generateBtn = document.getElementById('generateBtn');
+            const multiplicationTableDiv = document.getElementById('multiplicationTable');
+            const tableErrorDiv = document.getElementById('tableError'); // Error div for table
+
+
+            // Event Listeners
+            solveBtn.addEventListener('click', solveEquation);
+            generateBtn.addEventListener('click', generateTable);
+
+
+            function solveEquation() {
+                let equation = equationInput.value.trim();
+                equationResultDiv.innerHTML = ''; // Clear previous results
+                 equationResultDiv.classList.add('hidden'); // Hide result box initially
+
+
+                if (!equation) {
+                    equationResultDiv.innerHTML = '<span class="text-primary font-medium"><i class="fas fa-times-circle mr-2"></i> Please enter an equation.</span>';
+                     equationResultDiv.classList.remove('hidden'); // Show error
+                    return;
+                }
+
+                try {
+                    // Basic sanitization: Allow numbers, operators +-*/.^(), spaces, and letters for function names/PI
+                    // WARNING: Using eval is inherently risky with arbitrary user input.
+                    // This sanitization is basic; for production, use a safe expression parser.
+                    // Updated regex to be more permissive for math functions
+                    const safeCharsRegex = /^[0-9+\-*/.^()\s,a-zA-Z]*$/; // Allows numbers, basic ops, ., ^, (), space, comma, letters
+
+
+                    if (!safeCharsRegex.test(equation)) {
+                         equationResultDiv.innerHTML = '<span class="text-primary font-medium"><i class="fas fa-times-circle mr-2"></i> Invalid characters in equation.</span>';
+                         equationResultDiv.classList.remove('hidden'); // Show error
+                         return;
+                    }
+
+                    // Replace common function names and constants with Math equivalents
+                    // Use word boundaries (\b) to ensure we match whole words like 'sin' but not 'assin'
+                    equation = equation.replace(/\bpi\b/g, 'Math.PI');
+                    equation = equation.replace(/\bsin\b/g, 'Math.sin');
+                    equation = equation.replace(/\bcos\b/g, 'Math.cos');
+                    equation = equation.replace(/\btan\b/g, 'Math.tan');
+                    equation = equation.replace(/\bsqrt\b/g, 'Math.sqrt');
+                    equation = equation.replace(/\blog\b/g, 'Math.log10'); // Common log base 10
+                    equation = equation.replace(/\bln\b/g, 'Math.log');   // Natural log
+                    equation = equation.replace(/\babs\b/g, 'Math.abs');
+                    equation = equation.replace(/\bexp\b/g, 'Math.exp');
+                    equation = equation.replace(/\bpow\b/g, 'Math.pow'); // Allow pow(x,y) syntax
+
+                    // Replace ^ with ** for exponents (ensure it's not part of Math.pow)
+                     equation = equation.replace(/\^/g, '**');
+                     // Fix common syntax issues (like missing * for multiplication) - basic fix
+                     equation = equation.replace(/(\d+)\(/g, '$1*('); // e.g., 5(2) -> 5*(2)
+                     equation = equation.replace(/\)(\d+)/g, ')*$1'); // e.g., (2)5 -> (2)*5
+                     equation = equation.replace(/([a-zA-Z])(\d)/g, '$1*$2'); // e.g., pi2 -> pi*2
+                     equation = equation.replace(/(\d)([a-zA-Z])/g, '$1*$2'); // e.g., 2pi -> 2*pi
+                     equation = equation.replace(/\)([a-zA-Z])/g, ')*$1'); // e.g., (10)pi -> (10)*pi
+                     equation = equation.replace(/([a-zA-Z])\(/g, '$1*('); // e.g., pi(2) -> pi*(2) -- careful with function names
+
+
+                    const result = eval(equation);
+
+                    if (isNaN(result) || !isFinite(result)) {
+                        equationResultDiv.innerHTML = '<span class="text-primary font-medium"><i class="fas fa-times-circle mr-2"></i> Invalid calculation or result.</span>';
+                    } else {
+                        // Format result to a reasonable number of decimal places, remove trailing zeros
+                         // Use parseFloat().toString() to remove trailing zeros after fixing decimals
+                        const formattedResult = parseFloat(result.toFixed(10)).toString();
+                        equationResultDiv.innerHTML = `<span class="text-green-500 font-medium"><i class="fas fa-check-circle mr-2"></i> Result: ${formattedResult}</span>`;
+                    }
+                     equationResultDiv.classList.remove('hidden'); // Show result box
+
+
+                } catch (e) {
+                    equationResultDiv.innerHTML = '<span class="text-primary font-medium"><i class="fas fa-times-circle mr-2"></i> Invalid equation syntax.</span>';
+                    equationResultDiv.classList.remove('hidden'); // Show error
+                    console.error("Eval error:", e); // Log the actual error for debugging
+                }
+            }
+
+            function generateTable() {
+                const numberInput = document.getElementById('tableNumber');
+                const limitInput = document.getElementById('tableLimit'); // New input for limit
+                const tableDiv = document.getElementById('multiplicationTable');
+                const tableErrorDiv = document.getElementById('tableError'); // Error div for table
+
+                tableDiv.innerHTML = ''; // Clear previous table
+                 tableErrorDiv.classList.add('hidden'); // Hide previous error
+
+                const number = parseFloat(numberInput.value); // Use parseFloat to allow decimals
+                const limit = parseInt(limitInput.value) || 10; // Default to 10 if limit is not entered or invalid
+
+                if (isNaN(number)) {
+                    tableErrorDiv.textContent = 'Please enter a valid number for the table.';
+                     tableErrorDiv.classList.remove('hidden'); // Show error
+                    return;
+                }
+                 // Validate limit (must be a positive integer)
+                 if (isNaN(limit) || limit <= 0 || !Number.isInteger(limit) || limit > 1000) { // Added isInteger check and upper limit
+                     tableErrorDiv.textContent = 'Please enter a valid integer limit (1-1000).';
+                     tableErrorDiv.classList.remove('hidden'); // Show error
+                     return;
+                 }
+
+
+                let tableHtml = ''; // Use a different name to avoid conflict
+                for (let i = 1; i <= limit; i++) {
+                     // Use toFixed(2) for multiplication result to handle potential floating point issues
+                    tableHtml += `<div>${number} x ${i} = ${(number * i).toFixed(2).replace(/\.00$/, '')}</div>`; // Format result, remove .00
+                }
+                tableDiv.innerHTML = tableHtml;
+            }
+
+             // Optional: Clear inputs on page load
+             // equationInput.value = '';
+             // tableNumberInput.value = '';
+             // tableLimitInput.value = '10'; // Set default limit
+
+        });
+    </script>
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="../index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">Zentix</a>
+        <a href="../projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+    </div>
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        loadHeader('../');
+        loadFooter('../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+    </script>
+</body>
+</html>

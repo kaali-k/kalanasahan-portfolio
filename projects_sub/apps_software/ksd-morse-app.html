@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z Morse Code – Morse Translator App | Kalana Sahan</title>
+    <meta name="description" content="Z Morse Code – Bidirectional Morse code translator app with audio playback, reference list and history. By Kalana Sahan Dillimuni / Zentix.">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><script src="../../assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main id="main-content" class="py-16 pt-32"></main>
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="../../index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="../../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">Zentix</a>
+        <a href="../../projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/components.js"></script><script src="../../assets/js/main.js"></script><script src="../../assets/js/subpage.js"></script>
+    <script>
+        loadHeader('../../'); loadFooter('../../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAppDetail({
+                title: 'Z Morse Code',
+                subtitle: 'Bidirectional Morse Code Translator',
+                description: 'Encode plain text into Morse code or decode Morse back to text instantly. Includes audio playback of the coded signal, a full international reference list, and translation history — all in a clean dark UI.',
+                icon: 'app3/icon.png', iconAlt: 'Z Morse Code icon', iconBg: 'bg-gray-900',
+                isZentix: true,
+                playStoreUrl: 'https://play.google.com/store/apps/details?id=com.ksdmorsecode',
+                downloadUrl: 'https://github.com/kaali-k/Z-Morse-Code/releases/download/v1.0.0/Z.Morse.Code.apk',
+                downloadLabel: 'Download APK',
+                features: [
+                    { icon: 'fas fa-exchange-alt', title: 'Bidirectional Translation', desc: 'Convert text → Morse and Morse → text in real time.' },
+                    { icon: 'fas fa-volume-up', title: 'Audio Playback', desc: 'Hear the Morse code played back as dots and dashes.' },
+                    { icon: 'fas fa-list', title: 'Reference List', desc: 'Full A–Z and 0–9 Morse code reference chart always at hand.' },
+                    { icon: 'fas fa-history', title: 'History', desc: 'Browse your previous translations without re-entering them.' },
+                    { icon: 'fas fa-copy', title: 'Copy & Share', desc: 'Copy or share the translated output with one tap.' }
+                ],
+                screenshots: [
+                    { file: 'main.webp', alt: 'Main Translator Screen' },
+                    { file: 'list.webp', alt: 'Morse Reference List' },
+                    { file: 'history.webp', alt: 'Translation History' }
+                ],
+                screenshotDir: 'app3/',
+                tech: ['Flutter', 'Dart', 'audioplayers', 'Google Fonts'],
+                backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
+            });
+        });
+    </script>
+</body>
+</html>

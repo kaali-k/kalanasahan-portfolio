@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.S.D BIZ Manager – Business Management App | Kalana Sahan</title>
+    <meta name="description" content="K.S.D BIZ Manager – Flutter business management app with dashboard, modules, notifications and settings for small business owners.">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><script src="../../assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main id="main-content" class="py-16 pt-32"></main>
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="../../index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="../../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">Zentix</a>
+        <a href="../../projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/components.js"></script><script src="../../assets/js/main.js"></script><script src="../../assets/js/subpage.js"></script>
+    <script>
+        loadHeader('../../'); loadFooter('../../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAppDetail({
+                title: 'K.S.D BIZ Manager',
+                subtitle: 'Small Business Management Solution',
+                description: 'A comprehensive business management app designed for small business owners. Manage daily operations from a central dashboard, access business modules, receive notifications, and configure settings — all from your Android device.',
+                icon: 'App5/icon.png', iconAlt: 'KSD BIZ Manager icon', iconBg: 'bg-gray-900',
+                badges: [{ label: 'Android', type: 'green' }, { label: 'Business', type: 'cyan' }],
+                features: [
+                    { icon: 'fas fa-tachometer-alt', title: 'Business Dashboard', desc: 'Central hub showing key business metrics and daily summaries at a glance.' },
+                    { icon: 'fas fa-th', title: 'Module System', desc: 'Separate modules for sales, inventory, customers and finance tracking.' },
+                    { icon: 'fas fa-bell', title: 'Smart Notifications', desc: 'Get alerts for low stock, pending tasks and important business events.' },
+                    { icon: 'fas fa-cog', title: 'Settings & Config', desc: 'Customise the app to your business type and operational preferences.' },
+                    { icon: 'fas fa-database', title: 'Local Data Storage', desc: 'All records saved locally — works offline, no subscription needed.' }
+                ],
+                screenshots: [
+                    { file: 'mainscreeen1.webp', alt: 'Main Screen' },
+                    { file: 'dashbord.webp', alt: 'Dashboard' },
+                    { file: 'modulescreen.webp', alt: 'Modules Screen' },
+                    { file: 'notificationscreen.webp', alt: 'Notifications' },
+                    { file: 'settingsscreen.webp', alt: 'Settings' }
+                ],
+                screenshotDir: 'App5/',
+                downloadUrl: 'https://github.com/kaali-k/K.S.D-BIZ-Manager/releases/download/v1.0.0/BIZ.Manager.apk',
+                downloadLabel: 'Download APK',
+                tech: ['Flutter', 'Dart', 'SQLite', 'Provider', 'Local Notifications'],
+                backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
+            });
+        });
+    </script>
+</body>
+</html>
