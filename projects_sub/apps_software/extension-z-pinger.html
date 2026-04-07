@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z-Pinger Browser Extension – Real-time Network Monitoring | Zentix</title>
+    <meta name="description" content="Z-Pinger Browser Extension – Monitor network stability, latency and connectivity health directly from your browser toolbar. Lightweight and professional. By Kalana Sahan.">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><script src="../../assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <header id="main-header" role="banner"></header>
+    <main id="main-content" class="py-16 pt-32"></main>
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/components.js"></script><script src="../../assets/js/main.js"></script><script src="../../assets/js/subpage.js"></script>
+    <script>
+        loadHeader('../../'); loadFooter('../../');
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAppDetail({
+                title: 'Z-Pinger Extension',
+                subtitle: 'Smart Browser Network Monitor',
+                description: 'Z-Pinger Extension brings professional network monitoring to your browser toolbar. Designed with Manifest V3, it provides real-time latency tracking, connection health visualization, and background monitoring to ensure you stay connected during critical sessions.',
+                icon: 'https://github.com/kaali-k/Extension-Z-Pinger/raw/main/icon128.png', 
+                iconAlt: 'Z-Pinger Extension icon', iconBg: 'bg-black',
+                isZentix: true,
+                badges: [{ label: 'Browser Extension', type: 'cyan' }, { label: 'Utility', type: 'pink' }, { label: 'Real-time', type: 'blue' }],
+                features: [
+                    { icon: 'fas fa-tachometer-alt', title: 'Latency Tracking', desc: 'Monitor real-time ping to any server or domain directly from the popup.' },
+                    { icon: 'fas fa-heartbeat', title: 'Health Indicators', desc: 'Visual color-coded indicators for Good/Average/Critical connection status.' },
+                    { icon: 'fas fa-shield-alt', title: 'Manifest V3 Native', desc: 'Built on the latest extension standards for security, speed and privacy.' },
+                    { icon: 'fas fa-history', title: 'Background Monitoring', desc: 'Service workers monitor connectivity even when the popup is closed.' },
+                    { icon: 'fas fa-cog', title: 'Quick Actions', desc: 'Instantly access network tools and refresh connectivity with one click.' }
+                ],
+                screenshots: [
+                    { file: 'https://github.com/kaali-k/Extension-Z-Pinger/raw/main/icon128.png', alt: 'Z-Pinger Extension Logo' }
+                ],
+                screenshotDir: '', 
+                downloadUrl: 'https://github.com/kaali-k/Extension-Z-Pinger/archive/refs/heads/main.zip',
+                downloadLabel: 'Download Source',
+                tech: ['JavaScript', 'HTML5', 'CSS3', 'Manifest V3', 'Chrome APIs'],
+                backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
+            });
+        });
+    </script>
+</body>
+</html>
