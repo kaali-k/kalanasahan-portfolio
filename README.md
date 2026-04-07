@@ -1,24 +1,41 @@
-# 🚀 Kalana Sahan - Premium Software & Web Portfolio 2026
+# 🚀 Kalana Sahan - Premium Software & Web Portfolio
 
-Welcome to my official portfolio repository. I am a **Full-Stack Developer, App Developer, and UI/UX Designer** focused on building high-performance Android applications and modern web experiences.
+[![Live Website](https://img.shields.io/badge/Live-Website-blue?style=for-the-badge&logo=google-chrome&logoColor=white)](https://kaali-k.github.io/kalanasahan-portfolio/)
+[![GitHub Repositories](https://img.shields.io/badge/GitHub-Projects-purple?style=for-the-badge&logo=github&logoColor=white)](https://github.com/kaali-k?tab=repositories)
 
-## 🌟 Featured Brands
-- **Zentix**: My official brand for high-utility Android tools and minimalist games.
-- **K.S.D Software**: A suite of productivity and utility applications for Windows and Android.
+Welcome to my official portfolio. I am a **Full-Stack Developer, Android App Specialist, and UI/UX Designer** dedicated to creating high-performance digital solutions under the brands **Zentix** and **K.S.D Software**.
 
-## 🛠️ Tech Stack
-- **Mobile**: Flutter, Dart, Firebase, SQLite.
-- **Web**: Modern HTML5, CSS3 (Tailwind), JavaScript (ES6+), AOS.
-- **Desktop**: Electron.js, Node.js.
+---
 
-## 📦 Major Projects
-- **Z-Pinger**: Professional network utility for stable internet.
+## 🔗 [Visit Live Portfolio →](https://kaali-k.github.io/kalanasahan-portfolio/)
+
+---
+
+## 🌟 Featured Brands & Projects
+
+### **Zentix (Android & Gaming)**
+Premium utility tools and minimalist gaming experiences designed for focus and performance.
+- **Z-Pinger**: Professional network stability tool.
 - **Z-Flow**: Android productivity suite with Auto-Skip features.
-- **KSD Protector**: Secure offline password vault.
-- ... and 15+ other applications.
+- **Z-Filling**: Addictive minimalist puzzle arcade game.
+- **Z-Morse-Code**: The first official app released under Zentix.
 
-## 🌐 Live Demo
-Visit my live portfolio: [https://kaali-k.github.io/](https://kaali-k.github.io/)
+### **K.S.D Software (Productivity & Utility)**
+Robust tools for Android and Windows helping users stay secure and organized.
+- **KSD Protector**: Secure, 100% offline password vault.
+- **KSD Note App**: Minimalist private note-taking solution.
+- **KSD BIZ Manager**: Business management hub for small owners.
+- **KSD Pasteboard**: Advanced clipboard manager for Windows.
+
+## 🛠️ Technology Stack
+- **Mobile Development**: Flutter, Dart, SQLite, Hive, Firebase.
+- **Web Development**: HTML5, CSS3 (Tailwind), JavaScript (ES6+), AOS.
+- **Desktop Development**: Electron.js, Node.js.
+- **Design**: Figma, UI/UX Optimization.
+
+## 📈 SEO & Discoverability
+This portfolio is optimized for search engines with dedicated repositories for every major application to ensure high domain authority and global reach.
 
 ---
 © 2026 Kalana Sahan Dillimuni. All rights reserved.
+Built with ❤️ in Sri Lanka.
