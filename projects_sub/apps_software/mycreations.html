@@ -345,37 +345,6 @@
                             <span class="tech-badge">Desktop</span>
                             <span class="tech-badge">Utility</span>
                         </div>
-
-            <!-- Extensions Tab -->
-            <div id="tab-content-extensions" class="tab-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
-                <!-- Z Pinger Extension -->
-                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-accent-line" style="background: linear-gradient(90deg, #06b6d4, #3b82f6);"></div>
-                    <div class="h-44 overflow-hidden bg-gray-900 flex items-center justify-center p-6">
-                        <img src="https://github.com/kaali-k/Extension-Z-Pinger/raw/main/icon128.png" alt="Z Pinger Extension icon" class="h-full object-contain hover:scale-110 transition duration-500" loading="lazy">
-                    </div>
-                    <div class="p-5">
-                        <div class="flex items-center gap-2 mb-1">
-                            <h2 class="text-lg font-heading font-bold text-white">Z-Pinger Extension</h2>
-                            <span class="badge badge-purple" style="font-size:0.6rem">Zentix</span>
-                        </div>
-                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">Browser extension for continuous network stability monitoring and latency tracking.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="tech-badge">JavaScript</span>
-                            <span class="tech-badge">Extension</span>
-                        </div>
-                        <div class="flex flex-wrap gap-2">
-                            <a href="extension-z-pinger.html" class="btn-outline text-sm py-2 px-4">
-                                <i class="fas fa-info-circle"></i> View Details
-                            </a>
-                            <a href="https://github.com/kaali-k/Extension-Z-Pinger/archive/refs/heads/main.zip"
-                               class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-blue-600/15 border border-blue-600/30 text-blue-400 hover:bg-blue-600/25 transition-all">
-                                <i class="fas fa-code text-xs"></i> Source
-                            </a>
-                        </div>
-                    </div>
-                </article>
-            </div>
                         <div class="flex flex-wrap gap-2">
                             <a href="ksd-pasteboard.html" class="btn-outline text-sm py-2 px-4">
                                 <i class="fas fa-info-circle"></i> View Details
@@ -407,6 +376,37 @@
                     </div>
                 </article>
 
+            </div>
+
+            <!-- Extensions Tab (hidden by default) -->
+            <div id="tab-content-extensions" class="tab-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+                <!-- Z Pinger Extension -->
+                <article class="project-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-accent-line" style="background: linear-gradient(90deg, #06b6d4, #3b82f6);"></div>
+                    <div class="h-44 overflow-hidden bg-gray-900 flex items-center justify-center p-6">
+                        <img src="https://github.com/kaali-k/Extension-Z-Pinger/raw/main/icon128.png" alt="Z Pinger Extension icon" class="h-full object-contain hover:scale-110 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h2 class="text-lg font-heading font-bold text-white">Z-Pinger Extension</h2>
+                            <span class="badge badge-purple" style="font-size:0.6rem">Zentix</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">Browser extension for continuous network stability monitoring and latency tracking.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">Extension</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="extension-z-pinger.html" class="btn-outline text-sm py-2 px-4">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                            <a href="https://github.com/kaali-k/Extension-Z-Pinger/archive/refs/heads/main.zip"
+                               class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-blue-600/15 border border-blue-600/30 text-blue-400 hover:bg-blue-600/25 transition-all">
+                                <i class="fas fa-code text-xs"></i> Source
+                            </a>
+                        </div>
+                    </div>
+                </article>
             </div>
 
             <!-- Back Button -->
@@ -445,20 +445,26 @@
         }
         document.getElementById('close-mobile-nav').addEventListener('click', closeMobileNav);
 
-        // Tab switching (no Alpine needed)
-        let activeTab = 'apps';
+        // Tab switching
         function switchTab(tab) {
-            activeTab = tab;
             const tabs = ['apps', 'software', 'extensions'];
             tabs.forEach(t => {
-                document.getElementById(`tab-content-${t}`).classList.add('hidden');
-                document.getElementById(`tab-${t}`).classList.remove('bg-primary', 'text-white');
-                document.getElementById(`tab-${t}`).classList.add('bg-white/5', 'text-gray-300');
+                const content = document.getElementById(`tab-content-${t}`);
+                const btn = document.getElementById(`tab-${t}`);
+                if (content) content.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('bg-primary', 'text-white');
+                    btn.classList.add('bg-white/5', 'text-gray-300');
+                }
             });
 
-            document.getElementById(`tab-content-${tab}`).classList.remove('hidden');
-            document.getElementById(`tab-${tab}`).classList.add('bg-primary', 'text-white');
-            document.getElementById(`tab-${tab}`).classList.remove('bg-white/5', 'text-gray-300');
+            const activeContent = document.getElementById(`tab-content-${tab}`);
+            const activeBtn = document.getElementById(`tab-${tab}`);
+            if (activeContent) activeContent.classList.remove('hidden');
+            if (activeBtn) {
+                activeBtn.classList.add('bg-primary', 'text-white');
+                activeBtn.classList.remove('bg-white/5', 'text-gray-300');
+            }
         };
         // Init first tab
         document.addEventListener('DOMContentLoaded', () => switchTab('apps'));
