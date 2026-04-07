@@ -64,8 +64,15 @@ function renderAppDetail(cfg) {
     // ── Play Store button ──
     const playBtn = playStoreUrl ? `
         <a href="${playStoreUrl}" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-google">
-            <i class="fab fa-google-play"></i> View on Play Store
+            <i class="${playStoreIcon}"></i> ${playStoreLabel}
         </a>` : '';
+
+    // ── Star tip ──
+    const starTipHTML = starTip ? `
+        <div class="mt-4 flex items-center gap-2 text-xs text-gray-500 opacity-80 italic">
+            <i class="fas fa-star text-yellow-500/50"></i>
+            <span>${starTip}</span>
+        </div>` : '';
 
     // ── Download button ──
     const downloadBtn = downloadUrl ? `
