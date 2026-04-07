@@ -21,6 +21,9 @@ function renderAppDetail(cfg) {
         backLabel = 'Back to My Creations',
         isZentix = false,
         playStoreUrl = '',
+        playStoreLabel = 'View on Play Store',
+        playStoreIcon = 'fab fa-google-play',
+        starTip = '',
         protectWarning = ''
     } = cfg;
 
@@ -129,6 +132,7 @@ function renderAppDetail(cfg) {
                         ${downloadBtn}
                         ${playBtn}
                     </div>
+                    ${starTipHTML}
                     ${warningHTML}
                 </div>
             </div>
