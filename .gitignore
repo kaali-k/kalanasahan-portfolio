@@ -1,0 +1,5 @@
+Released_Projects/
+.git/
+node_modules/
+*.apk
+*.exe
