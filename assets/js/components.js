@@ -108,11 +108,11 @@ function loadFooter(basePath = '') {
 
                 <!-- Socials -->
                 <div class="flex gap-3">
-                    <a href="https://web.facebook.com/kalana.sahan.79" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Personal Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/kalana._.sahan/" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/kalanasahan" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/kaali-k" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.youtube.com/@Part_of_kaali_life" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="${typeof SITE_LINKS !== 'undefined' ? SITE_LINKS.facebook : 'https://web.facebook.com/kalanasahanofficial'}" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Personal Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="${typeof SITE_LINKS !== 'undefined' ? SITE_LINKS.instagram : 'https://www.instagram.com/kalana._.sahan/'}" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="${typeof SITE_LINKS !== 'undefined' ? SITE_LINKS.linkedin : 'https://www.linkedin.com/in/kalanasahan'}" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="${typeof SITE_LINKS !== 'undefined' ? SITE_LINKS.github : 'https://github.com/kaali-k'}" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="${typeof SITE_LINKS !== 'undefined' ? SITE_LINKS.youtube : 'https://www.youtube.com/@Part_of_kaali_life'}" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
 
