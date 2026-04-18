@@ -12,6 +12,16 @@ function renderAppDetail(cfg) {
         iconBg = 'bg-gray-900',
         badges = [],
         downloadUrl = '',
+        downloadLabel = 'Download',
+        features = [],
+        screenshots = [],
+        screenshotDir = '',
+        tech = [],
+        backUrl = 'mycreations.html',
+        backLabel = 'Back to My Creations',
+        isZentix = false,
+        playStoreUrl = '',
+        playStoreLabel = 'View on Play Store',
         playStoreIcon = 'fab fa-google-play',
         starTip = '',
         protectWarning = '',
@@ -40,7 +50,7 @@ function renderAppDetail(cfg) {
              class="app-screenshot flex-shrink-0 w-52 md:w-64 lg:w-72 cursor-pointer"
              onclick="openModal('${screenshotDir}${s.file}', '${s.alt.replace(/'/g, "\\'")}')"
              loading="lazy"
-             onerror="this.style.display='none'">
+              onerror="this.style.display='none'">
     `).join('');
 
     // ── Tech badges ──
