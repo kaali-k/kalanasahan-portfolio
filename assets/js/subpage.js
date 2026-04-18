@@ -12,19 +12,11 @@ function renderAppDetail(cfg) {
         iconBg = 'bg-gray-900',
         badges = [],
         downloadUrl = '',
-        downloadLabel = 'Download',
-        features = [],
-        screenshots = [],
-        screenshotDir = '',
-        tech = [],
-        backUrl = 'mycreations.html',
-        backLabel = 'Back to My Creations',
-        isZentix = false,
-        playStoreUrl = '',
-        playStoreLabel = 'View on Play Store',
         playStoreIcon = 'fab fa-google-play',
         starTip = '',
-        protectWarning = ''
+        protectWarning = '',
+        secondaryDownloadUrl = '',
+        secondaryDownloadLabel = 'Previous Version'
     } = cfg;
 
     const main = document.getElementById('main-content');
@@ -79,8 +71,13 @@ function renderAppDetail(cfg) {
 
     // ── Download button ──
     const downloadBtn = downloadUrl ? `
-        <a href="${downloadUrl}" target="_blank" rel="noopener noreferrer" class="btn-download">
-            <i class="fas fa-download"></i> ${downloadLabel}
+        <a href="${downloadUrl}" target="_blank" rel="noopener noreferrer" class="btn-download bg-primary hover:scale-105 transition-transform">
+            <i class="fas fa-cloud-download-alt"></i> ${downloadLabel}
+        </a>` : '';
+
+    const secondaryBtn = secondaryDownloadUrl ? `
+        <a href="${secondaryDownloadUrl}" target="_blank" rel="noopener noreferrer" class="social-btn" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+            <i class="fas fa-history text-gray-400"></i> <span class="text-gray-300 font-medium">${secondaryDownloadLabel}</span>
         </a>` : '';
 
     // ── Play Protect / warning notice ──
@@ -130,6 +127,7 @@ function renderAppDetail(cfg) {
                     <div class="flex flex-wrap gap-2 mb-4">${badgeHTML}</div>
                     <div class="flex flex-wrap gap-3">
                         ${downloadBtn}
+                        ${secondaryBtn}
                         ${playBtn}
                     </div>
                     ${starTipHTML}
