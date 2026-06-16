@@ -10,6 +10,7 @@ function renderAppDetail(cfg) {
         icon = '',
         iconAlt = '',
         iconBg = 'bg-gray-900',
+        coverImage = '',
         badges = [],
         downloadUrl = '',
         downloadLabel = 'Download',
@@ -116,6 +117,12 @@ function renderAppDetail(cfg) {
             <span class="breadcrumb-sep">/</span>
             <span class="text-white">${title}</span>
         </nav>
+
+        ${coverImage ? `
+        <!-- Cover Image -->
+        <div class="w-full h-48 md:h-72 rounded-3xl overflow-hidden mb-8 border border-white/10 shadow-2xl" data-aos="fade-up">
+            <img src="${coverImage}" alt="${title} Cover" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+        </div>` : ''}
 
         <!-- App Header card -->
         <div class="app-detail-card p-8 md:p-10 mb-8" data-aos="fade-up">
