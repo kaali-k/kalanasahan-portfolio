@@ -34,18 +34,19 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderAppDetail({
                 title: 'Z Fare',
-                subtitle: 'Smart Fare Management',
-                description: 'Z Fare is a mobile application developed by Zentix to manage and calculate fares efficiently. It provides a simple and clean interface to keep track of pricing and calculations on the go.',
+                subtitle: 'Smart Digital Fare Meter',
+                description: 'Z Fare is a highly accurate, digital fare calculator designed to provide transparent and real-time trip pricing. It eliminates the guesswork out of traveling by providing precise fare logs. Most importantly, Z Fare respects your privacy — <strong>it operates entirely offline and does NOT collect, store, or share any of your personal data or location history</strong>.',
                 icon: 'App9/icon.png', iconAlt: 'Z Fare icon', iconBg: 'bg-black',
                 coverImage: 'App9/Feture Graphic.png',
                 isZentix: true,
                 playStoreUrl: 'https://play.google.com/store/apps/details?id=com.zentix.zfare',
                 downloadUrl: '', 
-                badges: [{ label: 'Android', type: 'green' }, { label: 'Utility', type: 'cyan' }],
+                badges: [{ label: 'Android', type: 'green' }, { label: 'Utility', type: 'cyan' }, { label: 'Offline', type: 'purple' }],
                 features: [
-                    { icon: 'fas fa-calculator', title: 'Accurate Calculation', desc: 'Provides real-time fare calculations without complex setups.' },
-                    { icon: 'fas fa-mobile-alt', title: 'User Friendly', desc: 'Clean, modern UI optimized for all Android screens.' },
-                    { icon: 'fas fa-bolt', title: 'Fast & Lightweight', desc: 'Minimal battery drain and extremely fast load times.' }
+                    { icon: 'fas fa-calculator', title: 'Real-Time Calculation', desc: 'Calculates the trip fare dynamically based on precise algorithms.' },
+                    { icon: 'fas fa-shield-alt', title: '100% Private (No Data Collection)', desc: 'We never steal or upload your data. Everything happens securely on your device.' },
+                    { icon: 'fas fa-list-alt', title: 'Detailed Trip Logs', desc: 'Keep track of your past trips with an easy-to-read history and billing breakdown.' },
+                    { icon: 'fas fa-bolt', title: 'Fast & Lightweight', desc: 'Optimized for smooth performance with zero battery drain.' }
                 ],
                 screenshots: [
                     { file: 'Main.png', alt: 'Z Fare Main Screen' },
