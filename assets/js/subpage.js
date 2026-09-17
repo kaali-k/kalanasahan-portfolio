@@ -27,7 +27,10 @@ function renderAppDetail(cfg) {
         starTip = '',
         protectWarning = '',
         secondaryDownloadUrl = '',
-        secondaryDownloadLabel = 'Previous Version'
+        secondaryDownloadLabel = 'Previous Version',
+        appGalleryUrl = '',
+        appGalleryLabel = 'View on AppGallery',
+        appGalleryIcon = 'fas fa-store'
     } = cfg;
 
     const main = document.getElementById('main-content');
@@ -71,6 +74,12 @@ function renderAppDetail(cfg) {
     const playBtn = playStoreUrl ? `
         <a href="${playStoreUrl}" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-google">
             <i class="${playStoreIcon}"></i> ${playStoreLabel}
+        </a>` : '';
+        
+    // ── AppGallery button ──
+    const appGalleryBtn = appGalleryUrl ? `
+        <a href="${appGalleryUrl}" target="_blank" rel="noopener noreferrer" class="social-btn" style="background: rgba(255,10,10,0.12); color: #ff4d4d; border: 1px solid rgba(255,10,10,0.15); box-shadow: 0 4px 15px rgba(255,10,10,0.15);">
+            <i class="${appGalleryIcon}"></i> ${appGalleryLabel}
         </a>` : '';
 
     // ── Star tip ──
@@ -143,9 +152,10 @@ function renderAppDetail(cfg) {
                     <p class="text-gray-300 leading-relaxed mb-4">${description}</p>
                     <div class="flex flex-wrap gap-2 mb-4">${badgeHTML}</div>
                     <div class="flex flex-wrap gap-3">
+                        ${playBtn}
+                        ${appGalleryBtn}
                         ${downloadBtn}
                         ${secondaryBtn}
-                        ${playBtn}
                     </div>
                     ${starTipHTML}
                     ${warningHTML}
