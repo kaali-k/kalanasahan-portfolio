@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z Sri – Singlish Keyboard | Zentix</title>
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+    <meta name="description" content="Z Sri by Zentix – A fast and intuitive Singlish to Sinhala keyboard for Android. Type naturally in English and instantly get perfect Sinhala text.">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><script src="../../assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main id="main-content" class="py-16 pt-32"></main>
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="../../index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="../../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">Zentix</a>
+        <a href="../../projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/links.js"></script>
+    <script src="../../assets/js/components.js"></script><script src="../../assets/js/main.js"></script><script src="../../assets/js/subpage.js"></script>
+    <script>
+        loadHeader('../../'); loadFooter('../../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAppDetail({
+                title: 'Z Sri',
+                subtitle: 'Singlish Keyboard',
+                description: 'Z Sri is a smart Singlish to Sinhala keyboard designed for seamless and fast typing. It provides accurate transliteration, allowing you to type in English and instantly get perfect Sinhala text. Built for speed and ease of use.',
+                icon: 'z_sri/icon.png', iconAlt: 'Z Sri icon', iconBg: 'bg-gradient-to-br from-blue-900 to-black',
+                isZentix: true,
+                playStoreUrl: 'https://play.google.com/store/apps/details?id=com.zentix.zsri',
+                appGalleryUrl: '',
+                appGalleryLabel: '',
+                secondaryDownloadUrl: '',
+                secondaryDownloadLabel: '',
+                starTip: '',
+                badges: [{ label: 'Android', type: 'green' }, { label: 'Keyboard/Utility', type: 'blue' }],
+                features: [
+                    { icon: 'fas fa-keyboard', title: 'Singlish to Sinhala', desc: 'Type naturally in English and let Z Sri convert it to perfect Sinhala instantly.' },
+                    { icon: 'fas fa-bolt', title: 'Fast & Lightweight', desc: 'Optimized for speed with zero lag during typing.' },
+                    { icon: 'fas fa-spell-check', title: 'Smart Suggestions', desc: 'Intelligent word prediction to make your typing even faster.' },
+                    { icon: 'fas fa-paint-roller', title: 'Customizable Themes', desc: 'Personalize your keyboard look and feel.' }
+                ],
+                screenshots: [],
+                screenshotDir: 'z_sri/',
+                tech: ['Flutter', 'Dart', 'Keyboard Extension', 'Transliteration Engine'],
+                backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
+            });
+        });
+    </script>
+</body>
+</html>
