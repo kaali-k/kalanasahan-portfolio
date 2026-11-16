@@ -4,7 +4,7 @@
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Z Locator – Fake GPS Location | Zentix</title>
     <link rel="icon" type="image/png" href="../../assets/favicon.png">
-    <meta name="description" content="Z Locator by Zentix – Advanced Fake GPS and location mocking tool for Android developers, testers, and privacy enthusiasts.">
+    <meta name="description" content="Z Locator by Zentix – Advanced Fake GPS Location simulator, interactive Route Studio with GPX export, floating joystick, and Timeline Studio journey video creator.">
     <meta name="robots" content="index, follow">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,8 +34,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderAppDetail({
                 title: 'Z Locator',
-                subtitle: 'Fake GPS Location & Mock Utility',
-                description: 'Z Locator is a reliable Android mock location tool built for developers, QA testers, and privacy enthusiasts. Effortlessly simulate geographic coordinates, test location-based apps, and manage virtual locations with pinpoint accuracy.',
+                subtitle: 'Fake GPS Location & Route Studio',
+                description: 'Take full control of your GPS location with Z Locator – an advanced Mock GPS & Location Simulator. Built for developers testing location apps, travelers visualizing past journeys with animated route videos, and anyone looking to protect their digital privacy with professional-grade precision.',
                 icon: 'z_locator/icon.png', iconAlt: 'Z Locator icon', iconBg: 'bg-black',
                 isZentix: true,
                 playStoreUrl: 'https://play.google.com/store/apps/details?id=com.zentixteam.z_locator',
@@ -43,18 +43,30 @@
                 appGalleryLabel: '',
                 secondaryDownloadUrl: '',
                 secondaryDownloadLabel: '',
-                starTip: '',
-                badges: [{ label: 'Android', type: 'green' }, { label: 'Developer Tool', type: 'cyan' }, { label: 'Zentix', type: 'purple' }],
-                features: [
-                    { icon: 'fas fa-map-marker-alt', title: 'Accurate GPS Mocking', desc: 'Simulate any latitude and longitude across the globe with fine-tuned precision.' },
-                    { icon: 'fas fa-map', title: 'Interactive Map Picker', desc: 'Search, pinpoint, and select locations directly on an intuitive map.' },
-                    { icon: 'fas fa-vial', title: 'Developer Testing', desc: 'Ideal for testing location-dependent mobile apps and features in sandbox environments.' },
-                    { icon: 'fas fa-history', title: 'Favorite & History', desc: 'Save frequently used locations for instant one-tap switching.' },
-                    { icon: 'fas fa-user-shield', title: 'Privacy & Safety', desc: 'Protects your real physical coordinates when testing applications.' }
+                starTip: 'Tip: Enable "Developer Options" and select Z Locator as your Mock Location App in Android system settings.',
+                badges: [
+                    { label: 'Android', type: 'green' },
+                    { label: 'GPS Simulator', type: 'cyan' },
+                    { label: 'Route Studio', type: 'blue' },
+                    { label: 'Zentix', type: 'purple' }
                 ],
-                screenshots: [],
+                features: [
+                    { icon: 'fas fa-video', title: 'Timeline Studio & Visualizer', desc: 'Turn raw Google Timeline JSON data into animated journey videos with cinematic route drawing, country zooms, and stats overlays.' },
+                    { icon: 'fas fa-gamepad', title: 'Floating On-Screen Joystick', desc: 'Move smoothly anywhere on the map in real-time with an ergonomic floating joystick with dynamic driving and walking speeds.' },
+                    { icon: 'fas fa-route', title: 'Route Studio & GPX Export', desc: 'Build multi-point simulation routes with distance and waypoint breakdowns, and export routes directly as standard GPX files.' },
+                    { icon: 'fas fa-star', title: 'Smart Favorites & History', desc: 'Bookmark your important places, recent coordinates, and favorite simulated spots for instant one-tap teleportation.' },
+                    { icon: 'fas fa-shield-alt', title: 'Root-Free Mock GPS Engine', desc: 'Seamlessly simulates device location via standard Android Developer Mock Location APIs with zero root access required.' }
+                ],
+                screenshots: [
+                    { file: 'screen1.jpg', alt: 'Z Locator Timeline Studio and Route Studio' },
+                    { file: 'screen2.jpg', alt: 'Interactive Map Simulation & Teleport' },
+                    { file: 'screen3.jpg', alt: 'Floating Joystick Controls & Dynamic Speed' },
+                    { file: 'screen4.jpg', alt: 'Route Navigation & Multi-point Waypoints' },
+                    { file: 'screen5.jpg', alt: 'Timeline Studio JSON Video Generator' },
+                    { file: 'screen6.jpg', alt: 'Favorites, History, and GPX Export' }
+                ],
                 screenshotDir: 'z_locator/',
-                tech: ['Flutter', 'Dart', 'Android Mock Location API', 'Google Maps'],
+                tech: ['Android SDK', 'Java / Kotlin', 'Google Maps API', 'Mock Location Provider', 'GPX Studio', 'Timeline Engine'],
                 backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
             });
         });

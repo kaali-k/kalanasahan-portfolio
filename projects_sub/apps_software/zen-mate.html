@@ -4,7 +4,7 @@
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zen Mate – Media Downloader | Zentix</title>
     <link rel="icon" type="image/png" href="../../assets/favicon.png">
-    <meta name="description" content="Zen Mate by Zentix – Fast, secure, and modern media downloader application for Android. Download, organize, and manage media effortlessly.">
+    <meta name="description" content="Zen Mate by Zentix – All-in-one media utility combining a high-speed media downloader, advanced HD video player with gestures, status saver, and background ambient audio player.">
     <meta name="robots" content="index, follow">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,8 +34,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderAppDetail({
                 title: 'Zen Mate',
-                subtitle: 'Media Downloader',
-                description: 'Zen Mate is a powerful, lightweight media downloader app by Zentix designed to easily save and manage your favorite media directly on your device. Built with a fast engine, reliable background processing, and a modern user-friendly dark interface.',
+                subtitle: 'Media Downloader & Offline HD Player',
+                description: 'Zen Mate is your ultimate all-in-one media utility—combining a high-speed multi-threaded media downloader, an advanced HD video player with swipe gesture controls, a status & story saver, and a built-in background ambient audio player with sleep timer into one sleek neon dark app.',
                 icon: 'zen_mate/icon.png', iconAlt: 'Zen Mate icon', iconBg: 'bg-black',
                 isZentix: true,
                 playStoreUrl: 'https://play.google.com/store/apps/details?id=com.zentix.zenmate',
@@ -43,18 +43,32 @@
                 appGalleryLabel: '',
                 secondaryDownloadUrl: '',
                 secondaryDownloadLabel: '',
-                starTip: '',
-                badges: [{ label: 'Android', type: 'green' }, { label: 'Media Utility', type: 'cyan' }, { label: 'Zentix', type: 'purple' }],
-                features: [
-                    { icon: 'fas fa-bolt', title: 'High-Speed Downloads', desc: 'Optimized multi-threaded downloader engine for rapid media saving.' },
-                    { icon: 'fas fa-folder-open', title: 'Built-in Media Manager', desc: 'Easily view, play, organize, and share downloaded media files in-app.' },
-                    { icon: 'fas fa-tasks', title: 'Background Processing', desc: 'Downloads continue seamlessly in the background without interruptions.' },
-                    { icon: 'fas fa-shield-alt', title: 'Privacy Focused', desc: 'No personal data tracking or telemetry — safe, secure, and lightweight.' },
-                    { icon: 'fas fa-paint-brush', title: 'Modern Clean UI', desc: 'Intuitive dark theme crafted for minimal distraction and maximum efficiency.' }
+                starTip: 'Tip: Copy any link from TikTok, Instagram, Facebook or X and open Zen Mate to auto-detect and start instant download.',
+                protectWarning: 'Google Play Compliance: Zen Mate adheres strictly to Google Play Developer policies and does not download or extract content from YouTube.',
+                badges: [
+                    { label: 'Android', type: 'green' },
+                    { label: 'Media Utility', type: 'cyan' },
+                    { label: 'HD Video Player', type: 'purple' },
+                    { label: 'Zentix', type: 'purple' }
                 ],
-                screenshots: [],
+                features: [
+                    { icon: 'fas fa-bolt', title: 'High-Speed Downloader', desc: 'Download videos, reels, and clips in crisp resolution (1080p, 720p, or original) from TikTok, Instagram Reels, Facebook, X (Twitter), and Pinterest with multi-threaded speed.' },
+                    { icon: 'fas fa-play-circle', title: 'Advanced HD Video Player', desc: 'Intuitive swipe gestures for brightness and volume, speed control from 0.5x to 2.0x, multiple aspect ratios, and ultra-smooth 120Hz timeline playback.' },
+                    { icon: 'fas fa-camera-retro', title: 'Status & Story Saver', desc: 'Automatically detects recent video and photo statuses from supported messaging apps (WA & WA Business) with one-tap instant gallery save.' },
+                    { icon: 'fas fa-music', title: 'Audio & MP3 Extraction', desc: 'Extract clean, high-bitrate audio (up to 320 kbps) directly from video links, with automatic cover art and tag indexing for your offline library.' },
+                    { icon: 'fas fa-headphones', title: 'Background Ambient Player', desc: 'Powered by Android Foreground Service—listen with your screen locked or while multitasking, with lock screen notification controls and a smart sleep timer.' },
+                    { icon: 'fas fa-folder-open', title: 'Smart Media Organizer', desc: 'Automatically organizes downloads into Movies, Music, and Pictures folders with instant Android Gallery sync and duplicate detection.' }
+                ],
+                screenshots: [
+                    { file: 'screen1.jpg', alt: 'Universal Media Downloader & Fast Streams' },
+                    { file: 'screen2.jpg', alt: 'Advanced HD Video Player with Gestures' },
+                    { file: 'screen3.jpg', alt: 'Status & Story Saver for WA' },
+                    { file: 'screen4.jpg', alt: 'High Bitrate Audio & MP3 Extraction' },
+                    { file: 'screen5.jpg', alt: 'Background Ambient Audio Player & Sleep Timer' },
+                    { file: 'screen6.jpg', alt: 'Smart Media Organizer & Gallery Sync' }
+                ],
                 screenshotDir: 'zen_mate/',
-                tech: ['Flutter', 'Dart', 'Android', 'Media Engine', 'Foreground Services'],
+                tech: ['Android SDK', 'Java / Kotlin', 'ExoPlayer / Media3', 'Foreground Service', 'Multi-Thread Engine', 'Audio Extraction'],
                 backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
             });
         });
