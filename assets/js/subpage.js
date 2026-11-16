@@ -143,9 +143,13 @@ function renderAppDetail(cfg) {
         <nav class="breadcrumb" aria-label="Breadcrumb">
             <a href="../../index.html">Home</a>
             <span class="breadcrumb-sep">/</span>
+            ${isZentix ? `
+            <a href="../../zentix.html" class="text-gradient-zentix font-bold hover:underline">Zentix</a>
+            ` : `
             <a href="../../projects.html">Projects</a>
             <span class="breadcrumb-sep">/</span>
             <a href="${backUrl}">${backLabel.replace('Back to ', '')}</a>
+            `}
             <span class="breadcrumb-sep">/</span>
             <span class="text-white">${title}</span>
         </nav>

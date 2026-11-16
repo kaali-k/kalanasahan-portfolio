@@ -93,6 +93,34 @@
         .studio-logo-frame {
             position: relative;
             z-index: 10;
+        }
+
+        /* Zentix Category Tab Switcher */
+        .zentix-filter-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.65rem 1.4rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+        .zentix-filter-btn:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+        .zentix-filter-btn.active {
+            color: #fff;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.3) 0%, rgba(6, 182, 212, 0.25) 100%);
+            border-color: rgba(124, 58, 237, 0.6);
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.25);
+        }
             margin-top: -3rem;
             width: 6.25rem;
             height: 6.25rem;
@@ -562,16 +590,29 @@
         <section id="apps" class="py-16">
             <div class="container mx-auto px-6 max-w-5xl">
 
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <span class="badge badge-purple mb-4">Our Apps</span>
-                    <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-2">Zentix Apps</h2>
+                <div class="text-center mb-10" data-aos="fade-up">
+                    <span class="badge badge-purple mb-4">Software & Tools</span>
+                    <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-2">Zentix Ecosystem</h2>
                     <div class="section-divider"></div>
                     <p class="text-gray-400 max-w-xl mx-auto">
-                        From productivity tools and custom keyboards to utility apps and specialized solutions.
+                        Official Android applications and desktop browser extensions crafted by Zentix.
                     </p>
                 </div>
 
-                <div class="space-y-5">
+                <!-- Tabs: Android Apps vs Browser Extensions -->
+                <div class="flex flex-wrap justify-center items-center gap-3 mb-10" data-aos="fade-up">
+                    <button type="button" id="btn-tab-android" onclick="switchZentixTab('android')" 
+                            class="zentix-filter-btn active">
+                        <i class="fab fa-google-play mr-2 text-green-400"></i> Android Apps (7)
+                    </button>
+                    <button type="button" id="btn-tab-extensions" onclick="switchZentixTab('extensions')" 
+                            class="zentix-filter-btn">
+                        <i class="fab fa-chrome mr-2 text-blue-400"></i> Browser Extensions (1)
+                    </button>
+                </div>
+
+                <!-- Android Apps Panel -->
+                <div id="zentix-panel-android" class="space-y-5">
 
                     <!-- 1. Z Pinger -->
                     <article class="app-row p-6 md:p-8" data-aos="fade-up" data-aos-delay="0">
@@ -827,9 +868,14 @@
                             </div>
                         </div>
                     </article>
+                </div>
+                <!-- /Android Apps Panel -->
 
-                    <!-- 8. Z-Pinger Browser Extension -->
-                    <article class="app-row p-6 md:p-8" data-aos="fade-up" data-aos-delay="260" style="border-left: 3px solid #3b82f6;">
+                <!-- Browser Extensions Panel (Separated) -->
+                <div id="zentix-panel-extensions" class="space-y-5 hidden">
+
+                    <!-- 1. Z-Pinger Browser Extension -->
+                    <article class="app-row p-6 md:p-8" style="border-left: 3px solid #3b82f6;">
                         <div class="flex flex-col sm:flex-row gap-5 items-start">
                             <div class="app-icon bg-black">
                                 <img src="projects_sub/apps_software/z_pinger_extension/icon.png" alt="Z-Pinger Extension icon"
@@ -838,17 +884,17 @@
                             <div class="flex-1 min-w-0">
                                 <div class="flex flex-wrap items-center gap-3 mb-1">
                                     <h3 class="text-xl font-heading font-bold text-white">Z-Pinger Extension</h3>
-                                    <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">Chrome Web Store</span>
+                                    <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">Live on Chrome Web Store</span>
                                 </div>
-                                <p class="text-secondary text-sm font-semibold mb-2">Network Keep-Alive & Ping Stabilizer · Browser Extension</p>
+                                <p class="text-secondary text-sm font-semibold mb-2">Network Keep-Alive & Ping Stabilizer · Desktop Browser Extension</p>
                                 <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                                    Keep your network active, prevent carrier sleep, and monitor connection latency with real-time ping directly from your browser toolbar. Designed with Manifest V3 for Chrome, Brave, Edge & Opera.
+                                    Keep your network active, prevent carrier sleep, and monitor connection latency with real-time ping directly from your browser toolbar. Designed with Manifest V3 for Google Chrome, Brave Browser, Microsoft Edge, and Opera.
                                 </p>
                                 <div class="flex flex-wrap gap-2 mb-4">
                                     <span class="tech-badge">Manifest V3</span>
                                     <span class="tech-badge">Chrome Web Store</span>
-                                    <span class="tech-badge">Keep-Alive</span>
-                                    <span class="tech-badge">Chromium</span>
+                                    <span class="tech-badge">Carrier Keep-Alive</span>
+                                    <span class="tech-badge">Service Worker</span>
                                 </div>
                                 <div class="flex flex-wrap gap-3">
                                     <a href="https://chromewebstore.google.com/detail/z-pinger-network-keep-ali/aelighdncbgiabkhjpollaemdiflogff"
@@ -862,6 +908,9 @@
                             </div>
                         </div>
                     </article>
+
+                </div>
+                <!-- /Browser Extensions Panel -->
 
                 </div>
             </div>
@@ -956,7 +1005,28 @@
             document.getElementById('mobile-nav').classList.remove('open');
         });
 
-        // ── Dynamic Rotating Studio Specialization Badge ──
+        // ── Zentix Category Tab Switcher ──
+        window.switchZentixTab = function(type) {
+            const androidPanel = document.getElementById('zentix-panel-android');
+            const extPanel = document.getElementById('zentix-panel-extensions');
+            const androidBtn = document.getElementById('btn-tab-android');
+            const extBtn = document.getElementById('btn-tab-extensions');
+
+            if (!androidPanel || !extPanel) return;
+
+            if (type === 'extensions') {
+                androidPanel.classList.add('hidden');
+                extPanel.classList.remove('hidden');
+                if (androidBtn) androidBtn.classList.remove('active');
+                if (extBtn) extBtn.classList.add('active');
+            } else {
+                androidPanel.classList.remove('hidden');
+                extPanel.classList.add('hidden');
+                if (androidBtn) androidBtn.classList.add('active');
+                if (extBtn) extBtn.classList.remove('active');
+            }
+            if (typeof AOS !== 'undefined') AOS.refresh();
+        };
         (function() {
             const roles = [
                 { icon: 'fas fa-mobile-alt', text: 'Official Android Software Studio' },
