@@ -71,9 +71,11 @@ function renderAppDetail(cfg) {
            </a>`
         : '';
 
-    // ── Play Store button ──
+    // ── Play Store / Chrome Store button ──
+    const isChromeBtn = (playStoreIcon && playStoreIcon.includes('chrome')) || (playStoreLabel && playStoreLabel.toLowerCase().includes('chrome'));
+    const playBtnClass = isChromeBtn ? 'social-btn-chrome' : 'social-btn-google';
     const playBtn = playStoreUrl ? `
-        <a href="${playStoreUrl}" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-google">
+        <a href="${playStoreUrl}" target="_blank" rel="noopener noreferrer" class="social-btn ${playBtnClass}">
             <i class="${playStoreIcon}"></i> ${playStoreLabel}
         </a>` : '';
         
@@ -108,19 +110,24 @@ function renderAppDetail(cfg) {
             <p class="text-yellow-200/80 text-sm leading-relaxed">${protectWarning}</p>
         </div>` : '';
 
-    // ── Upcoming Extension / Addon notice ──
+    // ── Extension / Addon notice ──
     const extensionNoticeHTML = extensionNotice ? `
-        <div class="mt-5 p-4 rounded-xl border border-primary/30 bg-primary/10 flex flex-col sm:flex-row items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0 text-primary text-lg">
-                <i class="fas fa-puzzle-piece"></i>
+        <div class="mt-5 p-4 rounded-xl border border-blue-500/30 bg-blue-500/10 flex flex-col sm:flex-row items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center flex-shrink-0 text-blue-400 text-lg">
+                <i class="${extensionNotice.icon || 'fab fa-chrome'}"></i>
             </div>
             <div class="flex-grow text-center sm:text-left">
                 <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1">
                     <span class="font-heading font-bold text-white text-sm">${extensionNotice.title || 'Browser Extension'}</span>
-                    <span class="px-2 py-0.5 text-[0.65rem] font-semibold rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">In Development</span>
+                    <span class="px-2 py-0.5 text-[0.65rem] font-semibold rounded-full ${extensionNotice.badgeClass || 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'}">${extensionNotice.badge || 'Live on Chrome Store'}</span>
                 </div>
-                <p class="text-xs text-gray-300 leading-relaxed">${extensionNotice.desc || 'A dedicated browser extension is currently in active development.'}</p>
+                <p class="text-xs text-gray-300 leading-relaxed">${extensionNotice.desc || ''}</p>
             </div>
+            ${extensionNotice.url ? `
+                <a href="${extensionNotice.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white transition-all shadow-md flex-shrink-0">
+                    <i class="fab fa-chrome"></i> ${extensionNotice.btnLabel || 'Add to Chrome'}
+                </a>
+            ` : ''}
         </div>` : '';
 
     // ── Icon: support both image path and emoji/icon string ──

@@ -511,6 +511,8 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(255,255,255,0.08);
 }
 .social-btn:hover { transform: translateY(-3px); opacity: 0.9; }
+.social-btn-chrome { background: rgba(59,130,246,0.15); color: #60a5fa; border-color: rgba(59,130,246,0.3); box-shadow: 0 4px 15px rgba(59,130,246,0.2); }
+.social-btn-chrome:hover { box-shadow: 0 8px 25px rgba(59,130,246,0.4); }
 .social-btn-google { background: rgba(52,168,83,0.12); color: #4ade80; box-shadow: 0 4px 15px rgba(52,168,83,0.15); }
 .social-btn-google:hover { box-shadow: 0 8px 25px rgba(52,168,83,0.3); }
 .social-btn-fb { background: rgba(59,130,246,0.12); color: #60a5fa; box-shadow: 0 4px 15px rgba(59,130,246,0.15); }

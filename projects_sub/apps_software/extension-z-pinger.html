@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Z-Pinger Browser Extension – Real-time Network Monitoring | Zentix</title>
+    <title>Z-Pinger Extension – Network Keep-Alive & Latency Monitor | Zentix</title>
     <link rel="icon" type="image/png" href="../../assets/favicon.png">
-    <meta name="description" content="Z-Pinger Browser Extension – Monitor network stability, latency and connectivity health directly from your browser toolbar. Lightweight and professional. By Kalana Sahan.">
+    <meta name="description" content="Official Z-Pinger Chrome Extension by Zentix – Keep your network active, prevent carrier sleep, and monitor connection latency with real-time ping directly from your browser.">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script><script src="../../assets/js/tailwind-config.js"></script>
@@ -24,28 +24,39 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderAppDetail({
                 title: 'Z-Pinger Extension',
-                subtitle: 'Smart Browser Network Monitor',
-                description: 'Z-Pinger Extension brings professional network monitoring to your browser toolbar. Designed with Manifest V3, it provides real-time latency tracking, connection health visualization, and background monitoring to ensure you stay connected during critical sessions.',
-                icon: 'https://github.com/kaali-k/Extension-Z-Pinger/raw/main/icon128.png', 
-                iconAlt: 'Z-Pinger Extension icon', iconBg: 'bg-black',
+                subtitle: 'Network Keep-Alive & Ping Stabilizer',
+                description: 'Keep your network active, prevent carrier sleep, and monitor connection latency with real-time ping directly from your browser toolbar. Designed with Manifest V3, Z-Pinger sends lightweight background keep-alive requests to ensure your internet sessions never drop idle.',
+                icon: 'z_pinger_extension/icon.png', 
+                iconAlt: 'Z-Pinger Extension icon',
+                iconBg: 'bg-black',
                 isZentix: true,
-                badges: [{ label: 'Browser Extension', type: 'cyan' }, { label: 'Utility', type: 'pink' }, { label: 'Real-time', type: 'blue' }],
-                features: [
-                    { icon: 'fas fa-tachometer-alt', title: 'Latency Tracking', desc: 'Monitor real-time ping to any server or domain directly from the popup.' },
-                    { icon: 'fas fa-heartbeat', title: 'Health Indicators', desc: 'Visual color-coded indicators for Good/Average/Critical connection status.' },
-                    { icon: 'fas fa-shield-alt', title: 'Manifest V3 Native', desc: 'Built on the latest extension standards for security, speed and privacy.' },
-                    { icon: 'fas fa-history', title: 'Background Monitoring', desc: 'Service workers monitor connectivity even when the popup is closed.' },
-                    { icon: 'fas fa-cog', title: 'Quick Actions', desc: 'Instantly access network tools and refresh connectivity with one click.' }
+                badges: [
+                    { label: 'Chrome Web Store', type: 'cyan' },
+                    { label: 'Browser Extension', type: 'blue' },
+                    { label: 'Manifest V3', type: 'purple' },
+                    { label: 'Zentix', type: 'purple' }
                 ],
-                screenshotDir: '', 
-                downloadUrl: 'https://github.com/kaali-k/Extension-Z-Pinger/archive/refs/heads/main.zip',
-                downloadLabel: 'Download Source',
-                playStoreUrl: 'https://github.com/kaali-k/Extension-Z-Pinger#%EF%B8%8F-installation-developer-mode',
-                playStoreLabel: 'How to Install',
-                playStoreIcon: 'fab fa-github',
-                starTip: 'Liked the project? Support it with a ⭐ on GitHub!',
-                tech: ['JavaScript', 'HTML5', 'CSS3', 'Manifest V3', 'Chrome APIs'],
-                backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
+                features: [
+                    { icon: 'fas fa-shield-alt', title: 'Carrier Keep-Alive', desc: 'Sends lightweight background keep-alive pings to prevent mobile broadband and ISP connections from dropping idle.' },
+                    { icon: 'fas fa-tachometer-alt', title: 'Real-time Latency Tracking', desc: 'Accurate HTTP HEAD ping measurement in milliseconds with instant color-coded visual health indicators.' },
+                    { icon: 'fas fa-sliders-h', title: 'Customizable Intervals', desc: 'Choose between 5s, 10s, 15s, 30s, or 1m intervals to balance latency control against data usage.' },
+                    { icon: 'fas fa-code-branch', title: 'Manifest V3 Native', desc: 'Fully compliant with modern Chrome Extension standards using high-efficiency background service workers.' },
+                    { icon: 'fas fa-feather-alt', title: 'Zero Data Bloat', desc: 'Only minimal HTTP headers exchanged — zero bandwidth waste, zero tracking, and 100% privacy.' }
+                ],
+                screenshots: [
+                    { file: 'screen1.jpg', alt: 'Z Pinger Extension Popup' },
+                    { file: 'screen2.jpg', alt: 'Interval Selection & Control' },
+                    { file: 'screen3.jpg', alt: 'Real-time Ping Graph' },
+                    { file: 'screen4.jpg', alt: 'Settings and Connection Health' }
+                ],
+                screenshotDir: 'z_pinger_extension/',
+                playStoreUrl: 'https://chromewebstore.google.com/detail/z-pinger-network-keep-ali/aelighdncbgiabkhjpollaemdiflogff',
+                playStoreLabel: 'Add to Chrome',
+                playStoreIcon: 'fab fa-chrome',
+                starTip: 'Compatible with Google Chrome, Brave Browser, Microsoft Edge, Opera, and all Chromium browsers.',
+                tech: ['Manifest V3', 'JavaScript', 'Chrome Extension APIs', 'Service Workers', 'Network Keep-Alive'],
+                backUrl: 'mycreations.html',
+                backLabel: 'Back to My Creations'
             });
         });
     </script>
