@@ -5,6 +5,7 @@
     <title>Z-Pinger Extension – Network Keep-Alive & Latency Monitor | Zentix</title>
     <link rel="icon" type="image/png" href="../../assets/favicon.png">
     <meta name="description" content="Official Z-Pinger Chrome Extension by Zentix – Keep your network active, prevent carrier sleep, and monitor connection latency with real-time ping directly from your browser.">
+    <meta name="robots" content="index, follow">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script><script src="../../assets/js/tailwind-config.js"></script>
@@ -13,14 +14,23 @@
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body class="bg-darkbg text-lighttext">
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
     <header id="main-header" role="banner"></header>
     <main id="main-content" class="py-16 pt-32"></main>
     <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="../../index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="../../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">Zentix</a>
+        <a href="../../projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+    </div>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="../../assets/js/links.js"></script>
     <script src="../../assets/js/components.js"></script><script src="../../assets/js/main.js"></script><script src="../../assets/js/subpage.js"></script>
     <script>
         loadHeader('../../'); loadFooter('../../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
         document.addEventListener('DOMContentLoaded', () => {
             renderAppDetail({
                 title: 'Z-Pinger Extension',
@@ -52,7 +62,6 @@
                 tech: ['Manifest V3', 'JavaScript', 'Chrome Extension APIs', 'Service Workers', 'Network Keep-Alive'],
                 backUrl: '../../zentix.html',
                 backLabel: 'Back to Zentix Studio'
-                backLabel: 'Back to My Creations'
             });
         });
     </script>
