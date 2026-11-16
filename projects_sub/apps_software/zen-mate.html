@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen Mate – Media Downloader | Zentix</title>
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+    <meta name="description" content="Zen Mate by Zentix – Fast, secure, and modern media downloader application for Android. Download, organize, and manage media effortlessly.">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><script src="../../assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-darkbg text-lighttext">
+    <div id="scroll-progress" style="width:0%"></div>
+    <div class="bg-noise" aria-hidden="true"></div><div class="grid-bg" aria-hidden="true"></div>
+    <header id="main-header" role="banner"></header>
+    <main id="main-content" class="py-16 pt-32"></main>
+    <footer id="main-footer" class="py-10" role="contentinfo"></footer>
+    <div id="mobile-nav" class="mobile-nav-overlay" role="navigation">
+        <button id="close-mobile-nav" class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white" aria-label="Close"><i class="fas fa-times"></i></button>
+        <a href="../../index.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Home</a>
+        <a href="../../zentix.html" class="mobile-nav-link text-gradient-zentix" onclick="document.getElementById('mobile-nav').classList.remove('open')">Zentix</a>
+        <a href="../../projects.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').classList.remove('open')">Projects</a>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../../assets/js/links.js"></script>
+    <script src="../../assets/js/components.js"></script><script src="../../assets/js/main.js"></script><script src="../../assets/js/subpage.js"></script>
+    <script>
+        loadHeader('../../'); loadFooter('../../');
+        document.getElementById('close-mobile-nav').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAppDetail({
+                title: 'Zen Mate',
+                subtitle: 'Media Downloader',
+                description: 'Zen Mate is a powerful, lightweight media downloader app by Zentix designed to easily save and manage your favorite media directly on your device. Built with a fast engine, reliable background processing, and a modern user-friendly dark interface.',
+                icon: 'zen_mate/icon.png', iconAlt: 'Zen Mate icon', iconBg: 'bg-black',
+                isZentix: true,
+                playStoreUrl: 'https://play.google.com/store/apps/details?id=com.zentix.zenmate',
+                appGalleryUrl: '',
+                appGalleryLabel: '',
+                secondaryDownloadUrl: '',
+                secondaryDownloadLabel: '',
+                starTip: '',
+                badges: [{ label: 'Android', type: 'green' }, { label: 'Media Utility', type: 'cyan' }, { label: 'Zentix', type: 'purple' }],
+                features: [
+                    { icon: 'fas fa-bolt', title: 'High-Speed Downloads', desc: 'Optimized multi-threaded downloader engine for rapid media saving.' },
+                    { icon: 'fas fa-folder-open', title: 'Built-in Media Manager', desc: 'Easily view, play, organize, and share downloaded media files in-app.' },
+                    { icon: 'fas fa-tasks', title: 'Background Processing', desc: 'Downloads continue seamlessly in the background without interruptions.' },
+                    { icon: 'fas fa-shield-alt', title: 'Privacy Focused', desc: 'No personal data tracking or telemetry — safe, secure, and lightweight.' },
+                    { icon: 'fas fa-paint-brush', title: 'Modern Clean UI', desc: 'Intuitive dark theme crafted for minimal distraction and maximum efficiency.' }
+                ],
+                screenshots: [],
+                screenshotDir: 'zen_mate/',
+                tech: ['Flutter', 'Dart', 'Android', 'Media Engine', 'Foreground Services'],
+                backUrl: 'mycreations.html', backLabel: 'Back to My Creations'
+            });
+        });
+    </script>
+</body>
+</html>
